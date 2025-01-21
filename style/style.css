@@ -1,105 +1,190 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    text-decoration: none; 
+/* General body styling */
+body {
+    background-color: #FFEFF2; 
+    font-family: Baloo, Poppins, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-body{ 
-    display: flex; 
-    /* width: 1440px;
-    height: 1024px; */ 
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-header{ 
-    display: flex;
-    height: 256px;
-    padding: 10px;
-    align-items: flex-start;
-    gap: 10px;
-    flex-shrink: 0;
-    color: #000;
+/* Header Styling */
+h1 {
     text-align: center;
-    font-family: Roboto, Helvetica, sans-serif;
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-} 
-
-.subpage{ 
-display: flex;
-width: 400px;
-height: 400px;
-flex-direction: column;
-justify-content: flex-end;
-align-items: flex-start;
-gap: 10px;
-border-radius: 45px;
-background: url(<path-to-image>) lightgray 50% / cover no-repeat, #FFF;
-box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.43);
+    color: #FC5B7B;
+    font-size: 2.5rem;
 }
 
-.labelcontainer{
-display: flex;
-height: 120px;
-padding: 20px;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
-align-self: stretch;
-background: linear-gradient(175deg, rgba(5, 4, 4, 0.00) 8.97%, #000 95.95%);
-}
-
-.subpage-title{
-color: #FFF;
-text-shadow: 0px 3px 1px rgba(0, 0, 0, 0.25);
-font-family: Roboto;
-font-size: 64px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-text-transform: lowercase;
-}
-
-.row{
-    display: flex;
-    padding: 10px 0px;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    gap: 48px;
-    flex: 1 0 0;
-    align-self: stretch;
-    flex-wrap: wrap;
-}
-
-
-main{
-display: flex;
-height: 648px;
-padding: 10px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
-align-self: stretch;
-}
-
-
-footer{
-    display: flex;
-    height: 120px;
-    padding: 10px;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    color: #000;
+h2 {
     text-align: center;
-    font-family: Roboto;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    color: #FC5B7B;
+    font-size: 1.75rem;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+h2:hover {
+    background-color: #e4a8c0;
+}
+
+/* Paragraph Styling */
+p {
+    text-align: center;
+    color: #FC5B7B;
+    font-size: 1rem;
+}
+
+/* Master's Research Project (MRP) Section */
+.mrp-container {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #FECED7;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #FC5B7B;
+}
+
+.mrp-container h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.mrp-container p {
+    font-size: 1.1rem;
+}
+
+/* Timeline and Prototype Image Styling */
+.timeline, .prototype {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.timeline-image, .prototype-image {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+}
+
+/* Button Container for side-by-side buttons */
+.button-container {
+    text-align: center;
+    margin-bottom: 40px; /* Adds more space between buttons and reflection container */
+}
+
+button {
+    background-color: #FC5B7B;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 20px; /* Increases space between buttons */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #FF3FF2;
+}
+
+/* Flexbox for responsiveness */
+@media screen and (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reflection, .mrp-container {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Collapsible Content Styles */
+.reflection.expanded .reflection-content {
+    display: block; /* Show content when expanded */
+}
+
+/* Subpage Styling */
+.subpage {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.subpage-title {
+    font-size: 1.2rem;
+    color: #FC5B7B;
+    padding-top: 10px;
+}
+
+.subpage img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Return to Homepage Button Styling */
+.return-home-btn {
+    background-color: #FC5B7B;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Removes underline */
+}
+
+.return-home-btn:hover {
+    background-color: #FF3FF2;
+}
+
+/* Reflections container with fixed width */
+.reflections-container {
+    width: 80%;  /* You can adjust the width as per your design */
+    max-width: 800px;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: #FECED7;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #FC5B7B;
+}
+
+/* Reflection item styling */
+.reflection {
+    background-color: #FECED7;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 2px solid #FC5B7B;
+    cursor: pointer;
 }

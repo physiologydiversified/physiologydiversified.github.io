@@ -1,101 +1,97 @@
 <!DOCTYPE html>
-<html> 
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Priya's Personal Course Website</title>
-
-<!--CSS Style Sheet -->
-<style>
-    
-        h1, h2, p {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #B63455;
-
-        }
-        body {
-            background-color:#FFD5DF;
-}
-
-h2.center { 
-    border-bottom-style: solid
-    border-color #B63455; 
-}
-
-button {
-  background-color: #8b3257;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 25px;
-  align-items: center;
-  text-align: center;
-}
-
-div {
-    width:800px;
-    height: 200px;
-    align-items:auto;
-    padding-top: 1cm;
-    padding-left: 1cm;
-    padding-right: 2cm;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    background-color: #fec3d3;
-    border-radius: 25px;
-
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya's Personal Course Website</title>
+    <link rel="stylesheet" href="style/style.css"> <!-- External stylesheet -->
 </head>
 
+<body>
 
-<!--Beginning of Webpage -->
-<!--Main Headers-->
-    <H1 style="text-align: center;">MSC2006: Advanced Media Design Technologies</H1>
-    <H2 STYLE="text-align: center;", border-bottom-style="solid", border-bottom-colour="#B63455">Priya's Personal Course Page</H2> 
+<h1>MSC2006: Advanced Media Design Technologies</h1>
+<h2 id="no-hover">Priya's Personal Course Page</h2>
+<p style="text-align: center;">Hello! Welcome to my personal course page. This site will contain course reflections and information about my MRP.</p>
 
-<!--Brief intro blurb-->
-    <p style="text-align: center;">Hello! Welcome to my personal course page. This site will contain course reflections and information about my MRP. </p>
+<div style="text-align: center;">
+    <!-- Links for Course Reflections and MRP Page -->
+    <a href="index.html">
+        <button>Course Reflections</button>
+    </a>
+    <a href="pages/subpage.html">
+        <button>MRP Page</button>
+    </a>
+</div>
 
-<!--Dummy buttons-->
-<button> Course Reflections </button>
-<button> MRP Timeline </button>
+
+<div class="reflections-container">
 
 
-<!--Course reflections week by week-->
-    <div>
-    <h2> 1) January 7, 2025: Course Intro & Web Dev 101</h1>
-    <p> I'm super excited to begin this course! I dabbled a bit in HTML/CSS as a beginner during undergrad, but I'm really happy to be learning about the fundamentals of web design in a formal manner. I found it really helpful to learn specifically about the three different ways to add CSS styles to an HTML doc - inline, interally, and externally. I'm looking forward to learning more about web design and how to make interactive elements for my MRP!
+        <h2 onclick="toggleCollapse('reflection1')">1) January 7, 2025: Course Intro & Web Dev 101</h2>
+        <div id="reflection1" style="display: none;"> <!-- Initially closed -->
+            <p>I'm super excited to begin this course! I dabbled a bit in HTML/CSS as a beginner during undergrad, but I'm really happy to be learning about the fundamentals of web design in a formal manner. I found it really helpful to learn specifically about the three different ways to add CSS styles to an HTML doc - inline, internally, and externally. I'm looking forward to learning more about web design and how to make interactive elements for my MRP!</p>
+        </div>
+
+        <h2 onclick="toggleCollapse('reflection2')">2) January 14, 2025: Styling Your Web Page and Intro to Accessible Design</h2>
+        <div id="reflection2" style="display: none;"> <!-- Initially closed -->
+            <p>Reflection for Week 2 coming soon...</p>
+        </div>
+
+        <h2 onclick="toggleCollapse('reflection3')">3) January 21, 2025</h2>
+        <div id="reflection3" style="display: none;"> <!-- Initially closed -->
+            <p>Reflection coming soon...</p>
+        </div>
+
+        <h2 onclick="toggleCollapse('reflection4')">4) January 28, 2025</h2>
+        <div id="reflection4" style="display: none;"> <!-- Initially closed -->
+            <p>Reflection coming soon...</p>
+        </div>
+
+        <h2 onclick="toggleCollapse('reflection5')">5) February 4, 2025</h2>
+        <div id="reflection5" style="display: none;"> <!-- Initially closed -->
+            <p>Reflection coming soon...</p>
+        </div>
+
+        <h2 onclick="toggleCollapse('reflection6')">6) February 11, 2025</h2>
+        <div id="reflection6" style="display: none;"> <!-- Initially closed -->
+            <p>Reflection coming soon...</p>
+        </div>
+
+        <h2 onclick="toggleCollapse('reflection7')">7) February 18, 2025 (Reading Week)</h2>
+        <div id="reflection7" style="display: none;"> <!-- Initially closed -->
+            <p>Reflection coming soon...</p>
+        </div>
     </div>
 
-    <div>
-        <h2> 2) January 14, 2025: Styling your web page and intro accessible design </h1>
-        <p> Reflection for Week 2 coming soon...</p>
-    </div>
-
-    <!--How do I get a seperate div block to go on the right side for my MRP content??? -->
-
-    <div>
-    <h2> My Master's Research Project </h1>
-<p> For my MRP, I’m addressing the issue of outdated and poorly representative lecture diagrams in large undergraduate physiology courses, which are foundational for advanced medical science. Physiology lacks high-quality visual resources compared to general anatomy, making it harder to teach effectively. To solve this, I’m creating a free online database of modern, scientifically accurate diagrams that emphasize equity, diversity, and inclusion (EDI). The diagrams, ranging from static to interactive media, are prototyped in Figma and hosted on GitHub to provide students and educators with accessible, engaging learning tools. </p>
-    </div>
+</div>
 
 
 
+<script>
+    // Make sure the reflections are initially closed
+    window.onload = function() {
+        const allReflections = document.querySelectorAll('.reflection div');
+        allReflections.forEach(function(reflection) {
+            reflection.style.display = 'none'; // Hide all reflections on page load
+        });
+    };
 
+    // Toggle visibility on click
+    function toggleCollapse(id) {
+        const content = document.getElementById(id);
+        const header = document.querySelector(`[onclick="toggleCollapse('${id}')"]`);
 
-
-
-
-
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block";  // Show the reflection
+            header.classList.add("expanded"); // Optional: Add expanded class to style
+        } else {
+            content.style.display = "none";  // Hide the reflection
+            header.classList.remove("expanded"); // Optional: Remove expanded class to revert styles
+        }
+    }
+</script>
 
 
 
 </body>
-
 </html>
