@@ -1,36 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Priya's Personal Course Website</title>
-    <link rel="stylesheet" type="text/css" href="../style/style.css" /> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya's Personal Course Website - MRP Diary</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <style>
+        .diary-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .diary-entry {
+            margin-bottom: 10px;
+        }
+        .diary-entry h3 {
+            cursor: pointer;
+            margin: 0;
+            padding: 10px;
+            background-color: #e2e2e2;
+            border-radius: 4px;
+        }
+        .diary-entry p {
+            display: none;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #e2e2e2;
+            border-radius: 4px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .return-home-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .return-home-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
+<body>
+    <div class="subpage">
+        <h2 class="subpage-title">MRP Diary</h2>
+        <div class="diary-container">
+            <div class="diary-entry">
+                <h3>January 20, 2025</h3>
+                <p><strong>Entry:</strong> Reflection...</p>
+            </div>
+            
+            <div class="diary-entry">
+                <h3>January 19, 2025</h3>
+                <p><strong>Entry:</strong> Reflection...</p>
+            </div>
 
-<div class="subpage">
-    <link rel="stylesheet" type="text/css" href="../style/style.css" /> 
-    <h2 class="subpage-title">MRP Diary</h2>
-    <div class="diary-container">
-        <div class="diary-entry">
-            <h3>January 20, 2025</h3>
-            <p><strong>Entry:</strong> Reflection...</p>
+            <div class="diary-entry">
+                <h3>January 18, 2025</h3>
+                <p><strong>Entry:</strong> Reflection...</p>
+            </div>
         </div>
-        
-        <div class="diary-entry">
-            <h3>January 19, 2025</h3>
-            <p><strong>Entry:</strong> Reflection...</p>
+
+        <!-- Return to Homepage Button -->
+        <div class="button-container">
+            <a href="../index.html" class="return-home-btn">Return to Homepage</a>
         </div>
-
-        <div class="diary-entry">
-            <h3>January 18, 2025</h3>
-            <p><strong>Entry:</strong> Reflection...</p>
-        </div>
-
-<!-- Return to Homepage Button -->
-<div class="button-container">
-    <a href="../index.html">
-        <button class="return-home-btn">Return to Homepage</button>
-    </a>
-</div>
-
     </div>
-</div>
+
+    <script>
+        document.querySelectorAll('.diary-entry h3').forEach(entryTitle => {
+            entryTitle.addEventListener('click', () => {
+                const entryContent = entryTitle.nextElementSibling;
+                entryContent.style.display = entryContent.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
