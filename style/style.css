@@ -1,6 +1,6 @@
 /* General body styling */
 body {
-    background-color: #FFEFF2; 
+    background-color: hsl(0, 100%, 95%); 
     font-family: Baloo, Poppins, sans-serif;
     margin: 0;
     padding: 0;
@@ -23,7 +23,7 @@ h2 {
 }
 
 h2:hover {
-    background-color: #e4a8c0;
+    background-color: #ffd0e37a;
 }
 
 /* Paragraph Styling */
@@ -69,23 +69,23 @@ p {
 /* Button Container for side-by-side buttons */
 .button-container {
     text-align: center;
-    margin-bottom: 40px; /* Adds more space between buttons and reflection container */
+    margin-bottom: 10px; /* Adds more space between buttons and reflection container */
 }
 
 button {
     background-color: #FC5B7B;
     color: white;
-    padding: 12px 25px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 25px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
-    margin: 0 20px; /* Increases space between buttons */
+    margin: 15px; /* Increases space between buttons */
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #FF3FF2;
+    background-color: #ce4a65;
 }
 
 /* Flexbox for responsiveness */
@@ -154,37 +154,38 @@ button:hover {
 .return-home-btn {
     background-color: #FC5B7B;
     color: white;
-    padding: 12px 25px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 25px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
+    margin: 15px; /* Increases space between buttons */
     transition: background-color 0.3s ease;
-    text-decoration: none; /* Removes underline */
 }
 
 .return-home-btn:hover {
-    background-color: #FF3FF2;
+    background-color: #ce4a65;
 }
 
 /* Reflections container with fixed width */
 .reflections-container {
-    width: 80%;  /* You can adjust the width as per your design */
     max-width: 800px;
-    margin: 0 auto; /* Center the container */
+    margin: 0 auto;
     padding: 20px;
-    background-color: #FECED7;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid #FC5B7B;
+    border: 1px solid #e0b3c1;
+    border-radius: 8px;
+    background-color: #ffe6e9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Reflection item styling */
 .reflection {
-    background-color: #FECED7;
+    background-color: #ffe6e9;
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 2px solid #FC5B7B;
     cursor: pointer;
 }
+
+

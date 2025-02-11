@@ -6,66 +6,106 @@
     <title>Priya's Personal Course Website - MRP Diary</title>
     <link rel="stylesheet" href="../style/style.css">
     <style>
-        .diary-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-        .diary-entry {
-            margin-bottom: 10px;
-        }
-        .diary-entry h3 {
-            cursor: pointer;
-            margin: 0;
-            padding: 10px;
-            background-color: #e2e2e2;
-            border-radius: 4px;
-        }
-        .diary-entry p {
-            display: none;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #e2e2e2;
-            border-radius: 4px;
-        }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .return-home-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-        .return-home-btn:hover {
-            background-color: #0056b3;
-        }
+       body {
+    font-family: Arial, sans-serif;
+    background-color: hsl(0, 100%, 95%);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.diary-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e0b3c1;
+    border-radius: 8px;
+    background-color: #ffe6e9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.diary-entry {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #e0b3c1;
+    border-radius: 4px;
+    background-color: #fff0f3;
+    transition: background-color 0.3s ease;
+}
+
+.diary-entry h3 {
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+    background-color: #ffccd5;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.diary-entry h3:hover {
+    background-color: #ffb3c1;
+}
+
+.diary-entry p {
+    display: none;
+    padding: 10px;
+    margin: 10px 0 0;
+    color: #555;
+}
+
+.button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.return-home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: hsl(349, 100%, 75%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.return-home-btn:hover {
+    background-color: #da546d;
+}
     </style>
 </head>
+
 <body>
+    <h1> Interactive Project Diary </h1>
     <div class="subpage">
-        <h2 class="subpage-title">MRP Diary</h2>
         <div class="diary-container">
             <div class="diary-entry">
-                <h3>January 20, 2025</h3>
-                <p><strong>Entry:</strong> Reflection...</p>
+                <h2 class="subpage-title"> February 4, 2025</h3>
+                <p> Brainstorming ideas with group...</p>
             </div>
             
             <div class="diary-entry">
-                <h3>January 19, 2025</h3>
-                <p><strong>Entry:</strong> Reflection...</p>
+                <h2 class="subpage-title"> February 11, 2025 </h2>
+                <p> Worked on Beanie's Backyard Adventure</p>
             </div>
 
             <div class="diary-entry">
-                <h3>January 18, 2025</h3>
-                <p><strong>Entry:</strong> Reflection...</p>
+                <h2 class="subpage-title"> February 18, 2025 (Reading Week)</h2>
+                <p> Coming soon...</p>
             </div>
+
+            <div class="diary-entry">
+                <h2 class="subpage-title"> February 25, 2025 </h2>
+                <p> Coming soon...</p>
+            </div>
+
         </div>
 
         <!-- Return to Homepage Button -->
@@ -75,7 +115,7 @@
     </div>
 
     <script>
-        document.querySelectorAll('.diary-entry h3').forEach(entryTitle => {
+        document.querySelectorAll('.diary-entry h2').forEach(entryTitle => {
             entryTitle.addEventListener('click', () => {
                 const entryContent = entryTitle.nextElementSibling;
                 entryContent.style.display = entryContent.style.display === 'block' ? 'none' : 'block';
@@ -84,3 +124,5 @@
     </script>
 </body>
 </html>
+
+
