@@ -1,206 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priya's Personal Course Website - MRP Diary</title>
-    <link rel="stylesheet" href="../style/style.css">
-    <style>
-       body {
-    font-family: Arial, sans-serif;
-    background-color: hsl(0, 100%, 95%);
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.diary-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #e0b3c1;
-    border-radius: 8px;
-    background-color: #ffe6e9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.diary-entry {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #e0b3c1;
-    border-radius: 4px;
-    background-color: #fff0f3;
-    transition: background-color 0.3s ease;
-}
-
-.diary-entry h3 {
-    cursor: pointer;
-    margin: 0;
-    padding: 10px;
-    background-color: #ffccd5;
-    color: #333;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.diary-entry h3:hover {
-    background-color: #ffb3c1;
-}
-
-.diary-entry p {
-    display: none;
-    padding: 10px;
-    margin: 10px 0 0;
-    color: #555;
-}
-
-.button-container {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.return-home-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: hsl(349, 100%, 75%);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.return-home-btn:hover {
-    background-color: #bf485d;
-}
-    </style>
-</head>
-
-<body>
-    <h1> Developer Diary </h1>
-    <div class="subpage">
-        <div class="diary-container">
-            <div class="diary-entry">
-                <h2 class="subpage-title"> February 4, 2025</h3>
-                <p> Brainstorming ideas with group...</p>
-            </div>
-            
-            <div class="diary-entry">
-                <h2 class="subpage-title"> February 11, 2025 </h2>
-                <p> In today's class, we learned about the basics behind Javascript. I've explored Javascript on my own time from watching YouTube videos and learning how to code my MRP from a wireframe into a working prototype using AI tools like ChatGPT, but this was my first formal introduction. I really enjoyed the in-class activity, because it gave me ideas on how I can integrate Javascript into my physiology lecture diagrams for my MRP to add interactivity. The only challenge will be to code for interactivity in a way that is intuitive, accessible, and adds value. I want to explore outside tools and software like spline and framer which contain javascript functions at the click of a button, which makes it very easy and intuitive to create interactions on your website and 3D models. For my MRP, I may design diagrams with similar hover-over effects which reveal information like labels or callouts. I would want the interactions to be smooth and seamless for a modern feel. For the next part of the demo, labels will appear for each corresponding muscle. </p>
-            
-                
-            </div>
-
-            <div class="diary-entry">
-                <h2 class="subpage-title"> February 18, 2025 (Reading Week)</h2>
-                <p> Coming soon...</p>
-            </div>
-
-            <div class="diary-entry">
-                <h2 class="subpage-title"> February 25, 2025 </h2>
-                <p> Coming soon...</p>
-            </div>
-
-        </div>
-
-        <!-- Return to Homepage Button -->
-        <div class="button-container">
-            <a href="../index.html" class="return-home-btn">Return to Homepage</a>
-        </div>
-
-    </div>
-    
-
-    <script>
-        document.querySelectorAll('.diary-entry h2').forEach(entryTitle => {
-            entryTitle.addEventListener('click', () => {
-                const entryContent = entryTitle.nextElementSibling;
-                entryContent.style.display = entryContent.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-    </script>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/style.css">
-
-    <title>Feb 11 Javascript Demo</title>
-    <style>
-               body {
-    font-family: Arial, sans-serif;
-    background-color: hsl(0, 100%, 95%);
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-        .img-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .img-container img, .img-container svg {
-            width: 50%;
-            height: auto;
-            display: block;
-        }
-    </style>
-</head>
-<body>
-   
-        <div class="img-container">
-            <!-- Paste the SVG content here -->
-         <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 781.2 1339.92">
   <defs>
     <style>
-        svg {
-            max-width: 500px;
-            height: auto;
-        }
-      #TendonExtensorLongus {
-        fill: #1db582;
+      .cls-1 {
+        fill: #21409a;
       }
 
       .cls-1, .cls-2, .cls-3, .cls-4 {
         stroke-width: 0px;
       }
 
-      #TendonExtensorLongus {
-        fill: #331ebe;
+      .cls-2 {
+        fill: #be1e2d;
       }
 
-      #DorsalInterossei {
-        fill: #70d559;
+      .cls-3 {
+        fill: #92278f;
       }
 
-      #ExtensorRetinaculum {
-        fill: #ff6ea1;
-      }
-
-      #TendonExtensorBrevis {
-        fill: #ae2ada
+      .cls-4 {
+        fill: #ec008c;
       }
     </style>
   </defs>
@@ -230,48 +49,3 @@
     <path class="cls-4" d="m601.5,152.14c-.93,6.04-1.65,11.19-2.33,15.95-1.67,11.93-3.01,21.35-6.33,35.55-2.37,10.2-2.56,32.94-2.7,51.22-.23,29.23-.62,32.63-3.67,33.06-.39,0-.68-.02-1.15-.06-14.06-1.5-15.87.56-15.89.58-.23.74-1.01,1.28-1.4,1.53-6.72,4.2-46.81,7.69-51.34,6.53-.35-.08-1.05-.21-2.23-.19-2.18,0-5.21.31-8.43.64-6.41.66-13.05,1.34-16.78.08-.29-.1-.6-.14-.95-.21-7.79-.95-37.74,4.25-40.23,5.21-.91.6-1.11,1.17-1.4,2.06-.41,1.26-1.03,3.15-4.16,3.71-.49.08-1.26.25-2.23.47-10.18,2.21-20.12,3.71-23.81-.19-.02,0-.02-.02-.04-.02-8.49-.66-113.61,23.1-121.11,27.6-1.94,3.38-8.43,6.06-13.64,7.73-6.06,1.92-17.42,4.53-21.54,2.04-.06-.02-.31-.19-.37-.23-.29-.23-1.11-.35-2.47-.08-5.87,1.17-15.4,8.02-16.88,10.49-.04.06-.08.12-.12.19-1.46,2.37-3.9,3.96-6.39,4.16-2,.16-3.81-.58-4.99-2.02-.12-.08-.23-.21-.33-.35-4.29,1.2-20.61,12.53-28.11,20.2l-.27.27c-.82.89-1.98,2.08-2.12,2.51-.1,1.24-1.09,2.02-3.05,3.57-2.91,2.29-8.35,6.57-13.99,15.13-.39.6-1.03.93-1.71.93-.27,0-.56-.06-.82-.19-.91-.39-1.4-1.4-1.15-2.37.29-1.09,27.82-107.9,29-112.74l.23-.97c.66-2.64,2.35-9.63,1.15-11.11h-.08c-3.15,0-4.72-1.26-5.54-2.33-1.98-2.6-2.02-7.05-.14-13.29,2.29-7.73-1.22-46.81-2.41-50.6-.29-.89-.33-1.9-.33-2.86.12-3.92,2.02-9.96,5.75-10.7,1.61-.31,3.96.23,5.94,4.64.47,1.03,1.75,2.04,3.69,2.89,9.91,4.29,31.33,2.6,36.71-4.55.58-.66.89-1.32,1.07-2.12.12-.56.49-1.03.97-1.32,14.2-8.18,31.1-20.12,31.82-20.63,1.09-.76,1.57-4,1.96-6.86.64-4.58,1.38-9.77,4.8-13.03.74-.7,1.9-.74,2.68-.1.35.27.74.56,1.13.8,3.71,2.51,9.01,3.92,16.26,4.27,7.83.37,16.39-.58,22.63-1.28,8.68-.97,11.93-1.32,12.9,1.13,1.13,2.95,3.42,8.86,14.02,14.26,9.5,4.82,37.12-1.75,42.81-10.2.68-.97.97-1.92.93-2.86-.04-.49.12-.97.41-1.36,3.05-3.94,6.1-8.49,9.05-12.9,7.52-11.23,11.01-16.16,14.49-15.54,1.01.19,2.33.93,2.89,3.34,1.44,6.12-2.43,12.47-5.52,17.56-1.05,1.69-2.41,3.92-2.72,5.01.23.02.56.04,1.05.02,3.09-.14,8.22-2.35,14.47-6.25.27-.16.58-.25.89-.29.39-.04.74-.06,1.07-.12,9.38-1.32,16.65-6.84,19.58-14.82.23-.72.39-1.15.52-1.63.08-.35.29-.68.54-.93,4.16-4.04,7.58-7.81,10.14-11.25,6.06-8.16,6.35-17.46,6.53-23.6.14-4.39.23-7.28,2.39-8.47,1.86-1.05,3.94.14,4.6.54.29.14,1.5.02,2.31-.06,1.28-.12,2.89-.27,4.53-.02.33.04.64.16.91.37,11.27,8.18,23.85,3.46,30.32-.06.64-.33,1.38-.33,1.98,0,9.56,5.38,43.43-.19,56.76-7.75.12-.08.27-.14.43-.19.89-1.17,1.79-2.14,4.2-2.8.12-.06.54-.19.97-.29.16-.04.33-.06.47-.06,4.7-.06,5.87-.93,6.9-1.69.47-.35.93-.66,1.46-.93.93-.45,2.04-.7,3.4-.7.8,0,1.57.37,2.14,1.05,5.11,5.96,1.57,61.46-.95,77.89Z"/>
   </g>
 </svg>
-
-
-        </div>
-
-
-    </main>
-
-
-    <footer>
-        <p>&copy; 2025 Priya Modi</p>
-    </footer>
-
-    <script>
-
-        //Wait for the DOM to be loaded
-        document.addEventListener("DOMContentLoaded", function() {
-
-        //Select all SVG elements with an ID
-        const svgElements = document.querySelectorAll("svg [id]");
-
-        //Add event listeners to each SVG element
-        svgElements.forEach(element => {
-            element.addEventListener("mouseover", function() {
-                //change the colour to highlight the element
-            element.style.fill = "yellow"; 
-            }); 
-
-            element.addEventListener("mouseout", function() {
-        //revert the fill colour to its original state
-                element.style.fill= "";  
-         }); 
-    });
-}); 
-
-    </script>
-
-</body>
-
-
-
-</html>
-
-
-
-
