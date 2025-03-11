@@ -95,8 +95,8 @@
                     The next step was to prepare the pitch presentation for the class. We needed to ensure that we conveyed our idea clearly and compellingly, explaining why scrollytelling was the ideal medium for our project. We also had to define the roles within the group, so we could demonstrate our plan for organizing the work ahead. I helped with putting together the visuals and text for the presentation, ensuring that we communicated the key elements of the story and the overall vision for the project. We rehearsed our pitch to make sure everyone was on the same page and could confidently present the idea to the class.
                     
                     The pitch was well-received, and the feedback was encouraging. It gave us confidence in our direction moving forward. With the concept solidified and the pitch complete, we moved on to the next phase of development—starting to dive into the research and character development needed for our animals. This initial week of brainstorming and pitching was a crucial step in setting the foundation for the rest of the project.
-                    <img src="..images/Image5.png" >
-                    <img src="..images/DevDiary1_Image2.png" >
+                    <img src="../images/DevDiary1_Image1.png" >
+                    <img src="../images/DevDiary1_Image2.png" >
                 
 
                     </p>
@@ -115,9 +115,10 @@
                     As the preproduction document deadline approached, I also took on the responsibility of creating the production timeline. I asked Bonnie to use her Figma template to help with this, and I collaborated with Emily to develop a content inventory, ensuring we had a clear list of all the assets we would need for production. Together, we reviewed the storyboard and script, making sure all the elements were coming together cohesively. I also helped with finalizing the content inventory and preparing any additional materials for the preproduction submission.
                     
                     Overall, this week was packed with refining and organizing tasks to ensure that everything was in place for our preproduction document. From refining the script to creating visuals and organizing the team’s workflow, we made great strides in setting ourselves up for success as we moved into the next phase of production. 
-                    <img src="..images/DevDiary2_Image1.png" >
-                    <img src="..images/DevDiary2_Image2.png" >
-                    <img src="..images/DevDiary2_Image3.png" >
+                    <br> <br/>
+                    <img src="../images/DevDiary2_Image1.png" >
+                    <img src="../images/DevDiary2_Image2.png" >
+                    <img src="../images/DevDiary2_Image3.png" >
                 </p>
             
             </div>
@@ -145,10 +146,45 @@
                     
                     Overall, this week’s progress laid a strong foundation for our project’s visual and technical components. By simplifying the scrapbook’s interaction and focusing on a clean, well-timed appearance in the scrollytelling flow, we are moving toward a more polished final product. I will continue refining the code and collaborating with the team to overcome any remaining development challenges. 
                    
-                    <img src="..images/DevDiary3_Image1.png" >
+                    <br> <br/>
+
+                    <img src="../images/DevDiary3_Image1.png" >
 
                 </p>
+                </div>
+
+
+
                     
+                <div class="diary-entry">
+                    <h2 class="subpage-title"> March 4, 2025 </h2>
+                    <p>This week I worked on refining the interactive scrapbook component for the scrollytelling experience. My main goal was to create a clear distinction between "in story"  elements—like animals and shrubs, which exist in the environment—and "out of story" scrapbook pop-ups, which overlays the scene. Achieving this required multiple iterations, troubleshooting, and problem-solving, much of which I tackled with the help of ChatGPT. 
+
+                    Positioning elements dynamically within a scrolling interaction is... hard. I struggled with keeping the elements properly layered while having smooth transitions. The biggest challenge was timing the scrapbook pop-up so that it felt natural while keeping the animal and shrub animations properly synced. Often, elements would appear at unexpected times, breaking the immersion. I also experimented with layering different divs, but maintaining a consistent Z-index proved tricky when elements needed to enter and exit smoothly.  
+                    
+                    To solve this, I incorporated GSAP (GreenSock Animation Platform) and ScrollMagic to better control scroll-triggered animations. I learned how to use `triggerHook` values to control when elements appeared and disappear. I found that `power2.out` gave the most natural motion for objects moving into view, while `linear` worked better for steady movements. I also had to tweak animation durations, ensuring they didn’t reset abruptly when users scrolled back up. 
+                    
+                    One issue that caused unexpected behavior was a random shaking effect I initially applied to the shrub before it moved up to reveal the scrapbook. While the randomness added an organic feel, it also made the animation inconsistent—sometimes breaking the sequence entirely. I realized that introducing randomness to a scroll-dependent interaction can be unpredictable, so I tried a controlled upward motion instead.  
+                    
+                    Another key insight came from troubleshooting why certain elements weren’t appearing when expected. At first, I tried setting explicit `z-index` values, but I discovered that the problem wasn’t just layering—it was also about when animations were triggered relative to the scroll position. By using ScrollMagic’s scene debugging tools, I could visualize when elements were activating, which helped refine their placement and timing.
+                    
+                    Through this process, I gained a somewhat better understanding of GSAP and ScrollMagic, particularly how they work together to make complex scroll interactions. I also learned the importance of debugging animations visually and avoiding unnecessary randomness in scroll-based animations. While this session felt like spinning my wheels, it  helped me have a stronger grasp of how to structure interactive animations effectively. Now that Bonnie has kindly made the PNG assets of the scrapbook pages, I think i'll have an easier time animating the scrolling interactions for these.
+
+                    <br> <br/>
+
+                    <img src="../images/DevDiaryMar4.png" >
+
+                    <br> <br/>
+                    <img src="../images/Screenshot 2025-03-11 at 7.03.22 PM.png" >
+                       
+                    <br> <br/>
+                    <img src="../images/codingMar4.png" >
+                            
+                    </div>    
+            
+
+                    <div class="diary-entry">
+                        <h2 class="subpage-title"> March 11, 2025 </h2>
                  
 
                 </div>
@@ -161,6 +197,9 @@
         <div class="button-container">
             <a href="../index.html" class="return-home-btn">Return to Homepage</a>
         </div>
+
+
+      
 
     </div>
     
