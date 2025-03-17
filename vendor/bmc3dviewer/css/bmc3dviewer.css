@@ -1,0 +1,123 @@
+/****************************
+*
+* BMC_3DViewer v0.01
+* Author: Michael Corrin
+* 2024-10-07
+*
+******************************/
+
+div.bmc_3dviewer {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-family:'Courier New', Courier, monospace */
+}
+/* 
+* Generic rule that defines the size
+* of a viewer if width and height is not
+* more specifically defined. 
+*/
+div.bmc_3dviewer, div.bmc_3dviewer div.overlay {
+    width:300px; 
+    height:300px; 
+}
+
+div.bmc_3dviewer svg circle.hidden, div.bmc_3dviewer svg g.hidden text, div.bmc_3dviewer svg g.hidden rect {
+    display: none;
+}
+div.bmc_3dviewer svg g text {
+    fill:black;
+    font-size: small;
+    user-select: none;
+    -webkit-user-select: none;
+}
+div.bmc_3dviewer svg {
+    cursor: grab;
+}
+div.bmc_3dviewer svg.hidden {
+    visibility: hidden;
+}
+div.bmc_3dviewer svg g rect {
+    fill:white;
+    rx: 10px;
+}
+div.bmc_3dviewer svg circle {
+    fill:black;
+    stroke:white;
+    r: 5px;
+}
+div.bmc_3dviewer {
+    position: relative;
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+div.bmc_3dviewer div.overlay {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%; 
+}
+.bmc_3dviewer div.labelToggle {
+    position: absolute;
+    top:0;
+    padding: 0.5em;
+}
+.bmc_3dviewer div.labelToggle.hidden {
+    display: none;
+}
+
+.bmc_3dviewer div.labelToggle label {
+    color:#DDDDDD;
+    font-size: small;
+}
+.bmc_3dviewer div.cameraControls {
+    position: absolute;
+    top:0;
+    right:0;
+    padding: 0.5em;
+}
+.bmc_3dviewer div.debugger {
+    position: absolute;
+    right:0;
+    top:0;
+    width:14em;
+    padding: 0.5em;
+    margin: 0.25em;
+    border-radius: 0.5em;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.bmc_3dviewer div.debugger h2, .bmc_3dviewer div.debugger{
+    font-size: small;
+}
+.bmc_3dviewer div.debugger h2 {
+    user-select: none;
+    -webkit-user-select: none;
+}
+.bmc_3dviewer g.preloader rect{
+    fill: none;
+    stroke: black;
+}
+.bmc_3dviewer g.preloader rect.innerLoadBar{
+    fill: #6666FF;
+    stroke: none;
+}
+.bmc_3dviewer input.load_btn {
+
+}
+.bmc_3dviewer div.loadButtonContainer, .bmc_3dviewer div.cameraControls, .bmc_3dviewer div.labelToggle {
+    user-select: none;
+    -webkit-user-select: none;
+}
+.bmc_3dviewer div.loadButtonContainer {
+    padding:0.25em;
+    width:100%;
+    text-align: center;
+}
+.bmc_3dviewer div.loadButtonContainer.insideBottomEdge {
+    position: absolute;
+    bottom: 0;
+}
+.bmc_3dviewer div.loadButtonContainer.insideCenter {
+    position: absolute;
+    top: 50%;
+}

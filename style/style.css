@@ -198,3 +198,14 @@ button:hover {
 }
 
 
+.viewer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Adjust as needed */
+}
+
+.bmc_3dviewer {
+    width: 200%; /* Adjust as needed */
+    height: 50vh; /* Adjust as needed */
+}

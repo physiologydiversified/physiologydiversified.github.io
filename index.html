@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Priya's Personal Course Website</title>
     <link rel="stylesheet" href="style/style.css"> <!-- External stylesheet -->
+    <link href="vendor/bmc3dviewer/css/bmc3dviewer.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -68,8 +69,35 @@
         <div id="reflection7" style="display: none;"> <!-- Initially closed -->
             <p>Reflection coming soon...</p>
         </div>
+
+        <h2 onclick="toggleCollapse('reflection8')">8) March 17, 2025 </h2>
+        <div id="reflection8" style="display: none;"> <!-- Initially closed -->
+            <p>I added a 3D model of a rat to my course webpage using the BMC 3D model viewer. Setting it up was pretty straightforward—I just followed the instructions, and everything worked without any issues.
+
+                I played around with some settings to fine-tune how the model looks and behaves. I set data-autoload='true' so it loads automatically, adjusted the zoom limits (data-min-zoom='0.05' and data-max-zoom='2.0'), changed the background color to a light blue (data-background-colour='0xd0ebeb'), and enabled the reset view button. I also tweaked the lighting (data-key-light-intensity='9.0' and data-fill-light-intensity='3.0') and set the camera to start at a slightly different angle (data-initial-orientation='{"x":0, "y":0, "z":-10}').
+                
+                The only hiccups I ran into were resizing the viewer and embedding it inside my reflection div. No matter what I tried—including wrapping it in a separate div and messing with CSS—I couldn’t get it to resize properly. Also, it only worked when placed in its own container, not inside the reflection itself. Not a huge deal, but still something I couldn’t figure out!</p>
+            
+    
+        </div>
     </div>
 
+</div>
+
+
+<div class="viewer-container">
+    <div class='bmc_3dviewer'
+     data-src='[{"path":"../images/rat.glb", "name":"Rat Model by Nestaeric"}]'
+     data-autoload='true' 
+     data-load-button-overlay="insideBottomEdge"
+     data-min-zoom='0.05'
+     data-max-zoom='2.0'
+     data-background-colour='0xd0ebeb' 
+     data-reset-view-btn='true' 
+     data-ortho-cam-size='1.0'
+     data-key-light-intensity='9.0'
+     data-fill-light-intensity='3.0'
+     data-initial-orientation='{"x":0, "y":0, "z":-10}'></div>
 </div>
 
 
@@ -98,7 +126,7 @@
     }
 </script>
 
-
+<script type="module" src="vendor/bmc3dviewer/main.js"></script>
 
 </body>
 </html>
