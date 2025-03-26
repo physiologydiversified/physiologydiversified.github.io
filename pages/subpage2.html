@@ -210,6 +210,37 @@
 
         </div>
 
+
+        <div class="diary-entry">
+            <h2 class="subpage-title"> March 18, 2025 </h2>
+
+            <p> This week was super fun, very heavy on development and coding. I learned a lot about Github and the proper workflow this week! When Stef and I first started working on our project, we each focused on separate tasks—Stef on the GSAP scrollytelling timeline and I on building the quiz lightbox modal. Everything seemed fine until it came time to merge our work. What should have been a straightforward process turned into an entire workday of trial and error, troubleshooting merge conflicts, and searching for solutions. Eventually, we found a workaround by creating a button that linked to a new page with the quiz modal, allowing both features to coexist. This experience taught us how to properly manage our GitHub workflow, making future collaboration smoother.
+            After merging our branches, I implemented sound design and navigation buttons linking different pages, while Stef worked on troubleshooting and integrating the quiz into the timeline. This was a turning point for us—we transitioned from struggling with GitHub to confidently managing our workflow, improving our development process.
+            To structure the sound system properly, I first organized the sound assets into categories (SFX and narration) by storing sound variables in separate arrays. I used a `playSound(sound)` function wrapped in conditions to ensure sounds only played when their corresponding toggle was active. I created a background music toggle using an event listener to play or pause the music, updating the icon to match Emily’s design, and applied CSS to position the button correctly on the screen.
+            Next, I added toggle buttons for SFX and narration, which was more complex. These buttons toggled entire arrays of sounds tied to specific GSAP timeline triggers. After troubleshooting for a few hours, I was able to dynamically create the toggle buttons using JavaScript.
+            For the sound design, I sourced MP3 files from free sound libraries like Pixabay, Freesound, and Zapsplat. Dialogue was generated using Eleven Labs’ AI text-to-speech function, assigning a childlike voice to the first-person POV and a grumpy grandpa voice to the raccoon. I adjusted the fireplace sound to be quieter, set to 20% of the original volume, and made it play for only three seconds before pausing. I also fixed minor syntax issues in the GSAP timeline and handled various other tasks like trimming audio and adjusting the volume of different sounds.
+            Troubleshooting focused on UI consistency and playback control. Initially, the SFX and narration buttons were misaligned with the background music toggle, so I adjusted the CSS for uniform positioning. Some sounds played even when disabled, so I refined the logic to ensure sounds only played when their respective toggle was active. I also cleaned up redundant code by identifying which lines were safe to delete. The live preview plugin in Visual Studio Code was invaluable during this process, as it allowed me to quickly preview changes without refreshing the page, making debugging much faster.
+            In the end, we successfully implemented toggle buttons for SFX and narration, incorporating Emily’s cute icon designs. Users can now enable or disable sounds dynamically without refreshing the page, ensuring a smoother, more interactive experience.
+            Over the past week, I achieved significant dev milestones. I figured out how GitHub repository workflows are intended to function—creating branches, committing edits, pushing and pulling changes, merging, and deleting branches. I also learned how to add sound to the GSAP timeline by linking audio clips to timeline triggers. I experimented with AI voiceovers, drawing on insights from Shay’s AI workshop. Additionally, I worked on various button creations, including page links, quiz form submissions, and volume toggles. Overall, this week has been busy as we approach the final deadline. The pressure has pushed us to learn quickly, and the results have been incredibly rewarding!
+            Furthermore, this week also involved preparing for our final presentation. We made many last minute touch-ups to the interactive demo such as changing the buttons to look more consistent, tweaking the volume of the sound effects, and ensuring the quiz modal worked smoothly. After we had our interactive demo at a place we were happy with - see all our edits in the screenshots of our Github below - I got our group started on the slides with a rough outline of the content and designing the layouts. We then divided the slides based on who would say what. At the same time we all contributed to the design document as well, with me focusing on the sound design and development sections.  
+
+
+    <br> <br/>
+    <img src="../images/march25devdiarypics/1.png" >
+    <img src="../images/march25devdiarypics/2.png" >
+    <img src="../images/march25devdiarypics/3.png" >
+    <img src="../images/march25devdiarypics/4.png" >
+    <img src="../images/march25devdiarypics/5.png" >
+    <img src="../images/march25devdiarypics/6.png" >
+    <img src="../images/march25devdiarypics/7.png" >
+    <img src="../images/march25devdiarypics/8.png" >
+    <img src="../images/march25devdiarypics/9.png" >
+    <img src="../images/march25devdiarypics/10.png" >
+    <img src="../images/march25devdiarypics/11.png" >
+</div>
+
+        </div>
+
         <!-- Return to Homepage Button -->
         <div class="button-container">
             <a href="../index.html" class="return-home-btn">Return to Homepage</a>
