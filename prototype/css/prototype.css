@@ -1,0 +1,354 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f4ff;
+    color: #333;
+  }
+  
+  /* Header */
+  header {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    color: #5e3d9f;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    color: #7a6fa8;
+    margin: 10px 0;
+  }
+  
+  .search-bar {
+    margin-top: 15px;
+    padding: 10px;
+    width: 70%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  /* Filter Section */
+  .filter-section {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .filter-button {
+    background-color: #e4d9fa;
+    border: none;
+    color: #5e3d9f;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  
+  .filter-button:hover {
+    background-color: #d6c5f5;
+  }
+
+  .filter-button.active {
+    background-color: #5e3d9f; /* Purple background */
+    color: white; /* White text */
+  }
+  
+  /* Card Grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Card */
+  .card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-image-wrapper {
+    background-color: #e4d9fa;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-image {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+  .card-content {
+    padding: 15px;
+  }
+  
+  .category-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #5e3d9f;
+    margin-right: 10px;
+  }
+  
+/* Green Type Tag (default) */
+.type-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #1d6f42; /* Text color */
+    background-color: #e2f4e9; /* Background color */
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  /* Blue Type Tag */
+  .type-tag-blue {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #004080; /* Text color */
+    background-color: #cce5ff; /* Background color */
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  /* Orange Type Tag */
+  .type-tag-orange {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #804000; /* Text color */
+    background-color: #ffe5cc; /* Background color */
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  /* Red Type Tag */
+  .type-tag-red {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #800000; /* Text color */
+    background-color: #ffcccc; /* Background color */
+    padding: 2px 6px;
+    border-radius: 4px;
+  }  
+
+  
+  .card-content h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .card-content p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0;
+  }
+
+  /* Heart Icon */
+.heart-icon {
+    font-size: 1.5rem;
+    color: #D1D5DB; /* Light gray */
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .heart-icon.favorited {
+    color: #EF4444; /* Red when favorited */
+  }
+  
+  
+  /* Lightbox Styles */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Lightbox Styles */
+.lightbox {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Start with zero opacity */
+    transition: opacity 0.4s ease; /* Smooth fade-in */
+  }
+  
+  .lightbox.show {
+    display: flex; /* Show lightbox */
+    opacity: 1; /* Transition to fully visible */
+  }
+  
+  .lightbox-content {
+    background: #fff;
+    border-radius: 10px;
+    max-width: 80%;
+    width: 700px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    transform: scale(0.9); /* Start slightly smaller */
+    transition: transform 0.3s ease; /* Smooth scaling */
+  }
+  
+  .lightbox.show .lightbox-content {
+    transform: scale(1); /* Expand to normal size */
+  }  
+  
+  .lightbox-content {
+    background: #fff;
+    border-radius: 10px;
+    max-width: 80%;
+    width: 700px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .lightbox img {
+    max-width: 100%;
+    max-height: 400px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .lightbox-text {
+    color: #333;
+    font-family: Arial, sans-serif;
+  }
+  
+  .lightbox-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .lightbox-text p {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .citation {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .citation-format {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #333;
+    font-style: italic;
+  }
+  
+  .license a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .license a:hover {
+    text-decoration: underline;
+  }
+  
+  #download-button {
+    background-color: #5e3d9f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  #download-button:hover {
+    background-color: #462a77;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #000;
+  }
+  
+  /* Ensure the body and main container grow with content */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f4ff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+/* Add spacing between sections */
+.card-grid {
+  margin-bottom: 40px; /* Adds spacing above the footer */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #5e3d9f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+footer a {
+  color: #ffd700; /* Gold color for links */
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer .footer-links {
+  margin-top: 10px;
+}
+
+
