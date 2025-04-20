@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../prototype/css/prototype.css">
+  <title>Physiology Diversified</title>
+</head>
+
+<body>
+  <header>
+    <h1>Physiology Diversified.</h1>
+    <p>Inclusive resources for modern physiology education.</p>
+    <input type="text" placeholder="Search topics in physiology..." class="search-bar">
+  </header>
+
+  <section class="filter-section">
+    <button class="filter-button" data-filter="Physiology Essentials">Physiology Essentials</button>
+    <button class="filter-button" data-filter="Gastrointestinal">Gastrointestinal</button>
+    <button class="filter-button" data-filter="Central Nervous System">Central Nervous System</button>
+    <button class="filter-button" data-filter="Respiratory Physiology">Respiratory Physiology</button>
+    <button class="filter-button" data-filter="Reproductive Physiology">Reproductive Physiology</button>
+    <button class="filter-button" data-filter="Musculoskeletal">Musculoskeletal</button>
+    <button class="filter-button" data-filter="Endocrinology">Endocrinology</button>
+    <button class="filter-button filter-show-all" data-filter="all">Show All</button>
+  </section> 
+  
+
+
+  <main class="card-grid">
+    <!-- Card 1 -->
+    <div class="card" data-category="Gastrointestinal" onclick="openLightbox('images/Image_1.png', 'Phases of Gastric Motility', 'This diagram depicts the phases of gastric motility and secretion...', 'Priya Modi')">
+      <div class="card-image-wrapper">
+        <img src="images/Image_1.png" alt="Phases of Gastric Motility" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="category-tag">Gastrointestinal System</span>
+        <span class="type-tag">Process/Pathway</span>
+        <span class="type-tag-blue">Interactive</span>
+        <h3>Phases of Gastric Motility</h3>
+        <p>The cephalic phase is initiated by the mere sight, smell, taste, or thought of food, even before food enters the stomach. This anticipatory response prepares the gastrointestinal tract for digestion. It accounts for approximately 20% of total gastric acid secretion. </p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card" data-category="Musculoskeletal" onclick="openLightbox('Images/Myasthenia_Gravis_Draft1.png', 'Myasthenia Gravis', 'Myasthenia gravis is a chronic neuromuscular disease that causes weakness in the voluntary muscles.', 'Priya Modi')">
+      <div class="card-image-wrapper">
+        <img src="Images/Myasthenia_Gravis_Draft1.png" alt="Myasthenia Gravis" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="category-tag">Musculoskeletal</span>
+        <span class="type-tag-orange">Pathology</span>
+        <span class="type-tag-blue">Interactive</span>
+        <h3>Myasthenia Gravis</h3>
+        <p>Myasthenia gravis is a chronic neuromuscular disease that causes weakness in the voluntary muscles. Voluntary muscles include muscles that connect to a person's bones, muscles in the face, throat, and diaphragm. Myasthenia gravis is an autoimmune disease</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card" data-category="Respiratory" onclick="openLightbox('Images/Image3.png', 'Effects of Menopause', 'This diagram shows the physiological changes during menopause...', 'Priya Modi')">
+      <div class="card-image-wrapper">
+        <img src="Images/Image3.png" alt="Effects of Menopause" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="category-tag">Endocrinology</span>
+        <span class="type-tag-blue">2D Diagram</span>
+        <h3>Effects of Menopause</h3>
+        <p>Physiological changes associated with hormonal shifts during menopause.</p>
+      </div>
+    </div>
+
+    <!-- Additional cards (repeatable) -->
+    <div class="card" data-category="Physiology Essentials" onclick="openLightbox('Images/Image2.png', 'Some Other Title', 'Another diagram description here...', 'Priya Modi')">
+      <div class="card-image-wrapper">
+        <img src="Images/Image2.png" alt="Some Other Title" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="category-tag">Endocrinology</span>
+        <span class="type-tag-blue">2D Diagram</span>
+        <h3>Some Other Title</h3>
+        <p>Another insightful diagram description for this section.</p>
+      </div>
+    </div>
+
+  <!-- Additional cards (repeatable) -->
+  <div class="card" onclick="openLightbox('Images/Image4.png', 'Some Other Title', 'Another diagram description here...', 'Priya Modi')">
+    <div class="card-image-wrapper">
+      <img src="Images/Image4.png" alt="Some Other Title" class="card-image">
+    </div>
+    <div class="card-content">
+      <span class="category-tag">Endocrinology</span>
+      <span class="type-tag-blue">2D Diagram</span>
+      <h3>Some Other Title</h3>
+      <p>Another insightful diagram description for this section.</p>
+    </div>
+  </div>
+
+
+    <!-- Additional cards (repeatable) -->
+    <div class="card"data-category="Musculoskeletal" onclick="openLightbox('Images/Image6.png', 'Some Other Title', 'Another diagram description here...', 'Priya Modi')">
+        <div class="card-image-wrapper">
+          <img src="Images/Image6.png" alt="Some Other Title" class="card-image">
+        </div>
+        <div class="card-content">
+          <span class="category-tag">Endocrinology</span>
+          <span class="type-tag-blue">2D Diagram</span>
+          <h3>Some Other Title</h3>
+          <p>Another insightful diagram description for this section.</p>
+        </div>
+      </div>
+
+        <!-- Additional cards (repeatable) -->
+    <div class="card" data-category="Physiology Essentials" onclick="openLightbox('Images/Image7.png', 'Some Other Title', 'Another diagram description here...', 'Priya Modi')">
+        <div class="card-image-wrapper">
+          <img src="Images/Image7.png" alt="Some Other Title" class="card-image">
+        </div>
+        <div class="card-content">
+          <span class="category-tag">Endocrinology</span>
+          <span class="type-tag-blue">2D Diagram</span>
+          <h3>Some Other Title</h3>
+          <p>Another insightful diagram description for this section.</p>
+        </div>
+      </div>
+
+        <!-- Additional cards (repeatable) -->
+    <div class="card"  data-category="Musculoskeletal" onclick="openLightbox('Images/Image5.png', 'Some Other Title', 'Another diagram description here...', 'Priya Modi')">
+        <div class="card-image-wrapper">
+          <img src="Images/Image5.png" alt="Some Other Title" class="card-image">
+        </div>
+        <div class="card-content">
+          <span class="category-tag">Endocrinology</span>
+          <span class="type-tag-blue">2D Diagram</span>
+          <h3>Some Other Title</h3>
+          <p>Another insightful diagram description for this section.</p>
+        </div>
+      </div>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+      <span class="close" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-image" src="" alt="">
+      <div class="lightbox-text">
+        <h2 id="lightbox-title"></h2>
+        <p id="lightbox-description"></p>
+        <p class="citation">Illustrator: <span id="lightbox-author"></span></p>
+        <p class="license">Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.</p>
+        <p class="citation-format">APA Citation: <span id="lightbox-citation"></span></p>
+        <button id="download-button" onclick="downloadImage()">Download</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© Priya Modi 2025. All rights reserved.</p>
+    <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
+    
+    <div class="footer-links">
+      <a href="#about-us">About Us</a> | 
+      <a href="mailto:priya.modi@mail.utoronto.ca">Contact Me</a> | 
+      <a href="#thanks">Acknowledgments</a>
+    </div>
+  
+    <p>Thanks to Western University and the University of Toronto for their support.</p>
+  </footer>
+
+
+  
+  
+  <!-- Include JavaScript File -->
+  <script src="../prototype/js/prototype.js" defer></script>
+</body>
+
+</html>
