@@ -95,3 +95,29 @@ document.querySelectorAll('.filter-button').forEach(button => {
     heartIcon.classList.toggle('favorited');
   }
   
+  // Attach click event listeners to each card to open the lightbox
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".card");
+  
+    cards.forEach(card => {
+      card.addEventListener("click", function () {
+        const img = card.getAttribute("data-img");
+        const title = card.getAttribute("data-title");
+        const desc = card.getAttribute("data-desc");
+        const author = card.getAttribute("data-author");
+  
+        openLightbox(img, title, desc, author);
+      });
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const heartIcons = document.querySelectorAll('.heart-icon'); // Select all heart icons
+  
+    heartIcons.forEach(icon => {
+      icon.addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevent card click/lightbox
+        this.classList.toggle('favorited'); // Toggle favorite style
+      });
+    });
+  });

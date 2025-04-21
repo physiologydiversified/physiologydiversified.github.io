@@ -1,3 +1,43 @@
+/* Manrope Font */
+@font-face {
+    font-family: 'Manrope';
+    src:  url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+/* General Serif Font */
+@font-face {
+    font-family: 'General Serif';
+    src: url('../fonts/GeneralSans-Variable.ttf')  format('truetype');
+    src: url('../fonts/GeneralSans-VariableItalic.ttf')  format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'General Serif';
+    src: url('../fonts/GeneralSans-VariableItalic.ttf')  format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'General Serif';
+    src: url('../fonts/GeneralSans-Variable.ttf')  format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'General Serif';
+    src: url('../fonts/GeneralSans-VariableItalic.ttf')  format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+}
+
+:root {
+    --font-sans: 'Manrope', sans-serif;
+    --font-serif: 'General Serif', serif;
+  }
+
 /* General Reset */
 * {
     margin: 0;
@@ -6,9 +46,11 @@
   }
   
   body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-sans);
     background-color: #f7f4ff;
     color: #333;
+    height: 100%;
+    margin: 0;
   }
   
   /* Header */
@@ -26,6 +68,7 @@
     font-size: 1.2rem;
     color: #7a6fa8;
     margin: 10px 0;
+    
   }
   
   .search-bar {
@@ -52,23 +95,40 @@
     border-radius: 20px;
     font-size: 0.9rem;
     cursor: pointer;
+    transition: transform 0.2s ease;
+    
   }
   
   .filter-button:hover {
     background-color: #d6c5f5;
+    transform: scale(1.1);
   }
-
+  
   .filter-button.active {
-    background-color: #5e3d9f; /* Purple background */
-    color: white; /* White text */
+    background-color: #5e3d9f;
+    color: white;
   }
   
   /* Card Grid */
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
     gap: 20px;
     padding: 20px;
+  }
+  
+  /* For tablets: 2 cards per row */
+  @media (max-width: 992px) {
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* For mobile: 1 card per row */
+  @media (max-width: 600px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
   }
   
   /* Card */
@@ -79,6 +139,9 @@
     overflow: hidden;
     transition: transform 0.2s ease;
     cursor: pointer;
+    height: 100%; 
+    width: 100%;/* Ensure it takes full height of grid */
+    position: relative; 
   }
   
   .card:hover {
@@ -91,6 +154,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 300px;
+    width: 100%;
   }
   
   .card-image {
@@ -104,80 +169,116 @@
     padding: 15px;
   }
   
-  .category-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: #5e3d9f;
-    margin-right: 10px;
-  }
-  
-/* Green Type Tag (default) */
-.type-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: #1d6f42; /* Text color */
-    background-color: #e2f4e9; /* Background color */
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-  
-  /* Blue Type Tag */
-  .type-tag-blue {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: #004080; /* Text color */
-    background-color: #cce5ff; /* Background color */
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-  
-  /* Orange Type Tag */
-  .type-tag-orange {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: #804000; /* Text color */
-    background-color: #ffe5cc; /* Background color */
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-  
-  /* Red Type Tag */
-  .type-tag-red {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: #800000; /* Text color */
-    background-color: #ffcccc; /* Background color */
-    padding: 2px 6px;
-    border-radius: 4px;
-  }  
-
-  
   .card-content h3 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: #333;
     margin: 10px 0;
   }
   
   .card-content p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: #555;
     margin: 5px 0;
+
   }
 
-  /* Heart Icon */
-.heart-icon {
+  .download-icon {
     font-size: 1.5rem;
-    color: #D1D5DB; /* Light gray */
+    color: #5e3d9f; /* Icon color */
     cursor: pointer;
     transition: color 0.2s ease;
   }
   
-  .heart-icon.favorited {
-    color: #EF4444; /* Red when favorited */
+  .download-icon:hover {
+    color: #EF4444; /* Color change on hover */
+    transform: scale(1.2);
+  }
+  
+  .card-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ensure it spans the full width of the card */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+  
+  .card-bottom .tags {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .card-icons {
+    display: flex;
+    gap: 30px; /* Space between icons */
+    display: flex;
+    align-items: center;
+  }
+
+  /* Tags */
+  .category-tag {
+    display: inline-block;
+    font-size: 1.1rem;
+    color: #5e3d9f;
+    margin-right: 10px;
+  }
+  
+  .type-tag-green,
+  .type-tag-blue,
+  .type-tag-orange,
+  .type-tag-red {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+  }
+  
+  .type-tag-green {
+    color: #1d6f42;
+    background-color: #e2f4e9;
+  }
+  
+  .type-tag-blue {
+    color: #004080;
+    background-color: #cce5ff;
+  }
+  
+  .type-tag-orange {
+    color: #804000;
+    background-color: #ffe5cc;
+  }
+  
+  .type-tag-red {
+    color: #800000;
+    background-color: #ffcccc;
   }
   
   
-  /* Lightbox Styles */
+.heart-icon {
+    font-size: 2rem;
+    color: #D1D5DB;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+    .heart-icon:hover {
+        transform: scale(1.2);
+        color: #EF4444; /* Color change on hover */
+      }
+
+    /* position: absolute;
+    bottom: 10px; 
+    right: 10px;   */
+  
+  
+  .heart-icon.favorited {
+    color: #EF4444;
+  }
+  
+  /* Lightbox */
   .lightbox {
     display: none;
     position: fixed;
@@ -189,27 +290,13 @@
     z-index: 9999;
     justify-content: center;
     align-items: center;
-  }
-
-  /* Lightbox Styles */
-.lightbox {
-    display: none; /* Initially hidden */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; /* Start with zero opacity */
-    transition: opacity 0.4s ease; /* Smooth fade-in */
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
   
   .lightbox.show {
-    display: flex; /* Show lightbox */
-    opacity: 1; /* Transition to fully visible */
+    display: flex;
+    opacity: 1;
   }
   
   .lightbox-content {
@@ -220,22 +307,12 @@
     text-align: center;
     padding: 20px;
     position: relative;
-    transform: scale(0.9); /* Start slightly smaller */
-    transition: transform 0.3s ease; /* Smooth scaling */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
   }
   
   .lightbox.show .lightbox-content {
-    transform: scale(1); /* Expand to normal size */
-  }  
-  
-  .lightbox-content {
-    background: #fff;
-    border-radius: 10px;
-    max-width: 80%;
-    width: 700px;
-    text-align: center;
-    padding: 20px;
-    position: relative;
+    transform: scale(1);
   }
   
   .lightbox img {
@@ -245,9 +322,11 @@
     border-radius: 8px;
   }
   
+  /* Lightbox Text */
   .lightbox-text {
     color: #333;
-    font-family: Arial, sans-serif;
+    font-family: var(--font-serif);
+    font-weight: 500;
   }
   
   .lightbox-text h2 {
@@ -281,21 +360,7 @@
     text-decoration: underline;
   }
   
-  #download-button {
-    background-color: #5e3d9f;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  #download-button:hover {
-    background-color: #462a77;
-  }
-  
+  /* Lightbox Close Button */
   .close {
     position: absolute;
     top: 10px;
@@ -310,45 +375,61 @@
     color: #000;
   }
   
-  /* Ensure the body and main container grow with content */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f4ff;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-main {
-  padding: 20px;
-}
-
-/* Add spacing between sections */
-.card-grid {
-  margin-bottom: 40px; /* Adds spacing above the footer */
-}
-
-/* Footer Styles */
-footer {
-  background-color: #5e3d9f;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-footer a {
-  color: #ffd700; /* Gold color for links */
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-footer .footer-links {
-  margin-top: 10px;
-}
-
-
+  /* Download Button */
+  #download-button {
+    background-color: #5e3d9f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    bottom: 10px;
+    right: 100px;
+  }
+  
+  #download-button:hover {
+    background-color: #462a77;
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: auto;
+    background-color: #5e3d9f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  footer a {
+    color: #ffd700;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  footer .footer-links {
+    margin-top: 10px;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .site-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em;
+  }
