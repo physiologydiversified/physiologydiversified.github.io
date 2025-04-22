@@ -174,15 +174,14 @@ background: radial-gradient(circle, rgba(238, 174, 231, 0.33) 0%, rgba(110, 131,
   }
   
   .card-image {
-    max-width: 100%;
-    max-height: 150px;
+    height: 400%;
+    width: 151%;
     object-fit: contain;
-    border-radius: 8px;
     
   }
   
   .card-content {
-    padding: 15px;
+    padding: 1px;
   }
   
   .card-content h3 {
