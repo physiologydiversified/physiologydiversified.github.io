@@ -1,17 +1,28 @@
 // Open Lightbox
-function openLightbox(imageSrc, title, description, author) {
+function openLightbox(imageSrc, title, description, author, downloadLink) {
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightbox-image");
     const lightboxTitle = document.getElementById("lightbox-title");
     const lightboxDescription = document.getElementById("lightbox-description");
     const lightboxAuthor = document.getElementById("lightbox-author");
     const lightboxCitation = document.getElementById("lightbox-citation");
+
+      // Set Download Button
+      function downloadFile(url) {
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = ""; // Let the browser infer filename
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
   
     // Set Lightbox Content
     lightboxImage.src = imageSrc;
     lightboxTitle.textContent = title;
     lightboxDescription.textContent = description;
     lightboxAuthor.textContent = author;
+  
   
     // Generate APA Citation
     const currentYear = new Date().getFullYear();
@@ -21,9 +32,12 @@ function openLightbox(imageSrc, title, description, author) {
     lightbox.style.display = "flex"; // Ensure it's visible
     setTimeout(() => lightbox.classList.add("show"), 10); // Add 'show' after a slight delay for animation
   
-    // Set Download Link
-    document.getElementById("download-button").onclick = () => downloadImage(imageSrc);
-  }
+  // Set download button behavior using the dynamic link
+  document.getElementById("download-button").onclick = () => {
+    downloadFile(downloadLink);
+  };
+}
+
   
   // Close Lightbox
   function closeLightbox() {
@@ -39,14 +53,14 @@ function openLightbox(imageSrc, title, description, author) {
   }
   
   // Download Image
-  function downloadImage(imageSrc) {
-    const a = document.createElement("a");
-    a.href = imageSrc;
-    a.download = imageSrc.split("/").pop(); // Extract the filename
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
+//   function downloadImage(imageSrc) {
+//     const a = document.createElement("a");
+//     a.href = imageSrc;
+//     a.download = imageSrc.split("/").pop(); // Extract the filename
+//     document.body.appendChild(a);
+//     a.click();
+//     document.body.removeChild(a);
+//   }
   
   let currentFilter = "all"; // Track the active filter
 
@@ -104,8 +118,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const title = card.getAttribute("data-title");
         const desc = card.getAttribute("data-desc");
         const author = card.getAttribute("data-author");
+        const downloadLink = card.getAttribute("data-download"); // ←pptx link from Google Drive
   
-        openLightbox(img, title, desc, author);
+        openLightbox(img, title, desc, author, downloadLink);
       });
     });
   });
@@ -226,3 +241,35 @@ document.querySelector('.search-bar').addEventListener('input', function () {
   noResultsMsg.style.display = matches === 0 ? 'block' : 'none';
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".card");
+  
+    cards.forEach(card => {
+      const downloadIcon = card.querySelector(".download-icon");
+  
+      // Lightbox event for clicking the card (but NOT the download icon)
+      card.addEventListener("click", function (event) {
+        // Prevent lightbox if user clicked the download icon
+        if (event.target.classList.contains("download-icon")) return;
+  
+        const img = card.getAttribute("data-img");
+        const title = card.getAttribute("data-title");
+        const desc = card.getAttribute("data-desc");
+        const author = card.getAttribute("data-author");
+        const downloadLink = card.getAttribute("data-download");
+  
+        openLightbox(img, title, desc, author, downloadLink);
+      });
+  
+      // Download button on the card
+      if (downloadIcon) {
+        downloadIcon.addEventListener("click", function (event) {
+          event.stopPropagation(); // Prevent card click from firing
+          const downloadLink = card.getAttribute("data-download");
+          downloadFile(downloadLink); // Reuse your download function
+        });
+      }
+    });
+  });
+  
