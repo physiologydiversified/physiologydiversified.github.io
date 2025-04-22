@@ -6,15 +6,9 @@ function openLightbox(imageSrc, title, description, author, downloadLink) {
     const lightboxDescription = document.getElementById("lightbox-description");
     const lightboxAuthor = document.getElementById("lightbox-author");
     const lightboxCitation = document.getElementById("lightbox-citation");
-  
-    // Set Lightbox Content
-    lightboxImage.src = imageSrc;
-    lightboxTitle.textContent = title;
-    lightboxDescription.textContent = description;
-    lightboxAuthor.textContent = author;
-  
-    // Set Download Button
-    function downloadFile(url) {
+
+      // Set Download Button
+      function downloadFile(url) {
         const a = document.createElement("a");
         a.href = url;
         a.download = ""; // Let the browser infer filename
@@ -22,6 +16,14 @@ function openLightbox(imageSrc, title, description, author, downloadLink) {
         a.click();
         document.body.removeChild(a);
       }
+  
+    // Set Lightbox Content
+    lightboxImage.src = imageSrc;
+    lightboxTitle.textContent = title;
+    lightboxDescription.textContent = description;
+    lightboxAuthor.textContent = author;
+  
+  
     // Generate APA Citation
     const currentYear = new Date().getFullYear();
     lightboxCitation.textContent = `${author} (${currentYear}). ${title}. Physiology Diversified. Retrieved from https://physiologydiversified.example.com`;
@@ -35,6 +37,7 @@ function openLightbox(imageSrc, title, description, author, downloadLink) {
     downloadFile(downloadLink);
   };
 }
+
   
   // Close Lightbox
   function closeLightbox() {
@@ -238,3 +241,35 @@ document.querySelector('.search-bar').addEventListener('input', function () {
   noResultsMsg.style.display = matches === 0 ? 'block' : 'none';
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".card");
+  
+    cards.forEach(card => {
+      const downloadIcon = card.querySelector(".download-icon");
+  
+      // Lightbox event for clicking the card (but NOT the download icon)
+      card.addEventListener("click", function (event) {
+        // Prevent lightbox if user clicked the download icon
+        if (event.target.classList.contains("download-icon")) return;
+  
+        const img = card.getAttribute("data-img");
+        const title = card.getAttribute("data-title");
+        const desc = card.getAttribute("data-desc");
+        const author = card.getAttribute("data-author");
+        const downloadLink = card.getAttribute("data-download");
+  
+        openLightbox(img, title, desc, author, downloadLink);
+      });
+  
+      // Download button on the card
+      if (downloadIcon) {
+        downloadIcon.addEventListener("click", function (event) {
+          event.stopPropagation(); // Prevent card click from firing
+          const downloadLink = card.getAttribute("data-download");
+          downloadFile(downloadLink); // Reuse your download function
+        });
+      }
+    });
+  });
+  
