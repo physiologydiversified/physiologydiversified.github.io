@@ -17,6 +17,9 @@
     <input type="text" placeholder="Search topics in physiology..." class="search-bar">
   </header>
 
+  <a href="submit.html"><button>Submit a Diagram</button></a>
+
+
   <section class="filter-section">
     <button class="filter-button" data-filter="Physiology Essentials">Physiology Essentials</button>
     <button class="filter-button" data-filter="Gastrointestinal">Gastrointestinal</button>
@@ -262,3 +265,27 @@
 </body>
 
 </html>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyA3ck6mZDMbT4ZNwnVGnQnrkI0Fmn6rKVE",
+    authDomain: "physiology-diversified.firebaseapp.com",
+    projectId: "physiology-diversified",
+    storageBucket: "physiology-diversified.firebasestorage.app",
+    messagingSenderId: "580352379050",
+    appId: "1:580352379050:web:16ba32230e6a9b0a36a8d3",
+    measurementId: "G-L6ZH1PF6W3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
