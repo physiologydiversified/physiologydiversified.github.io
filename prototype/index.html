@@ -14,13 +14,18 @@
   <header>
     <h1>Physiology Diversified.</h1>
     <p>Inclusive resources for modern physiology education.</p>
-    <input type="text" placeholder="Search topics in physiology..." class="search-bar">
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem;"> 
+    <!-- <input type="text" placeholder="Search topics in physiology..." class="search-bar"> -->
+  </div>
   </header>
 
-  <a href="submit.html"><button>Submit a Diagram</button></a>
+  
+  
+  </div>
 
 
   <section class="filter-section">
+    <input type="text" placeholder="Search topics in physiology..." class="search-bar">
     <button class="filter-button" data-filter="Physiology Essentials">Physiology Essentials</button>
     <button class="filter-button" data-filter="Gastrointestinal">Gastrointestinal</button>
     <button class="filter-button" data-filter="Central Nervous System">Central Nervous System</button>
@@ -31,6 +36,14 @@
     <button class="filter-button filter-show-all" data-filter="all">Show All</button>
   </section> 
   
+  <div class="jump-links">
+    <span>Jump to:</span>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+    <a href="#license">Creative Commons</a>
+    <a href="#sponsors">Sponsors</a>
+    <a href="#contact">Contact</a>
+  </div>
   
   <div class="card-grid">
     <!-- Card 1 -->
@@ -244,22 +257,32 @@
   </div>
 
   <!-- Footer -->
+  <section class="about-section" id="about">
+    <h2>About This Project</h2>
+    <p>This repository showcases inclusive and diverse educational visuals in physiology, aiming to support modern and equitable teaching strategies. All visuals are created by biomedical communicators with academic rigor and creative clarity.</p>
+
+    <h2 id="team">Meet the Team</h2>
+    <p>Led by Priya Modi, a biomedical communications graduate from the University of Toronto, this initiative includes collaborations with educators, illustrators, and healthcare professionals dedicated to inclusive pedagogy.</p>
+
+    <h2 id="license">Creative Commons License</h2>
+    <p>All materials are licensed under the Creative Commons BY-NC-ND 4.0 License. Educators are encouraged to use and share responsibly with attribution.</p>
+
+    <h2 id="sponsors">Sponsors & Collaborators</h2>
+    <p>This project is supported by Western University, the University of Toronto, and contributions from the physiology education community.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>For feedback or collaboration inquiries, please contact <a href="mailto:priya.modi@mail.utoronto.ca">priya.modi@mail.utoronto.ca</a>.</p>
+  </section>
+
   <footer>
-    <p>© Priya Modi 2025. All rights reserved.</p>
-    <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>
-    
+    <p>&copy; Priya Modi 2025. All rights reserved.</p>
+    <p>This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International</a>.</p>
     <div class="footer-links">
-      <a href="#about-us">About Us</a> | 
+      <a href="#about">About Us</a> | 
       <a href="mailto:priya.modi@mail.utoronto.ca">Contact Me</a> | 
-      <a href="#thanks">Acknowledgments</a>
+      <a href="#sponsors">Acknowledgments</a>
     </div>
-  
-    <p>Thanks to Western University and the University of Toronto for their support.</p>
   </footer>
-
-
-  
-  
   <!-- Include JavaScript File -->
   <script src="../prototype/js/prototype.js" defer></script>
 </body>
