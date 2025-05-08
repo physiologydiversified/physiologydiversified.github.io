@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menopause Hotspots (Inline Popup)</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+    }
+
+    #container {
+      position: relative;
+      width: 600px;
+      margin: auto;
+    }
+
+    #base-image {
+      width: 200%;
+      height: 200%;
+      display: block;
+      border-radius: 0px;
+    }
+
+    .hotspot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #f28ea0; /* Soft blush pink */
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 0 0 rgba(242, 142, 160, 0.7);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(242, 142, 160, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(242, 142, 160, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(242, 142, 160, 0);
+  }
+}
+
+    .hotspot:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .popup {
+      position: absolute;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 220px;
+      z-index: 9;
+      display: none;
+    }
+
+    .popup img,
+    .popup video {
+      max-width: 100%;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .popup .close-btn {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    /* Hotspot Positions - customize as needed */
+    .hot-flashes { top: 17%; left: 79%; }
+    .bone-loss { top: 50%; left: 70%; }
+    .vaginal-atrophy { top: 49%; left: 80%; }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <img src="../prototype/diagrams/menopausedraft.png" id="base-image" alt="Menopause Diagram" />
+
+  <!-- Hotspots -->
+  <div class="hotspot hot-flashes" data-symptom="Hot Flashes"></div>
+  <div class="hotspot bone-loss" data-symptom="Bone Degeneration"></div>
+  <div class="hotspot vaginal-atrophy" data-symptom="Vaginal Atrophy"></div>
+
+  <!-- Popup Container (one reusable element) -->
+  <div class="popup" id="popup">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <div id="popupContent"></div>
+  </div>
+</div>
+
+<script>
+  const popup = document.getElementById('popup');
+  const popupContent = document.getElementById('popupContent');
+
+  const contentMap = {
+    'Hot Flashes': {
+      media: '<video autoplay loop muted><source src="hot-flash-loop.mp4" type="video/mp4"></video>',
+      text: 'Hot flashes are sudden sensations of heat, often over the face and upper body, triggered by hormonal fluctuations.'
+    },
+    'Bone Degeneration': {
+      media: '<img src="bone-loss.gif" alt="Bone degeneration gif" />',
+      text: 'Estrogen decline leads to bone density loss, increasing the risk of fractures in postmenopausal women.'
+    },
+    'Vaginal Atrophy': {
+      media: '<img src="vaginal-atrophy.jpg" alt="Vaginal atrophy image" />',
+      text: 'Tissue thinning and dryness in the vaginal canal due to low estrogen can cause discomfort or pain.'
+    }
+  };
+
+  // Attach event listeners to each hotspot
+  document.querySelectorAll('.hotspot').forEach(hotspot => {
+    hotspot.addEventListener('click', function (e) {
+      const symptom = hotspot.getAttribute('data-symptom');
+      const { media, text } = contentMap[symptom];
+
+      popupContent.innerHTML = `${media}<p>${text}</p>`;
+      popup.style.display = 'block';
+
+      // Position popup near hotspot
+      const rect = hotspot.getBoundingClientRect();
+      const containerRect = document.getElementById('container').getBoundingClientRect();
+      const top = rect.top - containerRect.top + 25; // Offset from hotspot
+      const left = rect.left - containerRect.left + 25;
+
+      popup.style.top = `${top}px`;
+      popup.style.left = `${left}px`;
+    });
+  });
+
+  function closePopup() {
+    popup.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

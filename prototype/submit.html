@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Physiology Diversified - Diagram Submission</title>
+  <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h1>Submit Your Diagram</h1>
+  <form id="uploadForm">
+    <label>Title:<br><input type="text" id="title" required></label><br>
+    <label>Description:<br><textarea id="description" required></textarea></label><br>
+    <label>Author:<br><input type="text" id="author" required></label><br>
+    <label>Image:<br><input type="file" id="imageFile" accept="image/*" required></label><br>
+    <button type="submit">Submit Diagram</button>
+  </form>
+  <p id="statusMsg"></p>
+
+  <a href="index.html"><button>Back to Homepage</button></a>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const storage = firebase.storage();
+    const db = firebase.firestore();
+
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+      const author = document.getElementById('author').value;
+      const file = document.getElementById('imageFile').files[0];
+
+      if (!file) return;
+      const fileRef = storage.ref().child('pending/' + file.name);
+
+      document.getElementById('statusMsg').textContent = 'Uploading...';
+      try {
+        const snapshot = await fileRef.put(file);
+        const url = await snapshot.ref.getDownloadURL();
+
+        await db.collection('diagrams').add({
+          title,
+          description,
+          author,
+          imageUrl: url,
+          status: 'pending',
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        document.getElementById('statusMsg').textContent = 'Submitted successfully. Awaiting approval.';
+        document.getElementById('uploadForm').reset();
+      } catch (err) {
+        console.error(err);
+        document.getElementById('statusMsg').textContent = 'Error during upload.';
+      }
+    });
+  </script>
+</body>
+</html>

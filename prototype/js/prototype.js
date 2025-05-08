@@ -273,3 +273,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        target.classList.add('visible');
+
+        // Stagger children if this is a grid (e.g., team or sponsor logos)
+        if (target.classList.contains('team-grid') || target.classList.contains('sponsor-logos')) {
+          const children = target.querySelectorAll(':scope > *');
+          children.forEach((child, index) => {
+            child.style.transitionDelay = `${index * 100}ms`;
+            child.classList.add('visible');
+          });
+        }
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Observe blocks and specific containers
+  document.querySelectorAll('.about-block, .team-grid, .sponsor-logos').forEach(el => {
+    observer.observe(el);
+  });

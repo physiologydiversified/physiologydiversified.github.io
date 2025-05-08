@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hormone Levels Through the Lifespan</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8f9fa;
+      padding: 2rem;
+    }
+    #chart-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    canvas {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    #controls {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    #symptomBox {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 1rem;
+      margin-top: 1rem;
+      display: none;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Hormonal Changes Across the Lifespan (Age 0–100)</h2>
+
+<div id="chart-container">
+  <canvas id="hormoneChart"></canvas>
+</div>
+
+<div id="controls">
+  <label for="ageSlider">Select Age: <span id="currentAge">0</span></label><br>
+  <input type="range" id="ageSlider" min="0" max="100" value="0" />
+</div>
+
+<div id="symptomBox"></div>
+
+<script>
+const ctx = document.getElementById('hormoneChart').getContext('2d');
+const currentAgeLabel = document.getElementById('currentAge');
+const symptomBox = document.getElementById('symptomBox');
+
+// Hormone levels (normalized)
+function estrogen(age) {
+  if (age < 10) return 5;
+  if (age < 25) return 90;
+  if (age < 35) return 100;
+  if (age < 45) return 85;
+  if (age < 50) return 60;
+  if (age < 52) return 20;
+  return 10;
+}
+function progesterone(age) {
+  if (age < 10) return 0;
+  if (age < 25) return 70;
+  if (age < 35) return 90;
+  if (age < 45) return 60;
+  if (age < 50) return 20;
+  return 5;
+}
+function fsh(age) {
+  if (age < 10) return 10;
+  if (age < 25) return 15;
+  if (age < 45) return 10;
+  if (age < 50) return 40;
+  if (age < 60) return 80;
+  return 60;
+}
+function lh(age) {
+  if (age < 10) return 10;
+  if (age < 25) return 20;
+  if (age < 45) return 15;
+  if (age < 50) return 45;
+  if (age < 60) return 75;
+  return 55;
+}
+
+const ageLabels = Array.from({ length: 101 }, (_, i) => i);
+const hormoneData = {
+  labels: ageLabels,
+  datasets: [
+    {
+      label: 'Estrogen',
+      data: ageLabels.map(estrogen),
+      borderColor: '#ff4d6d',
+      fill: false,
+      tension: 0.3
+    },
+    {
+      label: 'Progesterone',
+      data: ageLabels.map(progesterone),
+      borderColor: '#ffa94d',
+      fill: false,
+      tension: 0.3
+    },
+    {
+      label: 'FSH',
+      data: ageLabels.map(fsh),
+      borderColor: '#748ffc',
+      fill: false,
+      tension: 0.3
+    },
+    {
+      label: 'LH',
+      data: ageLabels.map(lh),
+      borderColor: '#5f9ea0',
+      fill: false,
+      tension: 0.3
+    }
+  ]
+};
+
+// Create initial annotation
+let ageAnnotation = {
+  type: 'line',
+  scaleID: 'x',
+  borderColor: 'black',
+  borderWidth: 2,
+  value: 0,
+  label: {
+    content: 'Current Age',
+    enabled: true,
+    position: 'start',
+    backgroundColor: '#000',
+    color: '#fff'
+  }
+};
+
+const chart = new Chart(ctx, {
+  type: 'line',
+  data: hormoneData,
+  options: {
+    responsive: true,
+    plugins: {
+      annotation: {
+        annotations: {
+          currentAge: ageAnnotation
+        }
+      },
+      tooltip: {
+        mode: 'index',
+        intersect: false
+      },
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: 'x'
+        },
+        zoom: {
+          wheel: {
+            enabled: true
+          },
+          pinch: {
+            enabled: true
+          },
+          mode: 'x'
+        }
+      },
+      title: {
+        display: true,
+        text: 'Hormonal Shifts Over the Lifespan'
+      },
+      legend: {
+        position: 'top'
+      }
+    },
+    interaction: {
+      mode: 'nearest',
+      axis: 'x',
+      intersect: false
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Age'
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Relative Hormone Level (normalized)'
+        },
+        min: 0,
+        max: 100
+      }
+    }
+  }
+});
+
+document.getElementById('ageSlider').addEventListener('input', (e) => {
+  const age = +e.target.value;
+  currentAgeLabel.textContent = age;
+
+  // Update annotation position
+  chart.options.plugins.annotation.annotations.currentAge.value = age;
+  chart.update();
+
+  // Symptom callouts
+  if (age >= 45 && age <= 55) {
+    symptomBox.innerHTML = `
+      <strong>Perimenopause & Menopause Symptoms</strong><br>
+      Estrogen drops → <em>hot flashes, night sweats, vaginal dryness</em><br>
+      FSH & LH rise as ovaries lose negative feedback<br>
+      <small>Consider HRT discussions here</small>
+    `;
+    symptomBox.style.display = 'block';
+  } else {
+    symptomBox.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>
