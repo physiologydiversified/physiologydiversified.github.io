@@ -12,11 +12,20 @@
 
 <body>
     <header>
-      <header id="top"></header>
-    <div class="header-left">
-      <h1>Physiology Diversified.</h1>
-      <p>Inclusive resources for modern physiology education.</p>
-    </div>
+
+      <div class="header-wrapper">
+        <video class="site-logo" autoplay loop muted playsinline>
+          <source src="../prototype/images/logo.webm" type="video/webm">
+          <!-- Optional fallback -->
+          <img src="logo.png" alt="Logo">
+        </video>
+        
+        <div class="header-left">
+          <h1>Physiology Diversified.</h1>
+          <p>Inclusive resources for modern physiology education.</p>
+        </div>
+      </div>
+      
     <div class="jump-links">
       <span>Jump to:</span>
       <a href="#about">About</a>
@@ -301,7 +310,7 @@
         <img src="../prototype/images/Jodie_Headshot.png" alt= "Jodie Jenkinson headshot">
         <p><strong>2nd Voting Committee Member</strong>
         <p>Supports project evaluation, guidance on academic standards, and supervises MScBMC thesis development.</p>
-        <a href="https://your-link.com" target="_blank">See website &rsaquo;</a>
+        <a href="https://www.utm.utoronto.ca/biology/people/jodie-jenkinson" target="_blank">See website &rsaquo;</a>
       </div>
     </div>
   </div>
@@ -320,12 +329,23 @@
     <h2 id="sponsors">Sponsors & Collaborators</h2>
     <p>This project is a collaboration between Western University and the University of Toronto. This work is generously funded through Western University’s BrainsCAN Equity, Diversity, and Inclusion (EDI) Funding initiative.</p>
     <div class="sponsor-logos">
+      <div class="sponsor-logo"><img src="../prototype/images/schulich-horizontal 1.png" alt="Western University logo"></div>
       <div class="sponsor-logo"><img src="../prototype/images/Biomedical Communications_edited_edited_.avif" alt="University of Toronto Biomedical Communications logo"></div>
       <div class="sponsor-logo"><img src="../prototype/images/BrainsCAN 1.png" alt="BrainsCAN EDI logo"></div>
-      <div class="sponsor-logo"><img src="../prototype/images/schulich-horizontal 1.png" alt="Western University logo"></div>
+     
   </div>
   </div>
 
+  <div class="about-block" id="contact">
+    <h2>Have a suggestion or wish to collaborate? Contact us!</h2>
+    <form action="https://formspree.io/f/xrbqkvzo" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+  
 
   <div class="scroll-up-button">
     <a href="#top" aria-label="Scroll back to top of page">⬆ Back to Top</a>
@@ -338,13 +358,21 @@
 
 
 
-
   <footer class="site-footer">
-    <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="../prototype/images/logo.png" alt="Physiology Diversified logo">
+      <h1>Physiology Diversified.</h1>
+    </div>
+    <div class="footer-info">
       <p>&copy; Priya Modi 2025. All rights reserved.</p>
+      <p>This work is licensed under 
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>.
       </p>
     </div>
-
+  </footer>
+  
+  
+  
     
   </footer>
   
