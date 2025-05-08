@@ -11,12 +11,20 @@
 </head>
 
 <body>
-  <header>
-    <h1>Physiology Diversified.</h1>
-    <p>Inclusive resources for modern physiology education.</p>
-    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem;"> 
-    <!-- <input type="text" placeholder="Search topics in physiology..." class="search-bar"> -->
-  </div>
+    <header>
+      <header id="top"></header>
+    <div class="header-left">
+      <h1>Physiology Diversified.</h1>
+      <p>Inclusive resources for modern physiology education.</p>
+    </div>
+    <div class="jump-links">
+      <span>Jump to:</span>
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#license">Creative Commons</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#contact">Contact</a>
+    </div>
   </header>
 
   
@@ -26,6 +34,7 @@
 
   <section class="filter-section">
     <input type="text" placeholder="Search topics in physiology..." class="search-bar">
+    
     <button class="filter-button" data-filter="Physiology Essentials">Physiology Essentials</button>
     <button class="filter-button" data-filter="Gastrointestinal">Gastrointestinal</button>
     <button class="filter-button" data-filter="Central Nervous System">Central Nervous System</button>
@@ -36,16 +45,9 @@
     <button class="filter-button filter-show-all" data-filter="all">Show All</button>
   </section> 
   
-  <div class="jump-links">
-    <span>Jump to:</span>
-    <a href="#about">About</a>
-    <a href="#team">Team</a>
-    <a href="#license">Creative Commons</a>
-    <a href="#sponsors">Sponsors</a>
-    <a href="#contact">Contact</a>
-  </div>
+
   
-  <div class="card-grid">
+  <div id="gallery" class="card-grid">
     <!-- Card 1 -->
     <div class="card" data-category="Gastrointestinal" data-img="../prototype/thumbnails/cephalicphase_thumbnail.png" data-title="Phases of Gastric Motility" data-desc="The phases of gastric motility—cephalic, gastric, and intestinal—are triggered by the sight, smell, or taste of food, starting with salivation and preparing the stomach for digestion." data-author="Priya Modi">
       <div class="card-image-wrapper">
@@ -258,31 +260,95 @@
 
   <!-- Footer -->
   <section class="about-section" id="about">
-    <h2>About This Project</h2>
-    <p>This repository showcases inclusive and diverse educational visuals in physiology, aiming to support modern and equitable teaching strategies. All visuals are created by biomedical communicators with academic rigor and creative clarity.</p>
+    <div class="about-block">
+      <h2>About This Project</h2>
+      <p>This repository showcases inclusive and diverse educational visuals in physiology, aiming to support modern and equitable teaching strategies. All visuals are created by biomedical communicators with academic rigor and creative clarity.</p>
+    </div>
 
-    <h2 id="team">Meet the Team</h2>
-    <p>Led by Priya Modi, a biomedical communications graduate from the University of Toronto, this initiative includes collaborations with educators, illustrators, and healthcare professionals dedicated to inclusive pedagogy.</p>
+    <div class="about-block team-highlight">
+      <h2 id="team">Meet the Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <h3>Priya Modi</h3>
+        <p class="credentials">BMSc, MScBMC</p>
+        <img src="../prototype/images/Priya_Headshot.png" alt="Priya Modi headshot">
+        <p><strong>Design & Development</strong>
+        <p>Project lead, responsible for ideation, illustration, development, and coordination of all stages of production.</p>
+        <a href="https://priyamodi.myportfolio.com/" target="_blank">See website &rsaquo;</a>
+      </div>
+    
+      <div class="team-member">
+        <h3>Anita Woods</h3>
+        <p class="credentials">BSc, PhD</p>
+        <img src="../prototype/images/Anita_Headshot.png" alt="Dr. Anita Woods headshot">
+        <p><strong>Project Supervisor</strong>
+        <p>Supports this project through grant funding and academic supervision from the Physiology & Pharmacology Department.</p>
+        <a href="https://www.schulich.uwo.ca/physpharm/people/faculty/woods_anita.html" target="_blank">See website &rsaquo;</a>
+      </div>
+    
+      <div class="team-member">
+        <h3>Shehryar (Shay) Saharan</h3>
+        <p class="credentials">B.Eng, MScBMC</p>
+        <img src="../prototype/images/Shay_Headshot.png" alt="Shay Saharan headshot">
+        <p><strong>BMC Design Supervisor</strong>
+        <p>Provides consultation on visual design and UX from a biomedical communications perspective.</p>
+        <a href="https://www.ss-design.site/about" target="_blank">See website &rsaquo;</a>
+      </div>
+    
+      <div class="team-member">
+        <h3>Jodie Jenkinson</h3>
+        <p class="credentials">BA, MScBMC, PhD, FAMI</p>
+        <img src="../prototype/images/Jodie_Headshot.png" alt= "Jodie Jenkinson headshot">
+        <p><strong>2nd Voting Committee Member</strong>
+        <p>Supports project evaluation, guidance on academic standards, and supervises MScBMC thesis development.</p>
+        <a href="https://your-link.com" target="_blank">See website &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+    <div class="about-block">
+      <h2 id="license">Creative Commons License</h2>
+      <p>
+        All materials are licensed under the 
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
+          Creative Commons BY-NC-ND 4.0 License
+        </a>. Educators are encouraged to use and share responsibly with attribution.
+      </p>
+    </div>
+    
 
-    <h2 id="license">Creative Commons License</h2>
-    <p>All materials are licensed under the Creative Commons BY-NC-ND 4.0 License. Educators are encouraged to use and share responsibly with attribution.</p>
-
+<div class="about-block">
     <h2 id="sponsors">Sponsors & Collaborators</h2>
-    <p>This project is supported by Western University, the University of Toronto, and contributions from the physiology education community.</p>
+    <p>This project is a collaboration between Western University and the University of Toronto. This work is generously funded through Western University’s BrainsCAN Equity, Diversity, and Inclusion (EDI) Funding initiative.</p>
+    <div class="sponsor-logos">
+      <div class="sponsor-logo"><img src="../prototype/images/Biomedical Communications_edited_edited_.avif" alt="University of Toronto Biomedical Communications logo"></div>
+      <div class="sponsor-logo"><img src="../prototype/images/BrainsCAN 1.png" alt="BrainsCAN EDI logo"></div>
+      <div class="sponsor-logo"><img src="../prototype/images/schulich-horizontal 1.png" alt="Western University logo"></div>
+  </div>
+  </div>
 
-    <h2 id="contact">Contact</h2>
-    <p>For feedback or collaboration inquiries, please contact <a href="mailto:priya.modi@mail.utoronto.ca">priya.modi@mail.utoronto.ca</a>.</p>
+
+  <div class="scroll-up-button">
+    <a href="#top" aria-label="Scroll back to top of page">⬆ Back to Top</a>
+  </div>
+
+    
+
+  
   </section>
 
-  <footer>
-    <p>&copy; Priya Modi 2025. All rights reserved.</p>
-    <p>This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International</a>.</p>
-    <div class="footer-links">
-      <a href="#about">About Us</a> | 
-      <a href="mailto:priya.modi@mail.utoronto.ca">Contact Me</a> | 
-      <a href="#sponsors">Acknowledgments</a>
+
+
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; Priya Modi 2025. All rights reserved.</p>
+      </p>
     </div>
+
+    
   </footer>
+  
+
   <!-- Include JavaScript File -->
   <script src="../prototype/js/prototype.js" defer></script>
 </body>
