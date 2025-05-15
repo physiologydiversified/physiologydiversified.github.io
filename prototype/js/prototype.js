@@ -1,3 +1,11 @@
+
+// Google Analytics setup
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-ZFM74C9X28');
+
+
 // Open Lightbox
 function openLightbox(imageSrc, title, description, author, downloadLink) {
     const lightbox = document.getElementById("lightbox");
@@ -7,15 +15,24 @@ function openLightbox(imageSrc, title, description, author, downloadLink) {
     const lightboxAuthor = document.getElementById("lightbox-author");
     const lightboxCitation = document.getElementById("lightbox-citation");
 
-      // Set Download Button
-      function downloadFile(url) {
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = ""; // Let the browser infer filename
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      }
+ // Enhanced download function with Google Analytics tracking
+function downloadFile(url, title = "Untitled Image") {
+  // Send download event to GA4
+  gtag('event', 'download', {
+    'event_category': 'Image',
+    'event_label': title,
+    'value': 1
+  });
+
+  // Trigger the file download
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = ""; // Let browser infer the filename
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
   
     // Set Lightbox Content
     lightboxImage.src = imageSrc;
@@ -34,7 +51,7 @@ function openLightbox(imageSrc, title, description, author, downloadLink) {
   
   // Set download button behavior using the dynamic link
   document.getElementById("download-button").onclick = () => {
-    downloadFile(downloadLink);
+    downloadFile(downloadLink, title);
   };
 }
 
@@ -267,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
         downloadIcon.addEventListener("click", function (event) {
           event.stopPropagation(); // Prevent card click from firing
           const downloadLink = card.getAttribute("data-download");
-          downloadFile(downloadLink); // Reuse your download function
+          downloadFile(downloadLink, card.getAttribute("data-title")); // Reuse your download function
         });
       }
     });
