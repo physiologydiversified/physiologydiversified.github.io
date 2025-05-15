@@ -41,7 +41,7 @@
 
   
   
-  </div>
+
 
 
   <section class="filter-section">
@@ -205,7 +205,7 @@
           <img src="../prototype/thumbnails/comingsoon_3.png" alt="Jaundice Across Skin Tones" class="card-image">
         </div>
         <div class="card-content">
-          <h3>Effects of Menopause</h3>
+          <h3>Touch Sensation and Pacinian Corpuscles</h3>
           <p>An upcoming diagram will show how the sensation of touch is relayed to the brain through the nervous system, with a focus on the role of Pacinian corpuscles in the skin. It will detail how these specialized receptors detect mechanical pressure and vibration.</p>
       
          
@@ -224,7 +224,7 @@
 
 
       <!-- Card 8 -->
-    <div class="card" data-category="Endocrinology" data-img="../prototype/thumbnails/comingsoon_4.png" data-title="Physiology of Menopause" data-desc="This image will depict the physiological changes that occur during menopause, including hormonal shifts, effects on the reproductive system, and the broader implications for health, such as bone density and cardiovascular function.
+    <div class="card" data-type="interactive"  data-interactive-src="menopauseinteractive.html" data-category="Endocrinology" data-title="Physiology of Menopause" data-desc="This image will depict the physiological changes that occur during menopause, including hormonal shifts, effects on the reproductive system, and the broader implications for health, such as bone density and cardiovascular function.
 
     " data-author="Priya Modi">
         <div class="card-image-wrapper">
@@ -236,7 +236,30 @@
           <div class="card-bottom">
             <div class="tags">
               <span class="category-tag">Endocrinology</span>
-              <span class="type-tag-blue">2D Diagram</span>
+              <span class="type-tag-green">Interactive</span>
+            </div>
+            <div class="card-icons">
+              <i class="fas fa-heart heart-icon"></i>
+              <i class="fas fa-download download-icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    <!-- Card 9 -->
+    <div class="card" data-type="interactive"  data-interactive-src="menopausechart.html" data-category="Endocrinology" data-title="Physiology of Menopause" data-desc="This image will depict the physiological changes that occur during menopause, including hormonal shifts, effects on the reproductive system, and the broader implications for health, such as bone density and cardiovascular function.
+
+    " data-author="Priya Modi">
+        <div class="card-image-wrapper">
+          <img src="../prototype/thumbnails/comingsoon_4.png" alt="Physiology of Menopause" class="card-image">
+        </div>
+        <div class="card-content">
+          <h3>Female Reproductive Hormone Chart</h3>
+          <p>This image will depict the physiological changes that occur during menopause, including hormonal shifts, effects on the reproductive system, and the broader implications for health, such as bone density and cardiovascular function.          </p>
+          <div class="card-bottom">
+            <div class="tags">
+              <span class="category-tag">Endocrinology</span>
+              <span class="type-tag-green">Interactive</span>
             </div>
             <div class="card-icons">
               <i class="fas fa-heart heart-icon"></i>
@@ -249,7 +272,6 @@
 
 
 
-
     <!-- end of entire grid -->
     </div>
 
@@ -258,14 +280,14 @@
   <div id="lightbox" class="lightbox">
     <div class="lightbox-content">
       <span class="close" onclick="closeLightbox()">&times;</span>
-      <img id="lightbox-image" src="" alt="">
+      <div id="lightbox-content-container"></div>
       <div class="lightbox-text">
         <h2 id="lightbox-title"></h2>
         <p id="lightbox-description"></p>
         <p class="citation">Illustrator: <span id="lightbox-author"></span></p>
         <p class="license">Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.</p>
         <p class="citation-format">APA Citation: <span id="lightbox-citation"></span></p>
-        <button id="download-button" onclick="downloadImage()">Download</button>
+        <button id="download-button">Download</button>
       </div>
     </div>
   </div>
@@ -385,27 +407,3 @@
 </body>
 
 </html>
-
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyA3ck6mZDMbT4ZNwnVGnQnrkI0Fmn6rKVE",
-    authDomain: "physiology-diversified.firebaseapp.com",
-    projectId: "physiology-diversified",
-    storageBucket: "physiology-diversified.firebasestorage.app",
-    messagingSenderId: "580352379050",
-    appId: "1:580352379050:web:16ba32230e6a9b0a36a8d3",
-    measurementId: "G-L6ZH1PF6W3"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
