@@ -2,231 +2,303 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hormone Levels Through the Lifespan</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.0"></script>
+  <title>STRAW Hormone Trends</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.2.1"></script>
+
   <style>
-    body {
-      font-family: sans-serif;
-      background: #f8f9fa;
-      padding: 2rem;
-    }
-    #chart-container {
-      max-width: 1000px;
-      margin: auto;
-    }
-    canvas {
-      background: white;
-      border-radius: 8px;
+    body { font-family: sans-serif; background: #f9f9f9; padding: 2rem; }
+    canvas { background: white; border-radius: 8px; padding: 1rem; width: 100%; max-width: 1000px; margin: auto; display: block; }
+    #controls, #infoBox, #downloadBtn { text-align: center; margin-top: 1rem; }
+    #infoBox {
+      max-width: 600px;
+      margin: 1rem auto;
+      background: #f1faff;
       padding: 1rem;
-    }
-    #controls {
-      text-align: center;
-      margin-top: 1rem;
-    }
-    #symptomBox {
-      background: #fff3cd;
-      border: 1px solid #ffeeba;
-      padding: 1rem;
-      margin-top: 1rem;
-      display: none;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      border: 1px solid #d0eaff;
       border-radius: 8px;
+      font-size: 0.95rem;
     }
+    #downloadBtn button {
+      background: #5f9ea0;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #custom-tooltip {
+  position: absolute;
+  background: #f5faff;
+  border: 1px solid #cce4f6;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+  max-width: 240px;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: #444;
+}
+
+
+.pulse-point {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(95, 158, 160, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(95, 158, 160, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(95, 158, 160, 0); }
+}
+
+
   </style>
 </head>
 <body>
 
-<h2>Hormonal Changes Across the Lifespan (Age 0–100)</h2>
-
-<div id="chart-container">
-  <canvas id="hormoneChart"></canvas>
+<h2 style="text-align:center;">Hormonal Trends by STRAW Staging System</h2>
+<div id="infoBox" style="max-width: 700px; margin: 0 auto 1rem; text-align: center; font-size: 0.85rem; color: #666;">
+  <em>Hover over the graph to learn how about hormone changes across stages of female reproductive aging.</em>
 </div>
 
-<div id="controls">
-  <label for="ageSlider">Select Age: <span id="currentAge">0</span></label><br>
-  <input type="range" id="ageSlider" min="0" max="100" value="0" />
+<div id="chart-and-legend" style="display: flex; justify-content: center; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+
+<canvas id="hormoneChart"></canvas>
+
+<div id="hormoneLegend" style="
+  max-width: 220px;
+  float: right;
+  margin-left: 1rem;
+  padding: 1rem;
+  background: #f7f7f7;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+">
+  <strong>Hormone Functions</strong><br><br>
+  <span style="color:#ff4d6d;"><b>Estradiol</b></span>: Maintains reproductive tissue, bone, mood.<br><br>
+  <span style="color:#ffa94d;"><b>Progesterone</b></span>: Supports pregnancy, uterine lining.<br><br>
+  <span style="color:#748ffc;"><b>FSH</b></span>: Stimulates follicle growth; rises as reserve declines.<br><br>
+  <span style="color:#5f9ea0;"><b>LH</b></span>: Triggers ovulation; rises post-menopause.<br><br>
+  <span style="color:#00b894;"><b>AMH</b></span>: Marker of ovarian reserve.<br><br>
+  <span style="color:#a984ff;"><b>Inhibin B</b></span>: Suppresses FSH, declines with aging.
+</div>
 </div>
 
-<div id="symptomBox"></div>
+<div id="custom-tooltip" style="opacity: 0;"></div>
+
+
+
+
+<div id="downloadBtn">
+  <button onclick="downloadChart()">Download Chart as PNG</button>
+</div>
 
 <script>
 const ctx = document.getElementById('hormoneChart').getContext('2d');
-const currentAgeLabel = document.getElementById('currentAge');
-const symptomBox = document.getElementById('symptomBox');
 
-// Hormone levels (normalized)
-function estrogen(age) {
-  if (age < 10) return 5;
-  if (age < 25) return 90;
-  if (age < 35) return 100;
-  if (age < 45) return 85;
-  if (age < 50) return 60;
-  if (age < 52) return 20;
-  return 10;
-}
-function progesterone(age) {
-  if (age < 10) return 0;
-  if (age < 25) return 70;
-  if (age < 35) return 90;
-  if (age < 45) return 60;
-  if (age < 50) return 20;
-  return 5;
-}
-function fsh(age) {
-  if (age < 10) return 10;
-  if (age < 25) return 15;
-  if (age < 45) return 10;
-  if (age < 50) return 40;
-  if (age < 60) return 80;
-  return 60;
-}
-function lh(age) {
-  if (age < 10) return 10;
-  if (age < 25) return 20;
-  if (age < 45) return 15;
-  if (age < 50) return 45;
-  if (age < 60) return 75;
-  return 55;
-}
+const stages = ["-5", "-4", "-3b", "-3a", "-2", "-1", "0", "+1a", "+1b", "+2"];
+const stageAges = [20, 25, 30, 35, 40, 45, 50, 51, 52, 55];
 
-const ageLabels = Array.from({ length: 101 }, (_, i) => i);
 const hormoneData = {
-  labels: ageLabels,
-  datasets: [
-    {
-      label: 'Estrogen',
-      data: ageLabels.map(estrogen),
-      borderColor: '#ff4d6d',
-      fill: false,
-      tension: 0.3
-    },
-    {
-      label: 'Progesterone',
-      data: ageLabels.map(progesterone),
-      borderColor: '#ffa94d',
-      fill: false,
-      tension: 0.3
-    },
-    {
-      label: 'FSH',
-      data: ageLabels.map(fsh),
-      borderColor: '#748ffc',
-      fill: false,
-      tension: 0.3
-    },
-    {
-      label: 'LH',
-      data: ageLabels.map(lh),
-      borderColor: '#5f9ea0',
-      fill: false,
-      tension: 0.3
-    }
-  ]
+  "Estradiol (E2)": [60, 70, 80, 70, 60, 40, 10, 5, 4, 3],
+  "FSH": [10, 12, 15, 20, 30, 60, 90, 100, 100, 95],
+  "Inhibin B": [80, 70, 50, 30, 10, 5, 2, 1, 0.5, 0.2],
+  "AMH": [70, 50, 30, 15, 5, 2, 0.5, 0.1, 0, 0],
+  "LH": [15, 18, 20, 25, 35, 55, 70, 75, 75, 70],
+  "Progesterone": [60, 65, 70, 60, 30, 10, 1, 0.5, 0.2, 0]
 };
 
-// Create initial annotation
-let ageAnnotation = {
-  type: 'line',
-  scaleID: 'x',
-  borderColor: 'black',
-  borderWidth: 2,
-  value: 0,
-  label: {
-    content: 'Current Age',
-    enabled: true,
-    position: 'start',
-    backgroundColor: '#000',
-    color: '#fff'
-  }
+const hormoneDescriptions = {
+  "Estradiol (E2)": "Main form of estrogen. Supports reproductive tissues, bone, brain, and cardiovascular health.",
+  "FSH": "Follicle-stimulating hormone. Regulates ovarian follicle growth. Increases as ovarian reserve declines.",
+  "Inhibin B": "Produced by ovarian follicles. Suppresses FSH. Declines early in reproductive aging.",
+  "AMH": "Anti-Müllerian hormone. Marker of ovarian reserve. Decreases steadily with age.",
+  "LH": "Luteinizing hormone. Triggers ovulation. Rises post-menopause with loss of feedback.",
+  "Progesterone": "Supports pregnancy and uterine lining. Drops significantly as ovulation ceases."
 };
+
+const hormoneColors = {
+  "Estradiol (E2)": "#ff4d6d",
+  "FSH": "#748ffc",
+  "Inhibin B": "#a984ff",
+  "AMH": "#00b894",
+  "LH": "#5f9ea0",
+  "Progesterone": "#ffa94d"
+};
+
+const keyStages = ['-5', '-1', '0', '+1b', '+2'];
+
+const datasets = Object.entries(hormoneData).map(([label, data]) => {
+  return {
+    label,
+    data,
+    borderColor: hormoneColors[label],
+    tension: 0.4,
+    borderWidth: 2,
+    hidden: false,
+    pointRadius: data.map((_, i) => keyStages.includes(stages[i]) ? 5 : 0),
+    pointHoverRadius: data.map((_, i) => keyStages.includes(stages[i]) ? 8 : 0),
+    pointBackgroundColor: data.map((_, i) =>
+      keyStages.includes(stages[i]) ? hormoneColors[label] : 'transparent'),
+    pointBorderColor: data.map((_, i) =>
+      keyStages.includes(stages[i]) ? 'rgba(0, 0, 0, 0.1)' : 'transparent'),
+    pointBorderWidth: data.map((_, i) =>
+      keyStages.includes(stages[i]) ? 3 : 0)
+  };
+});
+
+
 
 const chart = new Chart(ctx, {
   type: 'line',
-  data: hormoneData,
+  data: {
+    labels: stages,
+    datasets: datasets
+  },
   options: {
-    responsive: true,
+  responsive: true,
+  animation: {
+    duration: 1000,
+    easing: 'easeOutQuart'
+  },
     plugins: {
-      annotation: {
-        annotations: {
-          currentAge: ageAnnotation
-        }
-      },
       tooltip: {
-        mode: 'index',
-        intersect: false
-      },
-      zoom: {
-        pan: {
-          enabled: true,
-          mode: 'x'
-        },
-        zoom: {
-          wheel: {
-            enabled: true
-          },
-          pinch: {
-            enabled: true
-          },
-          mode: 'x'
-        }
-      },
-      title: {
-        display: true,
-        text: 'Hormonal Shifts Over the Lifespan'
-      },
-      legend: {
-        position: 'top'
+  enabled: false, // disable built-in tooltip
+  external: function(context) {
+    const tooltip = document.getElementById('custom-tooltip');
+    const chart = context.chart;
+
+    // Hide if tooltip isn't active
+    if (context.tooltip.opacity === 0) {
+      tooltip.style.opacity = 0;
+      return;
+    }
+
+    const dataPoint = context.tooltip.dataPoints[0];
+    const hormone = dataPoint.dataset.label;
+    const stageIndex = dataPoint.dataIndex;
+    const stage = stages[stageIndex];
+const showStages = ['-5', '-1', '0', '+1b', '+2'];
+if (!showStages.includes(stage)) {
+  tooltip.style.opacity = 0;
+  return;
+}
+
+    const age = stageAges[stageIndex];
+    const description = hormoneDescriptions[hormone];
+
+    const { offsetLeft: chartX, offsetTop: chartY } = chart.canvas;
+
+    tooltip.innerHTML = `
+      <strong>${hormone}</strong><br>
+      Stage: ${stage} (age ~${age})<br>
+      <p style="margin-top: 5px">${description}</p>
+    `;
+    tooltip.style.left = chartX + context.tooltip.caretX + 15 + 'px';
+    tooltip.style.top = chartY + context.tooltip.caretY - 10 + 'px';
+    tooltip.style.opacity = 1;
+  }
+},
+
+      legend: { display: true },
+      annotation: {
+  annotations: {
+    reproductive: {
+      type: 'box',
+      xMin: 0,
+      xMax: 3.5,
+      backgroundColor: 'rgba(173, 216, 230, 0.1)',
+      borderWidth: 0,
+      label: {
+        content: 'Reproductive (~20–40)',
+        enabled: true,
+        position: 'start',
+        color: '#444',
+        backgroundColor: 'transparent',
+        font: { size: 12 }
       }
     },
-    interaction: {
-      mode: 'nearest',
-      axis: 'x',
-      intersect: false
+    perimenopause: {
+      type: 'box',
+      xMin: 3.5,
+      xMax: 6,
+      backgroundColor: 'rgba(255, 192, 203, 0.1)',
+      borderWidth: 0,
+      label: {
+        content: 'Perimenopause (~40–50)',
+        enabled: true,
+        position: 'start',
+        color: '#444',
+        backgroundColor: 'transparent',
+        font: { size: 12 }
+      }
+    },
+    postmenopause: {
+      type: 'box',
+      xMin: 6,
+      xMax: 10,
+      backgroundColor: 'rgba(255, 239, 213, 0.1)',
+      borderWidth: 0,
+      label: {
+        content: 'Postmenopause (50+)',
+        enabled: true,
+        position: 'start',
+        color: '#444',
+        backgroundColor: 'transparent',
+        font: { size: 12 }
+      }
+    }
+  }
+}
+
     },
     scales: {
       x: {
         title: {
           display: true,
-          text: 'Age'
+          text: 'STRAW Stage'
         }
       },
       y: {
-        title: {
-          display: true,
-          text: 'Relative Hormone Level (normalized)'
-        },
-        min: 0,
-        max: 100
-      }
+  min: 0,
+  max: 110,
+  ticks: {
+    display: false
+  },
+  title: {
+    display: true,
+    text: 'Relative Hormone Level'
+  }
+}
+
+
     }
   }
 });
 
-document.getElementById('ageSlider').addEventListener('input', (e) => {
-  const age = +e.target.value;
-  currentAgeLabel.textContent = age;
-
-  // Update annotation position
-  chart.options.plugins.annotation.annotations.currentAge.value = age;
-  chart.update();
-
-  // Symptom callouts
-  if (age >= 45 && age <= 55) {
-    symptomBox.innerHTML = `
-      <strong>Perimenopause & Menopause Symptoms</strong><br>
-      Estrogen drops → <em>hot flashes, night sweats, vaginal dryness</em><br>
-      FSH & LH rise as ovaries lose negative feedback<br>
-      <small>Consider HRT discussions here</small>
-    `;
-    symptomBox.style.display = 'block';
-  } else {
-    symptomBox.style.display = 'none';
+function toggleHormone(name) {
+  const ds = chart.data.datasets.find(d => d.label === name);
+  if (ds) {
+    ds.hidden = !ds.hidden;
+    chart.update();
   }
-});
+}
+
+function downloadChart() {
+  const link = document.createElement('a');
+  link.download = 'STRAW_hormone_chart.png';
+  link.href = chart.toBase64Image();
+  link.click();
+}
 </script>
 
 </body>
