@@ -724,3 +724,30 @@ Icons
 .contact-form button:hover {
   background-color: #462a77;
 }
+
+/* Expand button in lightbox */
+#expand-button {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #5e3d9f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  z-index: 1001;
+}
+
+#expand-button:hover {
+  color: #000;
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.expand-label {
+  font-size: 0.85rem;
+}

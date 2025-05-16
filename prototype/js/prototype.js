@@ -5,19 +5,18 @@ function gtag() { dataLayer.push(arguments); }
 gtag('js', new Date());
 gtag('config', 'G-ZFM74C9X28');
 
-
 function openLightbox(imageSrc, title, description, author, downloadLink, type = "static", interactiveSrc = "") {
   const lightbox = document.getElementById("lightbox");
-  const lightboxContainer = document.getElementById("lightbox-content-container"); // NEW: holds either iframe or img
+  const lightboxContainer = document.getElementById("lightbox-content-container");
   const lightboxTitle = document.getElementById("lightbox-title");
   const lightboxDescription = document.getElementById("lightbox-description");
   const lightboxAuthor = document.getElementById("lightbox-author");
   const lightboxCitation = document.getElementById("lightbox-citation");
+  const expandBtn = document.getElementById("expand-button");
 
   // Clear previous content
   lightboxContainer.innerHTML = "";
 
-  // Inject interactive or static content
   if (type === "interactive") {
     const iframe = document.createElement("iframe");
     iframe.src = interactiveSrc;
@@ -26,12 +25,19 @@ function openLightbox(imageSrc, title, description, author, downloadLink, type =
     iframe.style.border = "none";
     iframe.allow = "fullscreen";
     lightboxContainer.appendChild(iframe);
+
+    // Show and activate expand button
+    expandBtn.style.display = "inline-block";
+    expandBtn.onclick = () => window.open(interactiveSrc, '_blank');
   } else {
     const img = document.createElement("img");
     img.src = imageSrc;
     img.alt = title;
     img.id = "lightbox-image";
     lightboxContainer.appendChild(img);
+
+    // Hide expand button for static images
+    expandBtn.style.display = "none";
   }
 
   // Set metadata
@@ -42,12 +48,7 @@ function openLightbox(imageSrc, title, description, author, downloadLink, type =
   const currentYear = new Date().getFullYear();
   lightboxCitation.textContent = `${author} (${currentYear}). ${title}. Physiology Diversified. Retrieved from https://physiologydiversified.example.com`;
 
-  // Set download button with tracking
-  document.getElementById("download-button").onclick = () => {
-    downloadFile(downloadLink, title);
-  };
-
-  // Show lightbox
+  // ✅ This was missing:
   lightbox.style.display = "flex";
   setTimeout(() => lightbox.classList.add("show"), 10);
 }
