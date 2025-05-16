@@ -16,7 +16,7 @@
       margin: 1rem auto;
       background: #f1faff;
       padding: 1rem;
-      border: 1px solid #d0eaff;
+      border: 4px solid #d0eaff;
       border-radius: 8px;
       font-size: 0.95rem;
     }
@@ -175,7 +175,8 @@
   <!-- Flex layout for chart + legends -->
   <div style="display: flex; justify-content: center; align-items: flex-start; gap: 2rem; flex-wrap: wrap; max-width: 12000px; margin: 0 auto;">
   
-    <!-- Chart column (takes priority space) -->
+    <!-- Main Hormone Graph -->
+     
     <div style="flex: 10 1000px; min-width: 500px;">
       <canvas id="hormoneChart"></canvas>
    <!-- Caption Box -->
@@ -297,7 +298,7 @@ const datasets = Object.entries(hormoneData).map(([label, data]) => {
     data,
     borderColor: hormoneColors[label],
     tension: 0.4,
-    borderWidth: 2,
+    borderWidth: 4,
     hidden: false,
     pointRadius: data.map((_, i) => keyStages.includes(stages[i]) ? 5 : 0),
     pointHoverRadius: data.map((_, i) => keyStages.includes(stages[i]) ? 8 : 0),
@@ -310,6 +311,51 @@ const datasets = Object.entries(hormoneData).map(([label, data]) => {
   };
 });
 
+
+// Preload icons before drawing
+const icons = {
+  reproductive: new Image(),
+  perimenopause: new Image(),
+  postmenopause: new Image()
+};
+
+icons.reproductive.src = "../prototype/images/reproductive.svg";
+icons.perimenopause.src = "../prototype/images/perimenopause.svg";
+icons.postmenopause.src = "../prototype/images/menopause.svg";
+
+// Plugin to draw icons and labels inside the chart background
+const lifeStagePlugin = {
+  id: 'lifeStageIcons',
+  beforeDatasetsDraw(chart) {
+    const ctx = chart.ctx;
+    const xAxis = chart.scales['x'];
+    const yAxis = chart.scales['y'];
+
+    const iconSize = 150; // Size of icons
+    const iconY = yAxis.getPixelForValue(25); // Higher position in the chart
+
+    const stagesToDraw = [
+      { label: "Reproductive", xValue: "-4", icon: icons.reproductive },
+      { label: "Perimenopause", xValue: "-1", icon: icons.perimenopause },
+      { label: "Postmenopause", xValue: "+1b", icon: icons.postmenopause }
+    ];
+
+    stagesToDraw.forEach(stage => {
+      const x = xAxis.getPixelForValue(stage.xValue);
+
+      if (stage.icon.complete) {
+        ctx.save();
+        ctx.globalAlpha = 0.5; // Set transparency
+        ctx.drawImage(stage.icon, x - iconSize / 2, iconY - iconSize / 2, iconSize, iconSize);
+        ctx.restore(); // Reset alpha after drawing
+      }
+    });
+  }
+};
+
+
+
+Chart.register(lifeStagePlugin); // Make sure this is registered
 
 
 const chart = new Chart(ctx, {
@@ -370,7 +416,7 @@ if (!showStages.includes(stage)) {
       type: 'box',
       xMin: 0,
       xMax: 3.5,
-      backgroundColor: 'rgba(173, 216, 230, 0.1)',
+      backgroundColor: 'rgba(230, 216, 246, 0.2)', 
       borderWidth: 0,
       label: {
         content: 'Reproductive (~20–40)',
@@ -385,7 +431,7 @@ if (!showStages.includes(stage)) {
       type: 'box',
       xMin: 3.5,
       xMax: 6,
-      backgroundColor: 'rgba(255, 192, 203, 0.1)',
+      backgroundColor: 'rgba(198, 169, 241, 0.2)',
       borderWidth: 0,
       label: {
         content: 'Perimenopause (~40–50)',
@@ -400,7 +446,7 @@ if (!showStages.includes(stage)) {
       type: 'box',
       xMin: 6,
       xMax: 10,
-      backgroundColor: 'rgba(255, 239, 213, 0.1)',
+      backgroundColor: 'rgba(166, 116, 235, 0.2)',
       borderWidth: 0,
       label: {
         content: 'Postmenopause (50+)',
@@ -414,7 +460,9 @@ if (!showStages.includes(stage)) {
   }
 }
 
+
     },
+
     scales: {
       x: {
         title: {
