@@ -163,6 +163,8 @@ function downloadFile(url, title = "Untitled Image") {
           openLightbox(img, title, desc, author, downloadLink, type, interactiveSrc);
         }
       });
+
+      
   
       // Download icon
       const downloadIcon = card.querySelector(".download-icon");
@@ -388,3 +390,24 @@ const jumpLinks = document.getElementById('jumpLinks');
     }
   });
 
+
+  // Create scroll-up button behavior
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollUpBtn = document.querySelector(".scroll-up-button");
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 500) {
+      scrollUpBtn.classList.add("show");
+    } else {
+      scrollUpBtn.classList.remove("show");
+    }
+  });
+
+  scrollUpBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+});
