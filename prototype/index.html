@@ -29,22 +29,22 @@
         </div>
       </div>
       
-    <div class="jump-links">
-      <span>Jump to:</span>
-      <a href="#about">About</a>
-      <a href="#team">Team</a>
-      <a href="#license">Creative Commons</a>
-      <a href="#sponsors">Sponsors</a>
-      <a href="#contact">Contact</a>
-    </div>
+    
   </header>
 
+  <div class="jump-links" id="jumpLinks">
+    <span class="jump-label">Jump to:</span>
+    <a href="#about" class="jump-nav-button">About</a>
+    <a href="#contact" class="jump-nav-button">Contact Us</a>
+  </div>
   
   
+  
 
 
-
+  <div class="filter-controls">
   <section class="filter-section">
+    <i class="fas fa-search search-icon"></i>
     <input type="text" placeholder="Search topics in physiology..." class="search-bar">
     
     <button class="filter-button" data-filter="Physiology Essentials">Physiology Essentials</button>
@@ -56,12 +56,12 @@
     <button class="filter-button" data-filter="Endocrinology">Endocrinology</button>
     <button class="filter-button filter-show-all" data-filter="all">Show All</button>
   </section> 
-  
+  </div>
 
   
   <div id="gallery" class="card-grid">
     <!-- Card 1 -->
-    <div class="card" data-category="Gastrointestinal" data-img="../prototype/thumbnails/cephalicphase_thumbnail.png" data-title="Phases of Gastric Motility" data-desc="The phases of gastric motility—cephalic, gastric, and intestinal—are triggered by the sight, smell, or taste of food, starting with salivation and preparing the stomach for digestion." data-author="Priya Modi">
+    <div class="card" tabindex="0" data-category="Gastrointestinal" data-img="../prototype/thumbnails/cephalicphase_thumbnail.png" data-title="Phases of Gastric Motility" data-desc="The phases of gastric motility—cephalic, gastric, and intestinal—are triggered by the sight, smell, or taste of food, starting with salivation and preparing the stomach for digestion." data-author="Priya Modi">
       <div class="card-image-wrapper">
         <img src="../prototype/thumbnails/cephalicphase_thumbnail.png" alt="Phases of Gastric Motility" class="card-image">
       </div>
@@ -75,7 +75,6 @@
             <span class="type-tag-blue">2D  Diagram</span>
           </div>
           <div class="card-icons">
-            <i class="fas fa-heart heart-icon"></i>
             <i class="fas fa-download download-icon"></i>
           </div>
         </div>
@@ -83,7 +82,7 @@
     </div>
   
     <!-- Card 2 -->
-    <div class="card" data-category="Musculoskeletal" data-img="../prototype/thumbnails/myastheniagravis_thumbnail.png" data-title="Myasthenia Gravis" data-desc="Depicting muscle weakness and facial drooping, this image shows how myasthenia gravis disrupts neurotransmission at the neuromuscular junction, impairing muscle contraction due to blocked acetylcholine receptors." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1qZW0oBLh8fK9px4j9Q3URAHcW0QsimUN/export/pptx">
+    <div class="card" tabindex="0" data-category="Musculoskeletal" data-img="../prototype/thumbnails/myastheniagravis_thumbnail.png" data-title="Myasthenia Gravis" data-desc="Depicting muscle weakness and facial drooping, this image shows how myasthenia gravis disrupts neurotransmission at the neuromuscular junction, impairing muscle contraction due to blocked acetylcholine receptors." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1qZW0oBLh8fK9px4j9Q3URAHcW0QsimUN/export/pptx">
       <div class="card-image-wrapper">
         <img src="../prototype/thumbnails/myastheniagravis_thumbnail.png" alt="Myasthenia Gravis" class="card-image">
       </div>
@@ -97,7 +96,6 @@
             <span class="type-tag-green">Interactive</span>
           </div>
           <div class="card-icons">
-            <i class="fas fa-heart heart-icon"></i>
             <i class="fas fa-download download-icon"></i>
           </div>
         </div>
@@ -106,7 +104,7 @@
 
   
     <!-- Card 3 -->
-    <div class="card" data-category="Respiratory Physiology" data-img="../prototype/thumbnails/lung_thumbnail.png" data-title="Negative intrapleural Pressure" data-desc="This image highlights how negative intrapleural pressure helps lungs expand by contrasting healthy, elderly, and obese lungs, illustrating the impact of body composition on respiratory function." data-author="Priya Modi">
+    <div class="card" tabindex="0" data-category="Respiratory Physiology" data-img="../prototype/thumbnails/lung_thumbnail.png" data-title="Negative intrapleural Pressure" data-desc="This image highlights how negative intrapleural pressure helps lungs expand by contrasting healthy, elderly, and obese lungs, illustrating the impact of body composition on respiratory function." data-author="Priya Modi">
       <div class="card-image-wrapper">
         <img src="../prototype/thumbnails/lung_thumbnail.png" alt="Negative Intrapleural Pressure" class="card-image">
       </div>
@@ -121,7 +119,6 @@
             <span class="type-tag-blue">2D Diagram</span>
           </div>
           <div class="card-icons">
-            <i class="fas fa-heart heart-icon"></i>
             <i class="fas fa-download download-icon"></i>
           </div>
         </div>
@@ -129,7 +126,7 @@
     </div>
   
     <!-- Card 4 -->
-    <div class="card" data-category="Central Nervous System" data-img="../prototype/thumbnails/otolith_thumbnail.png" data-title="Effects of Menopause" data-desc="This image demonstrates how the vestibular system detects head movements using otoliths and otoconia, showing the role of the inner ear in maintaining balance and spatial orientation." data-author="Priya Modi">
+    <div class="card" tabindex="0" data-category="Central Nervous System" data-img="../prototype/thumbnails/otolith_thumbnail.png" data-title="Effects of Menopause" data-desc="This image demonstrates how the vestibular system detects head movements using otoliths and otoconia, showing the role of the inner ear in maintaining balance and spatial orientation." data-author="Priya Modi">
         <div class="card-image-wrapper">
           <img src="../prototype/thumbnails/otolith_thumbnail.png" alt="Vestibular System Function" class="card-image">
         </div>
@@ -144,7 +141,6 @@
               <span class="type-tag-blue">2D Diagram</span>
             </div>
             <div class="card-icons">
-              <i class="fas fa-heart heart-icon"></i>
               <i class="fas fa-download download-icon"></i>
             </div>
           </div>
@@ -152,7 +148,7 @@
       </div>
 
       <!-- Card 5 -->
-    <div class="card" data-category="Central Nervous System" data-img="../prototype/thumbnails/comingsoon_1.png" data-title="Motor Signalling Pathway and Spinal Injury Impairment" data-desc="This upcoming image will illustrate the corticospinal motor pathway, showing how voluntary movement signals travel from the brain to muscles. It will also depict how spinal injuries can block these pathways, leading to motor function impairments." data-author="Priya Modi">
+    <div class="card" tabindex="0" data-category="Central Nervous System" data-img="../prototype/thumbnails/comingsoon_1.png" data-title="Motor Signalling Pathway and Spinal Injury Impairment" data-desc="This upcoming image will illustrate the corticospinal motor pathway, showing how voluntary movement signals travel from the brain to muscles. It will also depict how spinal injuries can block these pathways, leading to motor function impairments." data-author="Priya Modi">
         <div class="card-image-wrapper">
           <img src="../prototype/thumbnails/comingsoon_1.png" alt="Motor Signalling Pathway and Spinal Injury Impairment" class="card-image">
         </div>
@@ -167,7 +163,6 @@
               <span class="type-tag-green">Interactive</span>
             </div>
             <div class="card-icons">
-              <i class="fas fa-heart heart-icon"></i>
               <i class="fas fa-download download-icon"></i>
             </div>
           </div>
@@ -175,7 +170,7 @@
       </div>
 
       <!-- Card 6 -->
-    <div class="card" data-category="Gastrointestinal" data-img="../prototype/thumbnails/comingsoon_2.png" data-title="Jaundice Across Skin Tones" data-desc="Soon, an image will demonstrate how jaundice presents in different skin tones due to liver dysfunction and a buildup of bilirubin. This illustration will explain the physiological mechanism behind jaundice and how it affects the appearance of the skin." data-author="Priya Modi">
+    <div class="card" tabindex="0" data-category="Gastrointestinal" data-img="../prototype/thumbnails/comingsoon_2.png" data-title="Jaundice Across Skin Tones" data-desc="Soon, an image will demonstrate how jaundice presents in different skin tones due to liver dysfunction and a buildup of bilirubin. This illustration will explain the physiological mechanism behind jaundice and how it affects the appearance of the skin." data-author="Priya Modi">
         <div class="card-image-wrapper">
           <img src="../prototype/thumbnails/comingsoon_2.png" alt="Jaundice Across Skin Tones" class="card-image">
         </div>
@@ -189,7 +184,6 @@
               <span class="type-tag-blue">2D Diagram</span>
             </div>
             <div class="card-icons">
-              <i class="fas fa-heart heart-icon"></i>
               <i class="fas fa-download download-icon"></i>
             </div>
           </div>
@@ -198,7 +192,7 @@
 
 
       <!-- Card 7 -->
-    <div class="card" data-category="Central Nervous System" data-img="../prototype/thumbnails/comingsoon_3.png" data-title="Touch Sensation and Pacinian Corpuscles" data-desc="An upcoming diagram will show how the sensation of touch is relayed to the brain through the nervous system, with a focus on the role of Pacinian corpuscles in the skin. It will detail how these specialized receptors detect mechanical pressure and vibration.
+    <div class="card" tabindex="0" data-category="Central Nervous System" data-img="../prototype/thumbnails/comingsoon_3.png" data-title="Touch Sensation and Pacinian Corpuscles" data-desc="An upcoming diagram will show how the sensation of touch is relayed to the brain through the nervous system, with a focus on the role of Pacinian corpuscles in the skin. It will detail how these specialized receptors detect mechanical pressure and vibration.
 
     " data-author="Priya Modi">
         <div class="card-image-wrapper">
@@ -215,7 +209,6 @@
               <span class="type-tag-blue">2D Diagram</span>
             </div>
             <div class="card-icons">
-              <i class="fas fa-heart heart-icon"></i>
               <i class="fas fa-download download-icon"></i>
             </div>
           </div>
@@ -224,7 +217,7 @@
 
 
       <!-- Card 8 -->
-    <div class="card" data-type="interactive"  data-interactive-src="menopauseinteractive.html" data-category="Endocrinology" data-title="Physiology of Menopause" data-desc="This image will depict the physiological changes that occur during menopause, including hormonal shifts, effects on the reproductive system, and the broader implications for health, such as bone density and cardiovascular function.
+    <div class="card" tabindex="0" data-type="interactive"  data-interactive-src="menopauseinteractive.html" data-category="Endocrinology" data-title="Physiology of Menopause" data-desc="This image will depict the physiological changes that occur during menopause, including hormonal shifts, effects on the reproductive system, and the broader implications for health, such as bone density and cardiovascular function.
 
     " data-author="Priya Modi">
         <div class="card-image-wrapper">
@@ -239,7 +232,6 @@
               <span class="type-tag-green">Interactive</span>
             </div>
             <div class="card-icons">
-              <i class="fas fa-heart heart-icon"></i>
               <i class="fas fa-download download-icon"></i>
             </div>
           </div>
@@ -247,7 +239,7 @@
       </div>
   
     <!-- Card 9 -->
-    <div class="card" data-type="interactive"  data-interactive-src="menopausechart.html" data-category="Endocrinology" data-title="Physiology of Menopause" data-desc="This image will depict the physiological changes that occur during menopause, including hormonal shifts, effects on the reproductive system, and the broader implications for health, such as bone density and cardiovascular function.
+    <div class="card" tabindex="0" data-type="interactive"  data-interactive-src="menopausechart.html" data-category="Endocrinology" data-title="Physiology of Menopause" data-desc="This image will depict the physiological changes that occur during menopause, including hormonal shifts, effects on the reproductive system, and the broader implications for health, such as bone density and cardiovascular function.
 
     " data-author="Priya Modi">
         <div class="card-image-wrapper">
@@ -262,7 +254,6 @@
               <span class="type-tag-green">Interactive</span>
             </div>
             <div class="card-icons">
-              <i class="fas fa-heart heart-icon"></i>
               <i class="fas fa-download download-icon"></i>
             </div>
           </div>
@@ -321,7 +312,7 @@
         <h3>Anita Woods</h3>
         <p class="credentials">BSc, PhD</p>
         <img src="../prototype/images/Anita_Headshot.png" alt="Dr. Anita Woods headshot">
-        <p><strong>Project Supervisor</strong>
+        <p><strong>Content Supervisor</strong>
         <p>Supports this project through grant funding and academic supervision from the Physiology & Pharmacology Department.</p>
         <a href="https://www.schulich.uwo.ca/physpharm/people/faculty/woods_anita.html" target="_blank">See website &rsaquo;</a>
       </div>
@@ -331,7 +322,7 @@
         <p class="credentials">B.Eng, MScBMC</p>
         <img src="../prototype/images/Shay_Headshot.png" alt="Shay Saharan headshot">
         <p><strong>BMC Design Supervisor</strong>
-        <p>Provides consultation on visual design and UX from a biomedical communications perspective.</p>
+        <p>Provides expert consultation on visual design and UX/UI from a biomedical communications perspective.</p>
         <a href="https://www.ss-design.site/about" target="_blank">See website &rsaquo;</a>
       </div>
     

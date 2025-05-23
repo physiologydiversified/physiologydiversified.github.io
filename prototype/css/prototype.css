@@ -69,20 +69,75 @@ header {
   margin-top: 4px;
 }
 .jump-links {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
   display: flex;
+  align-items: center;
   gap: 10px;
-  font-size: 0.75rem;
-}
-.jump-links a {
-  color: #5e3d9f;
-  text-decoration: none;
+  justify-content: flex-end;
+  margin-left: auto;
+  width: fit-content;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.154);
+    border-radius: 12px;
+    padding: 0.5rem 0.9rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .jump-nav-button:focus {
+    outline: 2px solid #1a6bb8;
+    outline-offset: 4px;
+  }
+
+  
+  
+
+.jump-label {
+  font-size: 0.9rem;
   font-weight: 500;
+  color: #333;
 }
-.jump-links a:hover {
-  text-decoration: underline;
+
+.jump-nav-button {
+  background-color: #dceeff; /* soft blue background */
+  color: #1a6bb8; /* readable blue text */
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.jump-nav-button:hover {
+  background-color: #b9dcff;
+  transform: translateY(-1px);
+}
+
+/* Optional: Hide only after scrolling far past About */
+.jump-links.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* Responsive: center layout */
+@media (max-width: 600px) {
+  .jump-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    top: 0.5rem;
+    right: auto;
+    left: 0;
+    margin: 0 auto;
+  }
 }
 
 .header-wrapper {
@@ -104,57 +159,94 @@ header {
 /* =======================
    Search & Filters
 ======================= */
-.filter-bar {
+
+.filter-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.1rem 1rem;
+}
+
+
+.filter-buttons {
   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
   justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 10px 0 30px;
-  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+.filter-section {
+ margin-left: 5px;
 }
 .search-bar {
-  width: 200px;
-  max-width: 600px;
+  width: 300px;
+  max-width: 800px;
   padding: 10px;
-  margin-left: 30px;
+  margin-right: 5px;
+  margin-bottom: 5px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
+.search-icon {
+padding-left: px;
+  color: #888;
+  pointer-events: none;
+}
 .filter-button {
-  padding: 10px 15px;
+  padding: 10px 18px;
+  margin: 3px;
   background-color: #e4d9fa;
   border: none;
   border-radius: 20px;
   color: #5e3d9f;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .filter-button:hover {
-  background-color: #d6c5f5;
-}
+    background-color: #d6c5f5;
+    transform: translateY(-2px);
+  }
+  
 .filter-button.active {
   background-color: #5e3d9f;
   color: white;
 }
+
 
 /* =======================
    Card Grid Layout
 ======================= */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* ✅ default is 3 cards */
   gap: 20px;
-  padding: 20px;
+  padding: 30px;
+  padding-bottom: 6rem;
 }
+
 @media (max-width: 992px) {
   .card-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* ✅ switch to 2 on medium screens */
   }
 }
+
 @media (max-width: 600px) {
   .card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* ✅ single column on mobile */
   }
 }
 
@@ -165,40 +257,41 @@ header {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.05);
   border-radius: 1rem;
   padding: 1rem;
   color: white;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  min-height: 60vh;
+  height: 600px;
   width: 100%;
   transition: transform 0.2s ease;
   position: relative;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
 }
 .card:hover {
   transform: scale(1.05);
 }
 
 .card-image-wrapper {
-  background-color: #e4d9fa;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
   width: 100%;
-}
-.card-image {
-  height: 300%;
-  width: 151%;
-  object-fit: contain;
+  aspect-ratio: 4 / 3; /* Ensures consistent shape */
+  overflow: hidden;
+  border-radius: 8px;
 }
 
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .card-content {
   padding: 1px;
   word-break: break-word;
+  padding-bottom: 4rem;
 }
 .card-content h3 {
   font-size: 1.2rem;
@@ -209,6 +302,7 @@ header {
   font-size: 0.9rem;
   color: #555;
   margin: 10px 0;
+  margin-bottom: 2rem; /* increase if still tight */
 }
 
 /* =======================
@@ -223,57 +317,66 @@ Card Bottom Section
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  margin-top: 0.5rem; 
+  margin-bottom: 1rem;
 }
 .card-bottom .tags {
   display: flex;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 0.5rem;
+  flex-direction: row; /* Default for larger screens */
 }
-.card-icons {
+/* Base tag styling (applies to all tags) */
+.card-bottom .tags span {
+  background-color: #e4d9fa;  /* default lilac */
+  color: #5e3d9f;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+/* Stack vertically on screens narrower than 600px */
+@media (max-width: 600px) {
+  .card-bottom .tags {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+
+
+/* =======================
+Tags
+======================= */
+
+/* Specific tag overrides */
+.card-bottom .tags .type-tag-blue {
+  background-color: #d0e6ff;
+  color: #1a73e8;
+}
+
+.card-bottom .tags .type-tag-green {
+  background-color: #d8f5dc;
+  color: #0b8b44;
+}
+
+
+/* =======================
+Icons
+======================= */
+
+card-icons {
   display: flex;
   gap: 30px;
   align-items: center;
 }
 
-/* =======================
-Tags
-======================= */
-.category-tag {
-  font-size: 0.8rem;
-  color: #5e3d9f;
-  margin-right: 10px;
-}
-.type-tag-green {
-  color: #1d6f42;
-  background-color: #e2f4e9;
-}
-.type-tag-blue {
-  color: #004080;
-  background-color: #cce5ff;
-}
-.type-tag-orange {
-  color: #804000;
-  background-color: #ffe5cc;
-}
-.type-tag-red {
-  color: #800000;
-  background-color: #ffcccc;
-}
-.type-tag-green,
-.type-tag-blue,
-.type-tag-orange,
-.type-tag-red {
-  display: inline-block;
-  font-size: 0.8rem;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: var(--font-sans);
-}
-
-/* =======================
-Icons
-======================= */
-.download-icon,
-.heart-icon {
+.download-icon {
   font-size: 1.5rem;
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -285,16 +388,7 @@ Icons
   color: #EF4444;
   transform: scale(1.2);
 }
-.heart-icon {
-  color: #D1D5DB;
-}
-.heart-icon:hover {
-  color: #EF4444;
-  transform: scale(1.2);
-}
-.heart-icon.favorited {
-  color: #EF4444;
-}
+
 
 
 /* =======================
@@ -382,7 +476,7 @@ Icons
   position: absolute;
   top: 20px;
   right: 30px;
-  font-size: 1.6rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #5e3d9f;
   cursor: pointer;
@@ -457,22 +551,28 @@ Icons
    Scroll to Top Button
 ======================= */
 .scroll-up-button {
-  text-align: center;
-  margin-top: 40px;
-}
-.scroll-up-button a {
-  display: inline-block;
-  background-color: #5e3d9f;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #e4d9fa;
+  color: #5e3d9f;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 200;
 }
-.scroll-up-button a:hover {
-  background-color: #462a77;
+
+.scroll-up-button.show {
+  transform: translateY(0);
+  opacity: 1;
 }
+
 
 /* =======================
    Utility & Effects
@@ -750,4 +850,51 @@ Icons
 
 .expand-label {
   font-size: 0.85rem;
+}
+
+/* =======================
+   Accessibility Focus States
+======================= */
+
+:focus-visible {
+  outline: 2px solid #1a6bb8; /* accessible blue */
+  outline-offset: 4px;
+}
+
+/* Specific overrides for elements with soft backgrounds */
+.jump-nav-button:focus-visible,
+.filter-button:focus-visible,
+.download-icon:focus-visible,
+.card-icons i:focus-visible {
+  border-radius: 6px;
+  outline: 2px solid #1a6bb8;
+  outline-offset: 4px;
+}
+
+/* Input fields (search + contact form) */
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #5e3d9f; /* purple for form fields */
+  outline-offset: 2px;
+  background-color: #fff;
+}
+
+/* Optional: increase contrast for light buttons */
+.jump-nav-button:focus-visible {
+  background-color: #cde9ff;
+}
+.filter-button:focus-visible {
+  background-color: #e4d9fa;
+}
+
+.card:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(26, 107, 184, 0.3); /* soft blue glow */
+  transform: scale(1.03);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover,
+.card:focus {
+  transform: scale(1.05);
 }

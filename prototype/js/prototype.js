@@ -137,32 +137,34 @@ function downloadFile(url, title = "Untitled Image") {
     // Prevent triggering the card's onclick (lightbox)
     event.stopPropagation();
   
-    // Toggle the "favorited" class on the heart icon
-    const heartIcon = event.target;
-    heartIcon.classList.toggle('favorited');
   }
-  
-  // Attach click event listeners to each card to open the lightbox
   document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".card");
   
-    cards.forEach(card => {
-      // Full card click
-      card.addEventListener("click", function (event) {
-        if (event.target.classList.contains("download-icon")) return; // prevent lightbox if clicking download icon
+    cards.forEach((card, index) => {
+      // Make each card keyboard-focusable
+      card.setAttribute("tabindex", "0");
   
+      // Click handler (mouse)
+      card.addEventListener("click", function (event) {
+        if (event.target.classList.contains("download-icon")) return;
+  
+        const type = card.getAttribute("data-type") || "static";
+        const interactiveSrc = card.getAttribute("data-interactive-src") || "";
         const img = card.getAttribute("data-img");
         const title = card.getAttribute("data-title");
         const desc = card.getAttribute("data-desc");
         const author = card.getAttribute("data-author");
         const downloadLink = card.getAttribute("data-download");
-        const type = card.getAttribute("data-type") || "static";
-        const interactiveSrc = card.getAttribute("data-interactive-src") || "";
   
-        openLightbox(img, title, desc, author, downloadLink, type, interactiveSrc);
+        if (type === "interactive" && interactiveSrc) {
+          window.open(interactiveSrc, "_blank");
+        } else {
+          openLightbox(img, title, desc, author, downloadLink, type, interactiveSrc);
+        }
       });
   
-      // Download icon click
+      // Download icon
       const downloadIcon = card.querySelector(".download-icon");
       if (downloadIcon) {
         downloadIcon.addEventListener("click", function (event) {
@@ -171,20 +173,67 @@ function downloadFile(url, title = "Untitled Image") {
           downloadFile(downloadLink, card.getAttribute("data-title"));
         });
       }
-    });
-  });
   
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const heartIcons = document.querySelectorAll('.heart-icon'); // Select all heart icons
-  
-    heartIcons.forEach(icon => {
-      icon.addEventListener('click', function (event) {
-        event.stopPropagation(); // Prevent card click/lightbox
-        this.classList.toggle('favorited'); // Toggle favorite style
+      // Keyboard handler
+      card.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          card.click(); // Simulate click
+        }
       });
     });
+
+    const filterButtons = document.querySelectorAll('.filter-button');
+
+filterButtons.forEach((button, index) => {
+  button.setAttribute("tabindex", "0"); // ensure focusable
+
+  button.addEventListener("keydown", function (event) {
+    const filtersArray = Array.from(filterButtons);
+    const currentIndex = filtersArray.indexOf(button);
+
+    if (event.key === "ArrowRight") {
+      const next = filtersArray[currentIndex + 1] || filtersArray[0];
+      next.focus();
+      event.preventDefault();
+    }
+
+    if (event.key === "ArrowLeft") {
+      const prev = filtersArray[currentIndex - 1] || filtersArray[filtersArray.length - 1];
+      prev.focus();
+      event.preventDefault();
+    }
+
+    if (event.key === "Enter" || event.key === " ") {
+      button.click(); // Activate the filter
+      event.preventDefault();
+    }
   });
+});
+
+  
+    // Optional: arrow key navigation between cards
+    document.addEventListener("keydown", function (event) {
+      const focusedCard = document.activeElement;
+      if (!focusedCard.classList.contains("card")) return;
+  
+      const cardsArray = Array.from(cards);
+      const currentIndex = cardsArray.indexOf(focusedCard);
+  
+      if (event.key === "ArrowRight") {
+        const next = cardsArray[currentIndex + 1];
+        if (next) next.focus();
+      }
+  
+      if (event.key === "ArrowLeft") {
+        const prev = cardsArray[currentIndex - 1];
+        if (prev) prev.focus();
+      }
+    });
+  });
+  
+  
+
+
 
   document.addEventListener('DOMContentLoaded', function () {
     const lightbox = document.getElementById("lightbox");
@@ -194,6 +243,15 @@ function downloadFile(url, title = "Untitled Image") {
         closeLightbox();
       }
     });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      const lightbox = document.getElementById("lightbox");
+      if (lightbox && lightbox.classList.contains("show")) {
+        closeLightbox();
+      }
+    }
   });
   
 //   search functionality
@@ -316,3 +374,17 @@ document.querySelector('.search-bar').addEventListener('input', function () {
   document.querySelectorAll('.about-block, .team-grid, .sponsor-logos').forEach(el => {
     observer.observe(el);
   });
+
+// Hide jump links on scroll
+const jumpLinks = document.getElementById('jumpLinks');
+  const aboutSection = document.getElementById('about');
+
+  window.addEventListener('scroll', () => {
+    const aboutTop = aboutSection.getBoundingClientRect().top;
+    if (aboutTop < 100) {
+      jumpLinks.classList.add('hide');
+    } else {
+      jumpLinks.classList.remove('hide');
+    }
+  });
+
