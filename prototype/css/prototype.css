@@ -140,81 +140,97 @@ header {
   }
 }
 
-.header-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  text-align: left;
-}
+
 
 .site-logo {
-  width: 80px; /* adjust as needed */
+  width: 60px;
   height: auto;
-  border-radius: 8px; /* optional: for rounded corners */
+  border-radius: 8px;
 }
+
+.logo-and-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center; /* center the combo horizontally */
+  flex-wrap: nowrap;
+}
+
+
+.header-left h1 {
+  margin: 0;
+}
+
 
 
 /* =======================
    Search & Filters
 ======================= */
-
 .filter-controls {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
+  justify-content: center;
   padding: 1.1rem 1rem;
 }
 
-
-.filter-buttons {
+.filter-section {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
   justify-content: center;
+  width: 100%;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 350px;
+  flex-shrink: 0;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
-  .filter-controls {
+  .filter-section {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .search-bar {
+  .search-wrapper {
     width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 100%;
   }
 }
 
-.filter-section {
- margin-left: 5px;
-}
-.search-bar {
-  width: 300px;
-  max-width: 800px;
-  padding: 10px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-.search-icon {
-padding-left: px;
-  color: #888;
-  pointer-events: none;
-}
+
 .filter-button {
   padding: 10px 18px;
-  margin: 3px;
+  margin: -3px;
   background-color: #e4d9fa;
   border: none;
   border-radius: 20px;
   color: #5e3d9f;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #f5ecff; /* Soft purple tint */
+  color: #5e3d9f;
+  border: 1.5px solid #c7b6f2;
+  font-weight: 500;
 }
 .filter-button:hover {
     background-color: #d6c5f5;
@@ -224,6 +240,32 @@ padding-left: px;
 .filter-button.active {
   background-color: #5e3d9f;
   color: white;
+}
+
+.filter-show-all {
+  background-color: #f5ecff; /* Soft purple tint */
+  color: #5e3d9f;
+  border: 1.5px solid #c7b6f2;
+  font-weight: 500;
+}
+
+.filter-show-all i {
+  margin-right: 6px;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .filter-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filter-button {
+    flex: 0 1 auto;
+    min-width: 120px;
+  }
 }
 
 
@@ -389,6 +431,18 @@ card-icons {
   transform: scale(1.2);
 }
 
+.external-link-icon {
+  font-size: 1.5rem;
+  color: #5e3d9f;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.external-link-icon:hover {
+  color: #EF4444;
+  transform: scale(1.2);
+}
+
 
 
 /* =======================
@@ -487,19 +541,21 @@ card-icons {
   transition: transform 0.1s ease-in;
 }
 #download-button {
-  background-color: #5e3d9f;
+  background: linear-gradient(135deg, #5e3d9f, #7b5edc);
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 5px;
+  border-radius: 999px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background 0.2s ease;
 }
+
 #download-button:hover {
-  background-color: #462a77;
-  transform: scale(1.1);
-  transition: transform 0.1s ease-in-out;
+  background: linear-gradient(135deg, #462a77, #6b4ec3);
+  transform: scale(1.05);
 }
 
 /* =======================
@@ -779,6 +835,21 @@ card-icons {
   color: #fff;
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+  .team-grid {
+    flex-wrap: wrap; /* allow items to wrap to next line */
+    flex-direction: column;
+    align-items: center;
+    overflow: visible; /* allow vertical scroll if needed */
+    padding: 20px 20px 40px;
+  }
+
+  .team-member {
+    max-width: 90%;
+  }
+}
+
 
 
 .credentials {
