@@ -308,7 +308,7 @@ header {
   cursor: pointer;
   height: 600px;
   width: 100%;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
   position: relative;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
   border-radius: 16px;
@@ -510,15 +510,16 @@ card-icons {
   font-size: 0.9rem;
   margin: 5px 0;
 }
-.citation,
-.citation-format {
-  font-size: 0.9rem;
+
+.lightbox-text p.citation-format {
+  font-size: 0.75rem;
   color: #555;
-}
-.citation-format {
-  margin-top: 10px;
   font-style: italic;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
+
+
 .license a {
   color: #007bff;
   text-decoration: none;
@@ -541,21 +542,31 @@ card-icons {
   transition: transform 0.1s ease-in;
 }
 #download-button {
-  background: linear-gradient(135deg, #5e3d9f, #7b5edc);
-  color: white;
-  padding: 12px 24px;
-  border: none;
+  background: linear-gradient(135deg, #ebe4ff, #d6c7f9);
+  color: #5e3d9f;
+  padding: 10px 20px;
+  border: 1px solid #d2c1f2;
   border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 6px rgba(94, 61, 159, 0.15);
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#download-button i {
+  font-size: 1rem;
 }
 
 #download-button:hover {
-  background: linear-gradient(135deg, #462a77, #6b4ec3);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #e2d4ff, #cdbdf3);
+  color: #3c2679;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(94, 61, 159, 0.2);
 }
 
 /* =======================

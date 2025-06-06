@@ -43,6 +43,8 @@
       </div>
   
       <!-- Each button directly inside .filter-section -->
+      <button class="filter-button filter-show-all" data-filter="all">
+        <i class="fas fa-layer-group"></i> Show All
       <button class="filter-button" data-filter="Physiology Essentials">Physiology Essentials</button>
       <button class="filter-button" data-filter="Gastrointestinal">Gastrointestinal</button>
       <button class="filter-button" data-filter="Central Nervous System">Central Nervous System</button>
@@ -50,8 +52,6 @@
       <button class="filter-button" data-filter="Reproductive Physiology">Reproductive Physiology</button>
       <button class="filter-button" data-filter="Musculoskeletal">Musculoskeletal</button>
       <button class="filter-button" data-filter="Endocrinology">Endocrinology</button>
-      <button class="filter-button filter-show-all" data-filter="all">
-        <i class="fas fa-layer-group"></i> Show All
       </button>
     </section>
   </div>
@@ -460,7 +460,11 @@
         <p class="citation">Illustrator: <span id="lightbox-author"></span></p>
         <p class="license">Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.</p>
         <p class="citation-format">APA Citation: <span id="lightbox-citation"></span></p>
-        <button id="download-button">Download</button>
+        <button id="download-button" aria-label="Download image">
+          <i class="fas fa-download" aria-hidden="true"></i>
+          <span class="button-label">Download</span>
+        </button>
+        
         
 
       </div>

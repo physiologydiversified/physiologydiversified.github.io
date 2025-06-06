@@ -46,7 +46,7 @@ function openLightbox(imageSrc, title, description, author, downloadLink, type =
   lightboxAuthor.textContent = author;
 
   const currentYear = new Date().getFullYear();
-  lightboxCitation.textContent = `${author} (${currentYear}). ${title}. Physiology Diversified. Retrieved from https://physiologydiversified.example.com`;
+  lightboxCitation.textContent = `${author} (${currentYear}). ${title}. Physiology Diversified. Retrieved from physiologydiversified.github.io`;
 
   // ✅ This was missing:
   lightbox.style.display = "flex";

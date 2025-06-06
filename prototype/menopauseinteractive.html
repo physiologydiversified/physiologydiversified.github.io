@@ -13,46 +13,59 @@
       padding: 2rem;
     }
 
-    #container {
-      position: relative;
-      width: 600px;
-      margin: auto;
-    }
+    html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
 
-    #base-image {
-      width: 200%;
-      height: 200%;
-      display: block;
-      border-radius: 0px;
-    }
+#container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+}
 
-    .hotspot {
+#base-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* or use 'cover' depending on your goal */
+  display: block;
+}
+
+
+
+.hotspot {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #f28ea0; /* Soft blush pink */
+  width: 16px;
+  height: 16px;
+  background-color: #e63946; /* Deeper pink-red for contrast */
   border: 2px solid white;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
-  box-shadow: 0 0 0 rgba(242, 142, 160, 0.7);
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(242, 142, 160, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(242, 142, 160, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(242, 142, 160, 0);
-  }
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.8);
+  animation: pulse 1.5s infinite;
+  transition: transform 0.2s ease;
 }
 
-    .hotspot:hover {
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
+.hotspot:hover {
+  transform: scale(1.2);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(230, 57, 70, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+  }
+}
 
     .popup {
       position: absolute;
@@ -83,15 +96,15 @@
     }
 
     /* Hotspot Positions - customize as needed */
-    .hot-flashes { top: 17%; left: 79%; }
-    .bone-loss { top: 50%; left: 70%; }
-    .vaginal-atrophy { top: 49%; left: 80%; }
+    .hot-flashes { top: 13%; left: 38%; }
+    .bone-loss { top: 75%; left: 42%; }
+    .vaginal-atrophy { top: 53%; left: 38.8%; }
   </style>
 </head>
 <body>
 
 <div id="container">
-  <img src="../prototype/diagrams/menopausedraft.png" id="base-image" alt="Menopause Diagram" />
+  <img src="../prototype/diagrams/Draft3_MenopauseDiagram_OvarianLossofFunction@4x.png" id="base-image" alt="Menopause Diagram" />
 
   <!-- Hotspots -->
   <div class="hotspot hot-flashes" data-symptom="Hot Flashes"></div>
