@@ -445,31 +445,46 @@
     </div>
 
  
-  <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox">
-    <div class="lightbox-content">
-      <span class="close" onclick="closeLightbox()">&times;</span>
-      <button id="expand-button" aria-label="Open full screen" title="Open full screen">
-        <i class="fas fa-up-right-from-square"></i>
-        <span class="expand-label">Open Fullscreen</span>
-      </button>
-      <div id="lightbox-content-container"></div>
-      <div class="lightbox-text">
-        <h2 id="lightbox-title"></h2>
-        <p id="lightbox-description"></p>
-        <p class="citation">Illustrator: <span id="lightbox-author"></span></p>
-        <p class="license">Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.</p>
-        <p class="citation-format">APA Citation: <span id="lightbox-citation"></span></p>
-        <button id="download-button" aria-label="Download image">
-          <i class="fas fa-download" aria-hidden="true"></i>
-          <span class="button-label">Download</span>
-        </button>
-        
-        
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
 
-      </div>
+    <!-- Close Button -->
+    <button class="close" onclick="closeLightbox()">
+      <i class="fas fa-xmark"></i>
+      Close
+    </button>
+    
+
+    <!-- Image or iframe injected here -->
+    <div id="lightbox-content-container" class="image-wrapper"></div>
+
+    <!-- ✅ Buttons under image -->
+    <div class="image-action-buttons below-image">
+      <button id="download-button-floating" aria-label="Download this image (PPT-ready)" title="Download this image (PPT-ready)">
+        <i class="fas fa-download"></i>
+        <span class="button-label">Download this image (PPT-ready)</span>
+      </button>
+      <button id="expand-button" aria-label="View larger" title="View larger">
+        <i class="fas fa-up-right-from-square"></i>
+        <span class="button-label">View larger</span>
+      </button>
+    </div>
+
+    <!-- Caption -->
+    <div class="lightbox-text">
+      <h2 id="lightbox-title"></h2>
+      <p id="lightbox-description"></p>
+      <p class="citation">Illustrator: <span id="lightbox-author"></span></p>
+      <p class="license">
+        Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.
+      </p>
+      <p class="citation-format">APA Citation: <span id="lightbox-citation"></span></p>
     </div>
   </div>
+</div>
+
+
 
   <!-- Footer -->
   <section class="about-section" id="about">
