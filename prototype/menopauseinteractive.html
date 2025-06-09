@@ -177,6 +177,24 @@
   function closePopup() {
     popup.style.display = 'none';
   }
+
+
+  // Close popup when clicking outside of it
+document.addEventListener('click', function (e) {
+  const isClickInsidePopup = popup.contains(e.target);
+  const isClickOnHotspot = e.target.classList.contains('hotspot');
+
+  if (!isClickInsidePopup && !isClickOnHotspot) {
+    closePopup();
+  }
+});
+
+  // Close popup with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closePopup();
+    }
+  });
 </script>
 
 </body>
