@@ -48,6 +48,15 @@ function openLightbox(imageSrc, title, description, author, downloadLink, type =
   const currentYear = new Date().getFullYear();
   lightboxCitation.textContent = `${author} (${currentYear}). ${title}. Physiology Diversified. Retrieved from physiologydiversified.github.io`;
 
+  const downloadBtn = document.getElementById("download-button-floating");
+if (downloadBtn && downloadLink) {
+  downloadBtn.onclick = () => downloadFile(downloadLink, title);
+  downloadBtn.style.display = "inline-block";
+} else if (downloadBtn) {
+  downloadBtn.onclick = null;
+  downloadBtn.style.display = "none"; // hide button if no download
+}
+
   // ✅ This was missing:
   lightbox.style.display = "flex";
   setTimeout(() => lightbox.classList.add("show"), 10);
