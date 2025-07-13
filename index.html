@@ -1,137 +1,618 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priya's Personal Course Website</title>
-    <link rel="stylesheet" href="style/style.css"> <!-- External stylesheet -->
-    <link href="vendor/bmc3dviewer/css/bmc3dviewer.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../prototype/css/prototype.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZFM74C9X28"></script> 
+
+  <title>Physiology Diversified</title>
 </head>
 
 <body>
+    <header>
 
-<h1>MSC2006: Advanced Media Design Technologies</h1>
-<h2 id="no-hover">Priya's Personal Course Page</h2>
-<p style="text-align: center;">Hello! Welcome to my personal course page. This site will contain course reflections and information about my MRP.</p>
-
-<div style="text-align: center;">
-    <!-- Links for Course Reflections and MRP Page -->
-    <a href="index.html">
-        <button>Course Reflections</button>
-    </a>
-    <a href="pages/MRP.html">
-        <button>MRP Page</button>
-    </a>
-    <a href="pages/DevDiary.html">
-        <button>Developer Diary</button>
-    </a>
-        <a href="prototype/index.html">
-            <button>MRP Prototype</button>
-        </a>
-        
-
-    </a>
-    <a href="pages/Feb11_Demo.html">
-        <button>Feb 11 In-Class Javascript Demo</button>
-    </div>
-
-<div class="reflections-container">
-
-
-        <h2 onclick="toggleCollapse('reflection1')">1) January 7, 2025: Course Intro & Web Dev 101</h2>
-        <div id="reflection1" style="display: none;"> <!-- Initially closed -->
-            <p>I'm super excited to begin this course! I dabbled a bit in HTML/CSS as a beginner during undergrad, but I'm really happy to be learning about the fundamentals of web design in a formal manner. I found it really helpful to learn specifically about the three different ways to add CSS styles to an HTML doc - inline, internally, and externally. I'm looking forward to learning more about web design and how to make interactive elements for my MRP!</p>
+      <div class="header-left">
+        <div class="logo-and-title">
+          <img src="../prototype/images/Logo.png" alt="Physiology Diversified logo" class="site-logo">
+          <h1>Physiology Diversified.</h1>
         </div>
-
-        <h2 onclick="toggleCollapse('reflection2')">2) January 14, 2025: Styling Your Web Page and Intro to Accessible Design</h2>
-        <div id="reflection2" style="display: none;"> <!-- Initially closed -->
-            <p>I really enjoyed the walkthrough demo today in-class of how to go from a Figma wireframe to Github code. I found the demo of how to exactly setup the Figma wireframe to be very useful, including the exploration into Figma's Developer Mode tools. Excited to keep learning and experimenting with my own site and MRP prototype!</p>
-        </div>
-
-        <h2 onclick="toggleCollapse('reflection3')">3) January 21, 2025</h2>
-        <div id="reflection3" style="display: none;"> <!-- Initially closed -->
-            <p>This was a really fun deep dive into storyboarding as previsualization for linear media. The in-class activities were really fun and reverse-engineering animations made me exercise my brain in a new way! I really loved seeing the animatic for the Disney short "Bao" - super cute!!</p>
-        </div>
-
-        <h2 onclick="toggleCollapse('reflection4')">4) January 28, 2025</h2>
-        <div id="reflection4" style="display: none;"> <!-- Initially closed -->
-            <p>This was a great class, really enjoyed learning about accessible design. I found the guide to be very useful and will look to it as a resource for developing interactive media for the group project and MRP. </p>
-        </div>
-
-        <h2 onclick="toggleCollapse('reflection5')">5) February 4, 2025</h2>
-        <div id="reflection5" style="display: none;"> <!-- Initially closed -->
-            <p>Today, I learned about different forms of scrollytelly tools and important considerations. Our group pitched the idea of "Beanie's Backyard" for our interactive scrollytelly project. The media lab was a good exercise to look at the different forms that exist online, made for different audiences, and the pros and cons of this format. I think scrollytelly can be great for a linear narrative where the user is taken through a single journey from start to end, but maybe it's not so great for educational or didactic purposes where the reader needs to reference and go back to pieces of information in the story.</p>
-        </div>
-
-        <h2 onclick="toggleCollapse('reflection6')">6) February 11, 2025</h2>
-        <div id="reflection6" style="display: none;"> <!-- Initially closed -->
-            <p>In today's class, we learned about the basics behind Javascript. I've explored Javascript on my own time from watching YouTube videos and learning how to code my MRP from a wireframe into a working prototype using AI tools like ChatGPT, but this was my first formal introduction. I really enjoyed the in-class activity, because it gave me ideas on how I can integrate Javascript into my physiology lecture diagrams for my MRP to add interactivity. The only challenge will be to code for interactivity in a way that is intuitive, accessible, and adds value. I want to explore outside tools and software like spline and framer which contain javascript functions at the click of a button, which makes it very easy and intuitive to create interactions on your website and 3D models. For my MRP, I may design diagrams with similar hover-over effects which reveal information like labels or callouts. I would want the interactions to be smooth and seamless for a modern feel. For the next part of the demo, labels will appear for each corresponding muscle.</p>
-        </div>
-
-        <h2 onclick="toggleCollapse('reflection7')">7) February 18, 2025 (Reading Week)</h2>
-        <div id="reflection7" style="display: none;"> <!-- Initially closed -->
-            <p>Reflection coming soon...</p>
-        </div>
-
-        <h2 onclick="toggleCollapse('reflection8')">8) March 17, 2025 </h2>
-        <div id="reflection8" style="display: none;"> <!-- Initially closed -->
-            <p>I added a 3D model of a rat to my course webpage using the BMC 3D model viewer. Setting it up was pretty straightforward—I just followed the instructions, and everything worked without any issues.
-
-                I played around with some settings to fine-tune how the model looks and behaves. I set data-autoload='true' so it loads automatically, adjusted the zoom limits (data-min-zoom='0.05' and data-max-zoom='2.0'), changed the background color to a light blue (data-background-colour='0xd0ebeb'), and enabled the reset view button. I also tweaked the lighting (data-key-light-intensity='9.0' and data-fill-light-intensity='3.0') and set the camera to start at a slightly different angle (data-initial-orientation='{"x":0, "y":0, "z":-10}').
-                
-                The only hiccups I ran into were resizing the viewer and embedding it inside my reflection div. No matter what I tried—including wrapping it in a separate div and messing with CSS—I couldn’t get it to resize properly. Also, it only worked when placed in its own container, not inside the reflection itself. Not a huge deal, but still something I couldn’t figure out!</p>
-            
+        <p>Inclusive resources for modern physiology education.</p>
+      </div>
+      
     
+  </header>
+
+  <div class="jump-links" id="jumpLinks">
+    <span class="jump-label">Jump to:</span>
+    <a href="#about" class="jump-nav-button">About</a>
+    <a href="#contact" class="jump-nav-button">Contact Us</a>
+  </div>
+  
+  
+  
+  <div class="filter-controls">
+    <section class="filter-section">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" placeholder="Search topics in physiology..." class="search-bar">
+      </div>
+  
+      <!-- Each button directly inside .filter-section -->
+      <button class="filter-button filter-show-all" data-filter="all">
+        <i class="fas fa-layer-group"></i> Show All
+      <button class="filter-button" data-filter="Physiology Essentials">Physiology Essentials</button>
+      <button class="filter-button" data-filter="Gastrointestinal">Gastrointestinal</button>
+      <button class="filter-button" data-filter="Central Nervous System">Central Nervous System</button>
+      <button class="filter-button" data-filter="Respiratory Physiology">Respiratory Physiology</button>
+      <button class="filter-button" data-filter="Reproductive Physiology">Reproductive Physiology</button>
+      <button class="filter-button" data-filter="Musculoskeletal">Musculoskeletal</button>
+      <button class="filter-button" data-filter="Endocrinology">Endocrinology</button>
+      </button>
+    </section>
+  </div>
+  
+
+  
+  <div id="gallery" class="card-grid">
+    <!-- Card 1 -->
+    <div class="card" tabindex="0" data-category="Gastrointestinal" data-img="../prototype/thumbnails/Desktop - 44.png" data-title="Phases of Gastric Motility" data-desc="The phases of gastric motility—cephalic, gastric, and intestinal—are triggered by the sight, smell, or taste of food, starting with salivation and preparing the stomach for digestion." data-author="Priya Modi">
+      <div class="card-image-wrapper">
+        <img src="../prototype/thumbnails/Desktop - 44.png" alt="Phases of Gastric Motility" class="card-image">
+      </div>
+      <div class="card-content">
+        <h3>Phases of Gastric Motility</h3>
+        <p>The phases of gastric motility—cephalic, gastric, and intestinal—are triggered by the sight, smell, or taste of food, starting with salivation and preparing the stomach for digestion.</p>
+        
+        <div class="card-bottom">
+          <div class="tags">
+            <span class="category-tag">Gastrointestinal System</span>
+            <span class="type-tag-blue">2D  Diagram</span>
+          </div>
+          <div class="card-icons">
+            <i class="fas fa-download download-icon" title="Download diagram"></i>
+          </div>
         </div>
+      </div>
+    </div>
+  
+    <!-- Card 2 -->
+    <div class="card" tabindex="0" data-category="Musculoskeletal" data-img="../prototype/thumbnails/Desktop - 48.png" data-title="Myasthenia Gravis" data-desc="Depicting muscle weakness and facial drooping, this image shows how myasthenia gravis disrupts neurotransmission at the neuromuscular junction, impairing muscle contraction due to blocked acetylcholine receptors." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/17NWjntSTm9Ak7Uohg59gMLb_4oB8IQgC/export/pptx
+    ">
+      <div class="card-image-wrapper">
+        <img src="../prototype/thumbnails/Desktop - 48.png" alt="Myasthenia Gravis" class="card-image">
+      </div>
+      <div class="card-content">
+        <h3>Myasthenia Gravis</h3>
+        <p>Depicting muscle weakness and facial drooping, this image shows how myasthenia gravis disrupts neurotransmission at the neuromuscular junction, impairing muscle contraction due to blocked acetylcholine receptors.</p>
+    
+        <div class="card-bottom">
+          <div class="tags">
+            <span class="category-tag">Musculoskeletal</span>
+            <span class="type-tag-blue">2D Diagram</span>
+          </div>
+          <div class="card-icons">
+            <i class="fas fa-arrow-up-right-from-square external-link-icon" title="Open interactive diagram"></i>
+          </div>
+        </div>
+      </div>
     </div>
 
+  
+    <!-- Card 3 -->
+    <div class="card" tabindex="0" data-category="Respiratory Physiology" data-img="../prototype/thumbnails/Desktop - 37.png" data-title="Negative intrapleural Pressure" data-desc="This image highlights how negative intrapleural pressure helps lungs expand by contrasting healthy, elderly, and obese lungs, illustrating the impact of body composition on respiratory function." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1eiqgkV84q5Vy5U-7WoVXWo19WJHpqHVD/export/pptx">
+      <div class="card-image-wrapper">
+        <img src="../prototype/thumbnails/Desktop - 37.png" alt="Negative Intrapleural Pressure" class="card-image">
+      </div>
+      <div class="card-content">
+        <h3>Negative Intrapleural Pressure</h3>
+        <p>This image highlights how negative intrapleural pressure helps lungs expand by contrasting healthy, elderly, and obese lungs, illustrating the impact of body composition on respiratory function.</p>
+        <br></br>
+        <br></br>
+        <div class="card-bottom">
+          <div class="tags">
+            <span class="category-tag">Respiratory Physiology</span>
+            <span class="type-tag-blue">2D Diagram</span>
+          </div>
+          <div class="card-icons">
+            <i class="fas fa-download download-icon" title="Download diagram"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Card 4 -->
+    <div class="card" tabindex="0" data-category="Central Nervous System" data-img="../prototype/thumbnails/Desktop - 41.png" data-title="Vestibular System Function" data-desc="This image demonstrates how the vestibular system detects head movements using otoliths and otoconia, showing the role of the inner ear in maintaining balance and spatial orientation." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1niLAB8Yj1XG371ECRsQESlUZoqQugUR5/export/pptx"> 
+        <div class="card-image-wrapper">
+          <img src="../prototype/thumbnails/Desktop - 41.png" alt="Vestibular System Function" class="card-image">
+        </div>
+        <div class="card-content">
+          <h3>Vestibular System Function</h3>
+          <p>This image demonstrates how the vestibular system detects head movements using otoliths and otoconia, showing the role of the inner ear in maintaining balance and spatial orientation.</p>
+          <br></br>
+          <br></br>
+          <div class="card-bottom">
+            <div class="tags">
+              <span class="category-tag">Central Nervous System</span>
+              <span class="type-tag-blue">2D Diagram</span>
+            </div>
+            <div class="card-icons">
+              <i class="fas fa-download download-icon" title="Download diagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+    <div class="card" tabindex="0" data-category="Central Nervous System" data-img="../prototype/thumbnails/Desktop - 36.png" data-title="Motor Signalling Pathway and Spinal Injury Impairment" data-desc="This image illustrates the corticospinal motor pathway, showing how voluntary movement signals travel from the brain to muscles. It also depict how spinal injuries can block these pathways, leading to motor function impairments." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/189VwskMvqUa-xy0n-7bB4GgQQG3GF1bf/export/pptx ">
+        <div class="card-image-wrapper">
+          <img src="../prototype/thumbnails/Desktop - 36.png" alt="Motor Signalling Pathway and Spinal Injury Impairment" class="card-image">
+        </div>
+        <div class="card-content">
+          <h3>Motor Signalling Pathway and Spinal Injury Impairment</h3>
+          <p>This image illustrates the corticospinal motor pathway, showing how voluntary movement signals travel from the brain to muscles. It also depict how spinal injuries can block these pathways, leading to motor function impairments.</p>
+          <br></br>
+          <br></br>
+          <div class="card-bottom">
+            <div class="tags">
+              <span class="category-tag">Central Nervous System</span>
+              <span class="type-tag-blue">2D Diagram</span>
+            </div>
+            <div class="card-icons">
+              <i class="fas fa-arrow-up-right-from-square external-link-icon" title="Open interactive diagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+    <div class="card" tabindex="0" data-category="Musculoskeletal" data-img="../prototype/thumbnails/Desktop - 43.png" data-title="Muscle Tension-Length Relationship" data-desc="This diagram illustrates how muscle tension varies with sarcomere length, highlighting the optimal range for cross-bridge formation and force generation. It includes both anatomical and functional perspectives relevant to musculoskeletal physiology." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1aO2pJsGnXZL-vxiRQVbHuFqoKc96zETE/export/pptx">
+        <div class="card-image-wrapper">
+          <img src="../prototype/thumbnails/Desktop - 43.png" alt="Muscle Tension-Length Relationship" class="card-image">
+        </div>
+        <div class="card-content">
+          <h3>Tension-Length Relationship</h3>
+          <p>This diagram illustrates how muscle tension varies with sarcomere length, highlighting the optimal range for cross-bridge formation and force generation. It includes both anatomical and functional perspectives relevant to musculoskeletal physiology.</p></p>
+    
+          <div class="card-bottom">
+            <div class="tags">
+              <span class="category-tag">Gastrointestinal</span>
+              <span class="type-tag-green">Interactive</span>
+            </div>
+            <div class="card-icons">
+              <i class="fas fa-download download-icon" title="Download diagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Card 7 -->
+    <div class="card" tabindex="0" data-category="Central Nervous System" data-img="../prototype/thumbnails/Desktop - 46.png" data-title="Glabrous Skin Mechanoreceptors" data-desc="This diagram shows the distribution, structure, and function of glabrous skin mechanoreceptors—Meissner corpuscles, Merkel discs, Ruffini endings, and Pacinian corpuscles. It compares their depth, adaptation rates, receptive fields, and sensory roles in touch perception, from fine texture discrimination to vibration detection." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1D8B6VGtCXRCT_b8Opld1ir0izCD0jXwU/export/pptx">
+        <div class="card-image-wrapper">
+          <img src="../prototype/thumbnails/Desktop - 46.png" alt="Glabrous Skin Mechanoreceptors" class="card-image">
+        </div>
+        <div class="card-content">
+          <h3>Glabrous Skin Mechanoreceptors</h3>
+          <p>This diagram shows the distribution, structure, and function of glabrous skin mechanoreceptors—Meissner corpuscles, Merkel discs, Ruffini endings, and Pacinian corpuscles. It compares their depth, adaptation rates, receptive fields, and sensory roles in touch perception, from fine texture discrimination to vibration detection. 
+          </p>
+        
+          <div class="card-bottom">
+            <div class="tags">
+              <span class="category-tag">Central Nervous System</span>
+              <span class="type-tag-blue">2D Diagram</span>
+            </div>
+            <div class="card-icons">
+              <i class="fas fa-download download-icon" title="Download diagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Card 8 -->
+    <div class="card" tabindex="0" data-type="interactive"  data-interactive-src="menopauseinteractive.html" data-category="Endocrinology" data-title="Physiology of Menopause" data-desc="This diagram shows the physiological cascade leading to menopause, from disrupted hypothalamic-pituitary signaling to ovarian follicle depletion. It highlights declining levels of estradiol, AMH, and inhibin B, and connects these hormonal changes to systemic effects on the brain, uterus, and bone." data-author="Priya Modi">
+        <div class="card-image-wrapper">
+          <img src="../prototype/thumbnails/Desktop - 45.png" alt="Physiology of Menopause" class="card-image">
+        </div>
+        <div class="card-content">
+          <h3>Physiology of Menopause</h3>
+          <p>This diagram shows the physiological cascade leading to menopause, from disrupted hypothalamic-pituitary signaling to ovarian follicle depletion. It highlights declining levels of estradiol, AMH, and inhibin B, and connects these hormonal changes to systemic effects on the brain, uterus, and bone.          </p>
+          <div class="card-bottom">
+            <div class="tags">
+              <span class="category-tag">Endocrinology</span>
+              <span class="type-tag-green">Interactive</span>
+            </div>
+            <div class="card-icons">
+              <i class="fas fa-arrow-up-right-from-square external-link-icon" title="Open interactive diagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    <!-- Card 9 -->
+    <div class="card" tabindex="0" data-type="interactive"  data-interactive-src="menopausechart.html" data-category="Endocrinology" data-title="Physiology of Menopause" data-desc="This interactive graph visualizes relative hormone levels across reproductive aging, using the STRAW+10 staging system. Estradiol, progesterone, AMH, inhibin B, LH, and FSH are tracked from peak reproductive years through postmenopause, with hover-based explanations supporting classroom exploration and student-led learning." data-author="Priya Modi">
+        <div class="card-image-wrapper">
+          <img src="../prototype/thumbnails/Desktop - 34.png" alt="Physiology of Menopause" class="card-image">
+        </div>
+        <div class="card-content">
+          <h3>Female Reproductive Hormone Chart</h3>
+          <p>This interactive graph visualizes relative hormone levels across reproductive aging, using the STRAW+10 staging system. Estradiol, progesterone, AMH, inhibin B, LH, and FSH are tracked from peak reproductive years through postmenopause, with hover-based explanations supporting classroom exploration and student-led learning.
+          </p>
+            <div class="card-bottom">
+            <div class="tags">
+              <span class="category-tag">Endocrinology</span>
+              <span class="type-tag-green">Interactive</span>
+            </div>
+            <div class="card-icons">
+              <i class="fas fa-arrow-up-right-from-square external-link-icon" title="Open interactive diagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+<!-- Internal vs External Environment -->
+<div class="card" tabindex="0" data-category="Physiology Essentials" data-img="../prototype/thumbnails/Desktop - 42.png" data-title="Internal vs External Environment" data-desc="This diagram illustrates how physiological systems maintain boundaries between the internal and external environments, while incorporating Indigenous ways of knowing that emphasize relationality and interconnectedness." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1P2slxCyDMOqVxBJeFe9HBsj0je6vV4uD/export/pptx">
+">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/Desktop - 42.png" alt="Internal vs External Environment" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Internal vs External Environment</h3>
+    <p>This diagram illustrates how physiological systems maintain boundaries between the internal and external environments, while incorporating Indigenous ways of knowing that emphasize relationality and interconnectedness.</p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Physiology Essentials</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-download download-icon" title="Download diagram"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Somatosensory and Motor Cortex -->
+<div class="card" tabindex="0" data-category="Central Nervous System" data-img="../prototype/thumbnails/Desktop - 40.png" data-title="Somatosensory and Motor Cortex" data-desc="This diagram compares the somatotopic organization of the motor and sensory cortices using inclusive human figures. Colour gradients indicate cortical representation, offering an updated and EDID-informed alternative to traditional homunculus depictions." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1nglxQ_y_5dKbd7OKv06XqO9O_UcjLthl/export/pptx">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/Desktop - 40.png" alt="Somatosensory and Motor Cortex" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Somatosensory and Motor Cortex</h3>
+    <p>This diagram compares the somatotopic organization of the motor and sensory cortices using inclusive human figures. Colour gradients indicate cortical representation, offering an updated and EDID-informed alternative to traditional homunculus depictions.
+    </p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Central Nervous System</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-download download-icon" title="Download diagram"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hyper vs Hypothyroidism -->
+<div class="card" tabindex="0" data-category="Endocrine System" data-img="../prototype/thumbnails/Desktop - 31.png" data-title="Hyperthyroidism vs Hypothyroidism" data-desc="This diagram compares the physiological effects and clinical symptoms of hyperthyroidism and hypothyroidism. It highlights characteristic features of each condition while integrating diverse body types and skin tones for inclusive teaching." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1IlsoNcoW9Tx75isDGfTnfJmh4dZQgMbf/export/pptx">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/Desktop - 31.png" alt="Hyperthyroidism vs Hypothyroidism" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Hyperthyroidism vs Hypothyroidism</h3>
+    <p>This diagram compares the physiological effects and clinical symptoms of hyperthyroidism and hypothyroidism. It highlights characteristic features of each condition while integrating diverse body types and skin tones for inclusive teaching.</p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Endocrine System</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-download download-icon" title="Download diagram"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cushing's Disease -->
+<div class="card" tabindex="0" data-category="Endocrine System" data-img="../prototype/thumbnails/Desktop - 47.png" data-title="Cushing’s Disease" data-desc="This diagram highlights the physiological and anatomical features of Cushing’s disease and syndrome, including key symptoms such as central obesity, abdominal striae, muscle wasting, and skin fragility. It visually compares pituitary-driven and adrenal-driven etiologies, while representing diverse patient presentation." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1nowR2WFZDfOQ0Uwm_TQ1l6PBM8Q-Ifjm/export/pptx">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/Desktop - 47.png" alt="Cushing’s Disease" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Cushing’s Disease</h3>
+    <p>This diagram highlights the physiological and anatomical features of Cushing’s disease and syndrome, including key symptoms such as central obesity, abdominal striae, muscle wasting, and skin fragility. It visually compares pituitary-driven and adrenal-driven etiologies, while representing diverse patient presentation. </p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Endocrine System</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-download download-icon" title="Download diagram"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Nutrient Breakdown -->
+<div class="card" tabindex="0" data-category="Gastrointestinal System" data-img="../prototype/thumbnails/Desktop - 38.png" data-title="Macroutrient Breakdown" data-desc="This diagram explores how carbohydrates, lipids, and proteins are enzymatically broken down and absorbed across the digestive tract. It incorporates diverse food choices to reflect cultural inclusivity while linking anatomical regions with nutrient-specific breakdown pathways." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1JYonp-XHNlh2q_mVHv-vedPg5Qv5SYnc/export/pptx">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/Desktop - 38.png" alt="Nutrient Breakdown" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Macroutrient Breakdown</h3>
+    <p>This diagram explores how carbohydrates, lipids, and proteins are enzymatically broken down and absorbed across the digestive tract. It incorporates diverse food choices to reflect cultural inclusivity while linking anatomical regions with nutrient-specific breakdown pathways.</p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Gastrointestinal System</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-download download-icon" title="Download diagram"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Physiology of Jaundice -->
+<div class="card" tabindex="0" data-category="Gastrointestinal System" data-img="../prototype/thumbnails/Desktop - 32.png" data-title="Physiology of Jaundice" data-desc="This image illustrates how bilirubin accumulates in the skin during jaundice, highlighting its deposition across epidermal layers and the threshold for visible discolouration. By featuring a dark-skinned individual, the diagram addresses diagnostic challenges and promotes inclusive clinical awareness." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/16AJaoZmhDJkIex2A9jtBHxpx-7corIdR/export/pptx">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/Desktop - 32.png" alt="Physiology of Jaundice" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Physiology of Jaundice</h3>
+    <p>This image illustrates how bilirubin accumulates in the skin during jaundice, highlighting its deposition across epidermal layers and the threshold for visible discolouration. By featuring a dark-skinned individual, the diagram addresses diagnostic challenges and promotes inclusive clinical awareness.
+    </p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Gastrointestinal System</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-download download-icon" title="Download diagram"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Physiology of Pregnancy -->
+<div class="card" tabindex="0" data-category="Reproductive Physiology" data-img="../prototype/thumbnails/comingsoon_2.png" data-title="Feto-Maternal Hormone Production" data-desc="This upcoming diagram illustrates how estradiol is synthesized during pregnancy through coordinated hormone production between the fetal adrenal glands, placenta, and maternal liver. It features a pregnant figure with inclusive anatomy and visualizes key physiological changes to support deeper understanding of fetoplacental hormone biosynthesis." data-author="Priya Modi" data-download="null">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/comingsoon_2.png" alt="Physiology of Pregnancy" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Feto-Maternal Hormone Production</h3>
+    <p>This upcoming diagram illustrates how estradiol is synthesized during pregnancy through coordinated hormone production between the fetal adrenal glands, placenta, and maternal liver. It features a pregnant figure with inclusive anatomy and visualizes key physiological changes to support deeper understanding of fetoplacental hormone biosynthesis. </p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Reproductive Physiology</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-arrow-up-right-from-square external-link-icon" title="Interactive or animated diagram coming soon"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Effects of Testosterone -->
+<div class="card" tabindex="0" data-category="Reproductive Physiology" data-img="../prototype/thumbnails/Desktop - 39.png" data-title="Effects of Testosterone" data-desc="This diagram illustrates the physiological effects of testosterone across the body—on muscle mass, bone growth, red blood cells, mood, metabolism, and reproduction. It features a modular layout and an inclusive central figure with cerebral palsy, broadening representation in androgen-related physiology." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1dIz9sMZqsXVvJznZ8-brYxqYI4gWhL7q/export/pptx">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/Desktop - 39.png" alt="Effects of Testosterone" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Effects of Testosterone</h3>
+    <p>This diagram illustrates the physiological effects of testosterone across the body—on muscle mass, bone growth, red blood cells, mood, metabolism, and reproduction. It features a modular layout and an inclusive central figure with cerebral palsy, broadening representation in androgen-related physiology. </p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Reproductive Physiology</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-download download-icon" title="Download diagram"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Aging Skin and Physiology -->
+<div class="card" tabindex="0" data-category="Cancer Biology" data-img="../prototype/thumbnails/Desktop - 33.png" data-title="Aging Skin and Cancer" data-desc="Illustrating the physiological aging of the epidermis, showing changes in collagen, elastin, and skin thickness over time, for the Cancer Biology unit." data-author="Priya Modi" data-download="https://docs.google.com/presentation/d/1mDd6ngU0UnVbSc7GYpn-omV1T0i-84ET/export/pptx">
+  <div class="card-image-wrapper">
+    <img src="../prototype/thumbnails/Desktop - 33.png" alt="Aging Skin and Cancer" class="card-image">
+  </div>
+  <div class="card-content">
+    <h3>Aging Skin and Cancer</h3>
+    <p>Illustrating the physiological aging of the epidermis, showing changes in collagen, elastin, and skin thickness over time, for the Cancer Biology unit.</p>
+    <div class="card-bottom">
+      <div class="tags">
+        <span class="category-tag">Cancer Biology</span>
+        <span class="type-tag-blue">2D Diagram</span>
+      </div>
+      <div class="card-icons">
+        <i class="fas fa-download download-icon" title="Download diagram"></i>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<div class="viewer-container">
-    <div class='bmc_3dviewer'
-     data-src='[{"path":"../images/rat.glb", "name":"Rat Model by Nestaeric"}]'
-     data-autoload='true' 
-     data-load-button-overlay="insideBottomEdge"
-     data-min-zoom='0.05'
-     data-max-zoom='2.0'
-     data-background-colour='0xd0ebeb' 
-     data-reset-view-btn='true' 
-     data-ortho-cam-size='1.0'
-     data-key-light-intensity='9.0'
-     data-fill-light-intensity='3.0'
-     data-initial-orientation='{"x":0, "y":0, "z":-10}'></div>
+
+    <!-- end of entire grid -->
+    </div>
+
+ 
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
+
+    <!-- Close Button -->
+    <button class="close" onclick="closeLightbox()">
+      <i class="fas fa-xmark"></i>
+      Close
+    </button>
+    
+
+    <!-- Image or iframe injected here -->
+    <div id="lightbox-content-container" class="image-wrapper"></div>
+
+    <!-- ✅ Buttons under image -->
+    <div class="image-action-buttons below-image">
+      <button id="download-button-floating" aria-label="Download this image (PPT-ready)" title="Download this image (PPT-ready)">
+        <i class="fas fa-download"></i>
+        <span class="button-label">Download this image (PPT-ready)</span>
+      </button>
+      <button id="expand-button" aria-label="View larger" title="View larger">
+        <i class="fas fa-up-right-from-square"></i>
+        <span class="button-label">View larger</span>
+      </button>
+    </div>
+
+    <!-- Caption -->
+    <div class="lightbox-text">
+      <h2 id="lightbox-title"></h2>
+      <p id="lightbox-description"></p>
+      <p class="citation">Illustrator: <span id="lightbox-author"></span></p>
+      <p class="license">
+        Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>.
+      </p>
+      <p class="citation-format">APA Citation: <span id="lightbox-citation"></span></p>
+    </div>
+  </div>
 </div>
 
 
 
-<script>
-    // Make sure the reflections are initially closed
-    window.onload = function() {
-        const allReflections = document.querySelectorAll('.reflection div');
-        allReflections.forEach(function(reflection) {
-            reflection.style.display = 'none'; // Hide all reflections on page load
-        });
-    };
+  <!-- Footer -->
+  <section class="about-section" id="about">
+    <div class="about-block">
+      <h2>About This Project</h2>
+      <p>This repository showcases inclusive and diverse educational visuals in physiology, aiming to support modern and equitable teaching strategies. All visuals are created by biomedical communicators with academic rigor and creative clarity.</p>
+    </div>
 
-    // Toggle visibility on click
-    function toggleCollapse(id) {
-        const content = document.getElementById(id);
-        const header = document.querySelector(`[onclick="toggleCollapse('${id}')"]`);
+    <div class="about-block team-highlight">
+      <h2 id="team">Meet the Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <h3>Priya Modi</h3>
+        <p class="credentials">BMSc, MScBMC</p>
+        <img src="../prototype/images/Priya_Headshot.png" alt="Priya Modi headshot">
+        <p><strong>Design & Development</strong>
+        <p>Project lead, responsible for ideation, illustration, development, and coordination of all stages of production.</p>
+        <a href="https://priyamodi.myportfolio.com/" target="_blank">See website &rsaquo;</a>
+      </div>
+    
+      <div class="team-member">
+        <h3>Anita Woods</h3>
+        <p class="credentials">BSc, PhD</p>
+        <img src="../prototype/images/Anita_Headshot.png" alt="Dr. Anita Woods headshot">
+        <p><strong>Content Supervisor</strong>
+        <p>Supports this project through grant funding and academic supervision from the Physiology & Pharmacology Department.</p>
+        <a href="https://www.schulich.uwo.ca/physpharm/people/faculty/woods_anita.html" target="_blank">See website &rsaquo;</a>
+      </div>
+    
+      <div class="team-member">
+        <h3>Shehryar (Shay) Saharan</h3>
+        <p class="credentials">B.Eng, MScBMC</p>
+        <img src="../prototype/images/Shay_Headshot.png" alt="Shay Saharan headshot">
+        <p><strong>BMC Design Supervisor</strong>
+        <p>Provides expert consultation on visual design and UX/UI from a biomedical communications perspective.</p>
+        <a href="https://www.ss-design.site/about" target="_blank">See website &rsaquo;</a>
+      </div>
+    
+      <div class="team-member">
+        <h3>Jodie Jenkinson</h3>
+        <p class="credentials">BA, MScBMC, PhD, FAMI</p>
+        <img src="../prototype/images/Jodie_Headshot.png" alt= "Jodie Jenkinson headshot">
+        <p><strong>2nd Voting Committee Member</strong>
+        <p>Supports project evaluation, guidance on academic standards, and supervises MScBMC thesis development.</p>
+        <a href="https://www.utm.utoronto.ca/biology/people/jodie-jenkinson" target="_blank">See website &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+    <div class="about-block">
+      <h2 id="license">Creative Commons License</h2>
+      <p>
+        All materials are licensed under the 
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
+          Creative Commons BY-NC-ND 4.0 License
+        </a>. Educators are encouraged to use and share responsibly with attribution.
+      </p>
+    </div>
+    
 
-        if (content.style.display === "none" || content.style.display === "") {
-            content.style.display = "block";  // Show the reflection
-            header.classList.add("expanded"); // Optional: Add expanded class to style
-        } else {
-            content.style.display = "none";  // Hide the reflection
-            header.classList.remove("expanded"); // Optional: Remove expanded class to revert styles
-        }
-    }
-</script>
+<div class="about-block">
+    <h2 id="sponsors">Sponsors & Collaborators</h2>
+    <p>This project is a collaboration between Western University and the University of Toronto. This work is generously funded through Western University’s BrainsCAN Equity, Diversity, and Inclusion (EDI) Funding initiative.</p>
+    <div class="sponsor-logos">
+      <div class="sponsor-logo"> 
+        <a href="https://www.schulich.uwo.ca/" target="_blank" rel="noopener noreferrer">
+          <img src="../prototype/images/schulich-horizontal 1.png" alt="Western University logo">
+        </a>
+      </div>
 
-<script type="module" src="vendor/bmc3dviewer/main.js"></script>
+      <div class="sponsor-logo">
+        <a href="https://bmc.utm.utoronto.ca/" target="_blank" rel="noopener noreferrer">
+          <img src="../prototype/images/Biomedical Communications_edited_edited_.avif" alt="University of Toronto Biomedical Communications logo">
+        </a>
+        </div>
+        
+      <div class="sponsor-logo">
+        <a href="https://brainscan.uwo.ca" target="_blank" rel="noopener noreferrer">
+        <img src="../prototype/images/BrainsCAN 1.png" alt="BrainsCAN EDI logo">
+        </a>
+      </div>
+     
+  </div>
+  </div>
 
+  <div class="about-block" id="contact">
+    <h2>Have a suggestion or wish to collaborate? Contact us!</h2>
+    <form action="https://formspree.io/f/xrbqkvzo" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+  
+
+  <a href="#top" class="scroll-up-button" aria-label="Scroll back to top of page">⬆ Back to Top</a>
+
+  
+
+    
+
+  
+  </section>
+
+
+
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <a href="#top"> 
+      <img src="../prototype/images/Logo.png" alt="Physiology Diversified logo">
+    </a>
+      <h1>Physiology Diversified.</h1>
+    </div>
+    <div class="footer-info">
+      <p>&copy; Priya Modi 2025. All rights reserved.</p>
+      <p>This work is licensed under 
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>.
+      </p>
+    </div>
+  </footer>
+  
+  
+  
+    
+  </footer>
+  
+
+  <!-- Include JavaScript File -->
+  <script src="../prototype/js/prototype.js" defer></script>
 </body>
+
 </html>
-
-
