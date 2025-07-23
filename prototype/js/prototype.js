@@ -17,13 +17,30 @@ function openLightbox(imageSrc, title, description, author, downloadLink, type =
 // Clear previous content
 lightboxContainer.innerHTML = "";
 
-// Always show static image
-const img = document.createElement("img");
-img.src = imageSrc;
-img.alt = title;
-img.id = "lightbox-image";
-lightboxContainer.appendChild(img);
+// Show video if data-video attribute exists, otherwise show image
+const currentCard = [...document.querySelectorAll(".card")].find(card =>
+  card.getAttribute("data-title") === title
+);
 
+if (currentCard && currentCard.hasAttribute("data-video")) {
+  const videoEl = document.createElement("video");
+  videoEl.src = currentCard.getAttribute("data-video");
+  videoEl.controls = false;     // ✅ hide controls
+  videoEl.autoplay = true;
+  videoEl.loop = true;
+  videoEl.muted = true;
+  videoEl.playsInline = true;
+  videoEl.style.maxWidth = "100%";
+  videoEl.style.borderRadius = "12px";
+  lightboxContainer.appendChild(videoEl);
+  
+} else {
+  const img = document.createElement("img");
+  img.src = imageSrc;
+  img.alt = title;
+  img.id = "lightbox-image";
+  lightboxContainer.appendChild(img);
+}
 
 if (interactiveSrc && expandBtn) {
   const label = expandBtn.querySelector(".button-label");
