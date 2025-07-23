@@ -610,23 +610,6 @@ card-icons {
 }
 
 
-/* =======================
-   Expand Button Lightbox (Optional Label)
-======================= */
-#expand-button {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  color: #5e3d9f;
-  font-family: var(--font-sans);
-}
-#expand-button:hover {
-  color: #000;
-  transform: scale(1.05);
-}
-.expand-label {
-  font-size: 0.85rem;
-}
 
 /* =======================
    Legacy Inline Download Button Lightbox (if still used)
@@ -1069,3 +1052,7 @@ textarea:focus-visible {
 .card:focus {
   transform: scale(1.05);
 }
+
+
+
+
