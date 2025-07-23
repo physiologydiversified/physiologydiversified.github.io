@@ -14,31 +14,29 @@ function openLightbox(imageSrc, title, description, author, downloadLink, type =
   const lightboxCitation = document.getElementById("lightbox-citation");
   const expandBtn = document.getElementById("expand-button");
 
-  // Clear previous content
-  lightboxContainer.innerHTML = "";
+// Clear previous content
+lightboxContainer.innerHTML = "";
 
-  if (type === "interactive") {
-    const iframe = document.createElement("iframe");
-    iframe.src = interactiveSrc;
-    iframe.width = "100%";
-    iframe.height = "500px";
-    iframe.style.border = "none";
-    iframe.allow = "fullscreen";
-    lightboxContainer.appendChild(iframe);
+// Always show static image
+const img = document.createElement("img");
+img.src = imageSrc;
+img.alt = title;
+img.id = "lightbox-image";
+lightboxContainer.appendChild(img);
 
-    // Show and activate expand button
-    expandBtn.style.display = "inline-block";
-    expandBtn.onclick = () => window.open(interactiveSrc, '_blank');
-  } else {
-    const img = document.createElement("img");
-    img.src = imageSrc;
-    img.alt = title;
-    img.id = "lightbox-image";
-    lightboxContainer.appendChild(img);
 
-    // Hide expand button for static images
-    expandBtn.style.display = "none";
-  }
+if (interactiveSrc && expandBtn) {
+  const label = expandBtn.querySelector(".button-label");
+  expandBtn.style.display = "inline-block";
+  expandBtn.onclick = () => window.open(interactiveSrc, '_blank');
+  if (label) label.textContent = "Open as Interactive";
+} else if (expandBtn) {
+  expandBtn.style.display = "none";
+  const label = expandBtn.querySelector(".button-label");
+  if (label) label.textContent = "View larger";
+}
+
+
 
   // Set metadata
   lightboxTitle.textContent = title;
@@ -157,7 +155,7 @@ function downloadFile(url, title = "Untitled Image") {
       // Click handler (mouse)
       card.addEventListener("click", function (event) {
         if (event.target.classList.contains("download-icon")) return;
-  
+      
         const type = card.getAttribute("data-type") || "static";
         const interactiveSrc = card.getAttribute("data-interactive-src") || "";
         const img = card.getAttribute("data-img");
@@ -165,13 +163,15 @@ function downloadFile(url, title = "Untitled Image") {
         const desc = card.getAttribute("data-desc");
         const author = card.getAttribute("data-author");
         const downloadLink = card.getAttribute("data-download");
-  
-        if (type === "interactive" && interactiveSrc) {
-          window.open(interactiveSrc, "_blank");
-        } else {
-          openLightbox(img, title, desc, author, downloadLink, type, interactiveSrc);
+      
+        if (!img) {
+          console.warn("Missing data-img on card:", card);
+          return;
         }
+      
+        openLightbox(img, title, desc, author, downloadLink, type, interactiveSrc);
       });
+      
 
       
   
