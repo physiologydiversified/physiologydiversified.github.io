@@ -268,6 +268,57 @@ header {
   }
 }
 
+/* =======================
+   Type Filter Buttons
+======================= */
+.type-filter-button {
+  padding: 10px 18px;
+  margin: -3px;
+  background-color: #eef7ff; /* Base color for type filters (default blue-ish) */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
+  border: 1.5px solid #b3dafd;
+}
+
+/* Hover effect */
+.type-filter-button:hover {
+  background-color: #cce9ff;
+  transform: translateY(-2px);
+}
+
+/* Active state */
+.type-filter-button.active {
+  background-color: #007BFF;
+  color: white;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px currentColor;
+}
+
+/* Specific blue and green variations */
+.type-filter-button-blue {
+  background-color: #eef7ff;
+  color: #004a99;
+  border-color: #b3dafd;
+}
+
+.type-filter-button-green {
+  background-color: #e6f8ec;
+  color: #1b5e20;
+  border-color: #a4e6b1;
+}
+
+.type-filter-button-blue.active {
+  background-color: #007BFF;
+  color: white;
+}
+
+.type-filter-button-green.active {
+  background-color: #28A745;
+  color: white;
+}
+
 
 /* =======================
    Card Grid Layout

@@ -119,42 +119,59 @@ function downloadFile(url, title = "Untitled Image") {
 //     a.click();
 //     document.body.removeChild(a);
 //   }
-  
-  let currentFilter = "all"; // Track the active filter
+let currentFilter = "all";
+let currentTypeFilter = null;
 
-  document.querySelectorAll('.filter-button').forEach(button => {
-    button.addEventListener('click', () => {
-      const selectedFilter = button.getAttribute('data-filter');
-      const cards = document.querySelectorAll('.card');
-  
-      if (currentFilter === selectedFilter) {
-        // Same filter clicked again → reset to show all
-        currentFilter = "all";
-  
-        // Unhighlight all buttons
-        document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
-  
-        // Show all cards
-        cards.forEach(card => {
-          card.style.display = 'block';
-        });
-      } else {
-        // New filter selected
-        currentFilter = selectedFilter;
-  
-        // Update button active state
-        document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-  
-        // Show only matching cards
-        cards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          card.style.display = (currentFilter === 'all' || currentFilter === category) ? 'block' : 'none';
-        });
-      }
-    });
+function updateCardDisplay() {
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach(card => {
+    const category = card.getAttribute('data-category');
+    const type = card.getAttribute('data-type');
+
+    const matchesCategory = currentFilter === 'all' || category === currentFilter;
+    const matchesType = !currentTypeFilter || type === currentTypeFilter;
+
+    card.style.display = (matchesCategory && matchesType) ? 'block' : 'none';
   });
-  
+}
+
+// Category filter (topic-based)
+document.querySelectorAll('.filter-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const selectedFilter = button.getAttribute('data-filter');
+
+    if (currentFilter === selectedFilter) {
+      currentFilter = "all";
+      document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+    } else {
+      currentFilter = selectedFilter;
+      document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    }
+
+    updateCardDisplay();
+  });
+});
+
+// Type filter (2D vs Interactive)
+document.querySelectorAll('.type-filter-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const selectedType = button.getAttribute('data-type');
+
+    if (currentTypeFilter === selectedType) {
+      currentTypeFilter = null;
+      button.classList.remove('active');
+    } else {
+      currentTypeFilter = selectedType;
+      document.querySelectorAll('.type-filter-button-blue, .type-filter-button-green').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    }
+
+    updateCardDisplay();
+  });
+});
+
 
 
   function toggleFavorite(event) {
