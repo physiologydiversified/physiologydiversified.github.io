@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mechanoreceptors | Physiology Diversified</title>
+  <link rel="stylesheet" href="../prototype/css/prototype.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #f9f9fc;
+      color: #333;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #1e1b2e;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .video-container {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .hotspot {
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      position: fixed;
+      background-color: #5e3d9f;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      max-width: 240px;
+      word-wrap: break-word;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .caption {
+      margin-top: 14px;
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+      max-width: 700px;
+      min-height: 2em;
+    }
+
+    .glossary {
+      margin-top: 40px;
+      max-width: 900px;
+      width: 100%;
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .glossary h2 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: #5e3d9f;
+    }
+
+    .glossary dl {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 10px 20px;
+      font-size: 0.95rem;
+    }
+
+    .glossary dt {
+      font-weight: 600;
+      color: #333;
+      position: relative;
+      cursor: help;
+    }
+
+    .glossary dd {
+      margin: 0;
+      color: #555;
+    }
+
+    @media (hover: none) {
+      .tooltip {
+        display: none;
+      }
+    }
+
+    .hotspot:hover {
+      outline: 2px solid rgba(94, 61, 159, 0.7);
+      box-shadow: 0 0 12px rgba(94, 61, 159, 0.4);
+      border-radius: 8px;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mechanoreceptors of Glabrous Skin</h1>
+
+  <div class="video-container" id="videoWrapper">
+    <video id="mechVideo" autoplay muted loop playsinline>
+      <source src="prototype/diagrams/Mechanoreceptor_Anim.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="hotspot" data-id="0" style="top:11%; left:32%; width:14%; height:14%;"></div>
+    <div class="hotspot" data-id="1" style="top:29%; left:32%; width:14%; height:14%;"></div>
+    <div class="hotspot" data-id="2" style="top:50%; left:32%; width:14%; height:14%;"></div>
+    <div class="hotspot" data-id="3" style="top:69%; left:32%; width:14%; height:14%;"></div>
+    <div class="hotspot" data-id="5" style="top:10%; left:46%; width:11%; height:5%;"></div>
+    <div class="hotspot" data-id="6" style="top:27%; left:46%; width:11%; height:5%;"></div>
+    <div class="hotspot" data-id="7" style="top:4%; left:66%; width:12.2%; height:5%;"></div>
+    <div class="hotspot" data-id="8" style="top:4%; left:78%; width:12.9%; height:5%;"></div>
+    <div class="hotspot" data-id="9" style="top:4%; left:35%; width:9%; height:5%;"></div>
+    <div class="hotspot" data-id="10" style="top:4%; left:46%; width:14%; height:5%;"></div>
+    <div class="hotspot" data-id="11" style="top:48%; left:27%; width:3%; height:30%;"></div>
+    <div class="hotspot" data-id="12" style="top:15%; left:92%; width:4%; height:25%;"></div>
+    <div class="hotspot" data-id="13" style="top:52%; left:92%; width:4%; height:25%;"></div>
+    <div class="hotspot" data-id="14" style="top:12%; left:69%; width:10%; height:25%;"></div>
+    <div class="hotspot" data-id="15" style="top:12%; left:81%; width:10%; height:25%"></div>
+    <div class="hotspot" data-id="16" style="top:55%; left:69%; width:10%; height:25%"></div>
+    <div class="hotspot" data-id="17" style="top:55%; left:81%; width:10%; height:25%"></div>
+
+    <div class="tooltip" id="tooltip"></div>
+  </div>
+
+  <div class="caption" id="caption">Hover over or tap a receptor to learn more.</div>
+
+  <section class="glossary">
+    <h2>Glossary</h2>
+    <dl>
+      <dt data-id="5">Fast-Adapting</dt>
+      <dd>Responds quickly to changes in stimulus but stops firing if the stimulus remains constant.</dd>
+      <dt data-id="6">Slow-Adapting</dt>
+      <dd>Continues to respond throughout the duration of a sustained stimulus.</dd>
+      <dt data-id="7">Receptive Field</dt>
+      <dd>The area of skin over which a stimulus can activate a specific receptor.</dd>
+      <dt data-id="8">Innervation Density</dt>
+      <dd>The number of nerve endings per area of skin; higher density allows finer tactile discrimination.</dd>
+      <dt data-id="9">End Organ</dt>
+      <dd>The anatomical structure at the nerve ending that determines receptor function.</dd>
+      <dt data-id="10">Stimulus and Response</dt>
+      <dd>The type of mechanical input the receptor detects, such as vibration, pressure, or stretch.</dd>
+      <dt data-id="11">Skin Depth</dt>
+      <dd>The vertical location of the receptor in skin layers: superficial (epidermis/dermis) or deep (hypodermis).</dd>
+      <dt data-id="12">Type I Receptor</dt>
+      <dd>Receptors with small receptive fields and high spatial resolution (e.g., Merkel and Meissner).</dd>
+      <dt data-id="13">Type II Receptor</dt>
+      <dd>Receptors with larger receptive fields and lower spatial resolution (e.g., Ruffini and Pacinian).</dd>
+    </dl>
+  </section>
+
+  <script>
+    const tooltip = document.getElementById("tooltip");
+    const caption = document.getElementById("caption");
+    const hotspots = document.querySelectorAll(".hotspot");
+    const glossaryTerms = document.querySelectorAll(".glossary dt");
+
+    const captions = [
+      "FA1 (Meissner): Fast-adapting, superficial receptors that respond to light touch and fluttering.",
+      "SA1 (Merkel): Slow-adapting receptors that detect pressure and fine detail.",
+      "SA2 (Ruffini): Slow-adapting, deep receptors that sense stretch and skin tension.",
+      "FA2 (Pacinian): Fast-adapting, deep receptors tuned to high-frequency vibration.",
+      "Glossary terms: Hover over glossary words for definitions or scroll below to view them all.",
+      "Fast-Adapting: Responds quickly to changes in stimulus but stops firing if the stimulus remains constant.",
+      "Slow-Adapting: Continues to respond throughout the duration of a sustained stimulus.",
+      "Receptive Field: The area of skin over which a stimulus can activate a specific receptor.",
+      "Innervation Density: Number of nerve endings per area of skin; higher density = finer discrimination.",
+      "End Organ: Anatomical structure at the nerve ending that determines receptor function.",
+      "Stimulus and Response: Mechanical input detected—vibration, pressure, stretch, etc.",
+      "Skin Depth: Receptor's location—superficial (epidermis/dermis) or deep (hypodermis).",
+      "Type I Receptor: Small receptive fields, high spatial resolution (e.g., Merkel, Meissner).",
+      "Type II Receptor: Large receptive fields, lower spatial resolution (e.g., Ruffini, Pacinian).",
+      "Type I Receptors (Meissner & Merkel) have small receptive fields concentrated at fingertips, enabling fine tactile resolution.",
+      "High innervation density of Type I receptors allows for sensitive touch discrimination in finger pads.",
+      "Type II Receptors (Ruffini & Pacinian) have broader receptive fields covering wider skin areas.",
+      "Lower innervation density of Type II receptors results in less spatial acuity but broader detection."
+    ];
+
+    function showTooltip(text, x, y) {
+      tooltip.textContent = text;
+      tooltip.style.top = `${y + 10}px`;
+      tooltip.style.left = `${x + 10}px`;
+      tooltip.style.opacity = 1;
+    }
+
+    function hideTooltip() {
+      tooltip.style.opacity = 0;
+    }
+
+    hotspots.forEach((spot) => {
+      const index = parseInt(spot.getAttribute("data-id"));
+      spot.addEventListener("mousemove", (e) => {
+        showTooltip(captions[index], e.clientX, e.clientY);
+        caption.textContent = captions[index];
+      });
+      spot.addEventListener("mouseleave", () => {
+        hideTooltip();
+        caption.textContent = "Hover over or tap a receptor to learn more.";
+      });
+      spot.addEventListener("click", () => {
+        caption.textContent = captions[index];
+      });
+    });
+
+    glossaryTerms.forEach((term) => {
+      const id = parseInt(term.getAttribute("data-id"));
+      term.addEventListener("mouseenter", (e) => {
+        showTooltip(captions[id], e.clientX, e.clientY);
+      });
+      term.addEventListener("mousemove", (e) => {
+        tooltip.style.top = `${e.clientY + 10}px`;
+        tooltip.style.left = `${e.clientX + 10}px`;
+      });
+      term.addEventListener("mouseleave", hideTooltip);
+    });
+  </script>
+</body>
+</html>
