@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muscle Structure & Tension-Length Relationship</title>
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f8f6ff;
+      color: #2d1e5f;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    #sliderLabel {
+      font-weight: bold;
+      text-align: left;
+      width: 90%;
+      max-width: 800px;
+      margin: 2rem auto 0.25rem;
+    }
+
+    #sliderContainer {
+      position: relative;
+      margin: 0.5rem auto 1rem;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    #angleSlider {
+      width: 100%;
+      accent-color: #5038a3;
+      appearance: none;
+      height: 8px;
+      border-radius: 5px;
+      background: #5038a3;
+      outline: none;
+    }
+
+    #angleSlider::-webkit-slider-thumb {
+      appearance: none;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid #5038a3;
+      cursor: pointer;
+    }
+
+    .slider-ticks {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      color: #555;
+      padding: 0.25rem 0.5rem;
+    }
+
+    #diagramContainer img {
+      width: 100%;
+      max-width: 1000px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #diagramContainer img.active {
+      opacity: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hotspot-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #5038a3;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(80, 56, 163, 0.7);
+  animation: pulse 2s infinite;
+  cursor: pointer;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(80, 56, 163, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(80, 56, 163, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(80, 56, 163, 0);
+  }
+}
+
+
+.hotspot-text {
+  position: fixed;
+  background-color: #5038a3;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  max-width: 280px;
+  text-align: left;
+  line-height: 1.4;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+
+    #diagramContainer {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .instruction {
+      position: absolute;
+      left: 1.5%;
+      top: 50%;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #5038a3;
+      background: #e8e3ff;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      z-index: 3;
+      position: absolute;
+pointer-events: none;  /* So it's not clickable, just visual */
+
+    }
+
+    .glossary {
+      max-width: 800px;
+      margin: 2rem auto;
+      text-align: left;
+      background: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .glossary h2 {
+      font-size: 1.25rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .glossary dt {
+      font-weight: bold;
+      margin-top: 0.75rem;
+    }
+
+    .glossary dd {
+      margin-left: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Muscle Structure & Tension–Length Relationship</h1>
+
+  <div id="diagramContainer">
+    <img id="img0" class="active" src="prototype/diagrams/tensionlengthinteractive/tension_0deg.png" alt="Arm extended (0°)">
+    <img id="img1" src="prototype/diagrams/tensionlengthinteractive/tension_90deg.png" alt="Arm partially flexed (90°)">
+    <img id="img2" src="prototype/diagrams/tensionlengthinteractive/tension_150deg.png" alt="Arm fully flexed (150°)">
+
+    
+    <div id="bicepsHotspot" class="hotspot-icon" style="top: 45%; left: 33%;"></div>
+    <div id="bicepsTooltip" class="hotspot-text"></div>
+    
+    
+    
+
+    <div class="instruction">Hover or tap the hotspot to learn more!</div>
+  </div>
+
+  <div id="sliderLabel">Arm Flexion Angle</div>
+  <div id="sliderContainer">
+    <input type="range" id="angleSlider" min="0" max="2" step="1" value="0" />
+    <div class="slider-ticks">
+      <span>0°</span>
+      <span>90°</span>
+      <span>150°</span>
+    </div>
+  </div>
+
+  <section class="glossary">
+    <h2>Mini Glossary</h2>
+    <dl>
+      <dt>Sarcomere</dt>
+      <dd>The smallest contractile unit within a muscle fiber. It consists of overlapping actin and myosin filaments whose interaction produces muscle contraction.</dd>
+
+      <dt>Force–Length Relationship</dt>
+      <dd>A principle describing how the force a muscle can generate depends on its length at the time of contraction. Peak force is generated at an optimal resting length.</dd>
+
+      <dt>Active Tension</dt>
+      <dd>The force produced by contractile elements (sarcomeres) of the muscle during voluntary contraction.</dd>
+
+      <dt>Myofibril</dt>
+      <dd>A long, filamentous organelle found within muscle cells, made up of repeating sarcomeres. Myofibrils bundle together to form muscle fibers.</dd>
+
+      <dt>Optimal Length</dt>
+      <dd>The sarcomere length at which there is maximal overlap between actin and myosin, allowing for maximal force production.</dd>
+    </dl>
+  </section>
+  <script>
+    const slider = document.getElementById("angleSlider");
+    const images = [
+      document.getElementById("img0"),
+      document.getElementById("img1"),
+      document.getElementById("img2")
+    ];
+  
+    const hotspot = document.getElementById("bicepsHotspot");
+    const tooltip = document.getElementById("bicepsTooltip");
+  
+    const descriptions = [
+  `<strong>Arm Extended (0°)</strong><br>
+  • Biceps is in a lengthened state<br>
+  • Minimal sarcomere overlap limits cross-bridge formation, reducing active force<br>
+  • <em>Example:</em> Reaching out to grab an object—arm feels weakest pulling back`,
+
+  `<strong>Arm Flexed (90°)</strong><br>
+  • Biceps is at optimal resting length<br>
+  • Maximal overlap of actin and myosin enables efficient cross-bridge cycling and peak tension<br>
+  • <em>Example:</em> Lifting a heavy grocery bag—arm feels strongest at mid-flexion`,
+
+  `<strong>Arm Fully Flexed (150°)</strong><br>
+  • Biceps is shortened and sarcomeres are overly compressed<br>
+  • Filament crowding reduces sliding efficiency, lowering active force<br>
+  • <em>Example:</em> Flexing hard at the top of a bicep curl—muscle is tight but force output is lower`
+];
+
+  
+    // Initialize default tooltip
+    tooltip.innerHTML = descriptions[0];
+  
+    // Update image and tooltip content on slider change
+    slider.addEventListener("input", () => {
+      const index = parseInt(slider.value);
+      images.forEach(img => img.classList.remove("active"));
+      requestAnimationFrame(() => images[index].classList.add("active"));
+      tooltip.innerHTML = descriptions[index];
+    });
+  
+    // Hover behavior: show tooltip on hover and move with cursor
+    hotspot.addEventListener("mouseenter", () => {
+  tooltip.style.opacity = "1";
+});
+
+hotspot.addEventListener("mousemove", (e) => {
+  tooltip.style.left = `${e.clientX + 15}px`;
+  tooltip.style.top = `${e.clientY + 15}px`;
+});
+
+hotspot.addEventListener("mouseleave", () => {
+  tooltip.style.opacity = "0";
+});
+
+  </script>
+  
+  
+</body>
+
+</html>
