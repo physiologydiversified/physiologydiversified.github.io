@@ -46,7 +46,7 @@ if (interactiveSrc && expandBtn) {
   const label = expandBtn.querySelector(".button-label");
   expandBtn.style.display = "inline-block";
   expandBtn.onclick = () => window.open(interactiveSrc, '_blank');
-  if (label) label.textContent = "Open as Interactive";
+  if (label) label.textContent = "Open interactive";
 } else if (expandBtn) {
   expandBtn.style.display = "none";
   const label = expandBtn.querySelector(".button-label");

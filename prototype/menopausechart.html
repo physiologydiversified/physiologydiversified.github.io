@@ -121,6 +121,7 @@
   flex-wrap: wrap;
   gap: 2rem;
   margin: 2rem 0;
+  flex: 3 1 600px;   /* grow 3×, base 600px */
 }
 
 #hormoneChart {
@@ -162,14 +163,225 @@
   font-style: italic;
   color: #3c2b65;
 }
+/* Container */
+.toggle-wrapper {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #4b397d;
+}
+
+/* Label + spacing */
+.toggle-wrapper label {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 1rem 0.5rem 0;
+  cursor: pointer;
+}
+
+/* Checkbox box */
+.toggle-wrapper input[type="checkbox"] {
+  /* remove default */
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #5e3d9f;
+  border-radius: 4px;
+  margin-right: 0.4rem;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+/* Checked state background */
+.toggle-wrapper input[type="checkbox"]:checked {
+  background-color: #5e3d9f;
+  border-color: #5e3d9f;
+}
+
+/* Checkmark glyph */
+.toggle-wrapper input[type="checkbox"]:checked::after {
+  content: '✔';
+  position: absolute;
+  top: 0;
+  left: 0.15rem;
+  font-size: 0.85rem;
+  line-height: 1.2rem;
+  color: #fff;
+}
+
+.chart-intro {
+  position: relative;
+  text-align: center;
+}
+.info-icon {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: #5e3d9f;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+.hint-banner {
+  background: #e8def8;
+  color: #4b397d;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin: 0.5rem auto 1rem;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+.hint-banner.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Base styles for both accordions */
+.legend-glossary {
+  background: #f5f0fc;
+  border: 1px solid #dfcfff;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #4b397d;
+  font-size: 0.9rem;
+  line-height: 1.6;           /* more breathing room on wrapped text */
+  margin-bottom: 1.5rem;
+}
+
+/* Hide default marker, inject custom arrow */
+.legend-glossary summary {
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  list-style: none;           /* remove default marker in Firefox */
+}
+.legend-glossary summary::-webkit-details-marker { display:none; }
+.legend-glossary summary:before {
+  content: '▾';
+  margin-right: 0.5rem;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.legend-glossary[open] > summary:before {
+  content: '▴';
+}
+
+/* Container for all entries */
+.legend-glossary .entries {
+  margin-top: 0.75rem;
+}
+
+/* Hormone grid: single column on small, two on wider */
+.hormones-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+@media (min-width: 600px) {
+  .hormones-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Individual entry wrap & alignment */
+.legend-glossary .entry {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+.legend-glossary .color-box {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+.legend-glossary .entry div {
+  flex: 1;
+}
+
+/* Nested details inside the stages panel */
+.legend-glossary.stages details {
+  background: #fff;
+  border: 1px solid #dfcfff;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+.legend-glossary.stages details summary {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+.legend-glossary.stages details p {
+  margin: 0.5rem 0;
+}
+
+/* UL style inside any entries */
+.legend-glossary ul {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+/* ===== Refined Hormone Legend Styling ===== */
+.legend-glossary.hormones {
+  background: #faf7ff;                /* slightly lighter violet */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 1.25rem 1rem;
+}
+
+.legend-glossary.hormones summary {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.legend-glossary.hormones .entries {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem 2rem;
+}
+
+.legend-glossary.hormones .entry {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-column-gap: 0.5rem;
+  align-items: start;
+}
+
+.legend-glossary.hormones .entry input {
+  /* move checkbox into line with icon/text */
+  margin-top: 0.15rem;
+}
+
+.legend-glossary.hormones .entry .color-box {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.15rem;
+}
+
+.legend-glossary.hormones .entry div {
+  line-height: 1.4;
+}
+
+/* tighten up text paragraphs so they wrap nicely */
+.legend-glossary.hormones .entry div p {
+  margin: 0;
+}
+
+
 
 
   </style>
 </head>
 <body>
+
+
+  
+  
   <h2 style="text-align:center;">Female Reproductive Hormonal Trends by STRAW Staging System</h2>
   <div id="infoBox">
     <em>Hover over the graph to explore hormone changes across stages of reproductive aging.</em>
+    
   </div>
   
   <!-- Flex layout for chart + legends -->
@@ -177,12 +389,17 @@
   
     <!-- Main Hormone Graph -->
      
+
     <div style="flex: 10 1000px; min-width: 500px;">
       <canvas id="hormoneChart"></canvas>
+      
+
+
+      
    <!-- Caption Box -->
    <div class="chart-citation" style="margin-top: 2rem;">
     Data adapted from Harlow et al. (2012), Santoro et al. (2015), and Randolph et al. (2011) to reflect hormone trends across the female lifespan using the U.S. STRAW+10 staging system. Informed by the SWAN cohort’s diverse, multiethnic dataset.<br><br>
-    Designed by &copy; Priya Modi, 2025.
+    Designed by &copy; Priya Modi. Licensed under CC BY-NC 4.0.
   </div>
   
       <!-- Download button under chart -->
@@ -191,63 +408,100 @@
       </div>
     </div>
   
-    <!-- Sidebar legends -->
-    <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 1rem;">
-      
-      <!-- Hormone Legend -->
-      <div id="hormoneLegend" class="legend-box">
-        <strong>Hormone Functions</strong><br><br>
-        <span style="color:#ff4d6d;"><b>Estradiol</b></span>: Maintains reproductive tissue, bone, mood.<br><br>
-        <span style="color:#ffa94d;"><b>Progesterone</b></span>: Supports pregnancy, uterine lining.<br><br>
-        <span style="color:#748ffc;"><b>FSH</b></span>: Stimulates follicle growth; rises as reserve declines.<br><br>
-        <span style="color:#5f9ea0;"><b>LH</b></span>: Triggers ovulation; rises post-menopause.<br><br>
-        <span style="color:#00b894;"><b>AMH</b></span>: Marker of ovarian reserve.<br><br>
-        <span style="color:#a984ff;"><b>Inhibin B</b></span>: Suppresses FSH; declines with age.
-      </div>
-  
-      <!-- SWAN explanation -->
-      <div class="swan-legend">
-        <details>
-        <summary><strong>What is SWAN?</strong></summary> <br>
-        The Study of Women’s Health Across the Nation (SWAN) is a U.S.-based longitudinal, multiethnic study tracking hormonal and health changes during midlife. SWAN enhances age-based models using:
+<!-- Sidebar: split into two accordions -->
+<div style="flex: 1 1 300px;">
+
+<!-- Combined Legend + Toggles -->
+<details class="legend-glossary hormones" open>
+  <summary><strong>Hormone Functions</strong></summary>
+  <div class="entries hormones-grid">
+    <label class="entry">
+      <input type="checkbox" value="Estradiol (E2)" checked>
+      <span class="color-box" style="background:#ff4d6d;"></span>
+      <div><strong>Estradiol (E2)</strong>: Maintains reproductive tissue, bone, mood.</div>
+    </label>
+    <label class="entry">
+      <input type="checkbox" value="Progesterone" checked>
+      <span class="color-box" style="background:#ffa94d;"></span>
+      <div><strong>Progesterone</strong>: Supports pregnancy, uterine lining.</div>
+    </label>
+    <label class="entry">
+      <input type="checkbox" value="FSH" checked>
+      <span class="color-box" style="background:#748ffc;"></span>
+      <div><strong>FSH</strong>: Stimulates follicle growth; rises as reserve declines.</div>
+    </label>
+    <label class="entry">
+      <input type="checkbox" value="LH" checked>
+      <span class="color-box" style="background:#5f9ea0;"></span>
+      <div><strong>LH</strong>: Triggers ovulation; rises post-menopause.</div>
+    </label>
+    <label class="entry">
+      <input type="checkbox" value="AMH" checked>
+      <span class="color-box" style="background:#00b894;"></span>
+      <div><strong>AMH</strong>: Marker of ovarian reserve.</div>
+    </label>
+    <label class="entry">
+      <input type="checkbox" value="Inhibin B" checked>
+      <span class="color-box" style="background:#a984ff;"></span>
+      <div><strong>Inhibin B</strong>: Suppresses FSH; declines with age.</div>
+    </label>
+  </div>
+</details>
+
+  <!-- SWAN+STRAW accordion (keeping your original text) -->
+  <details class="legend-glossary stages">
+    <summary><strong>STRAW+10 &amp; SWAN</strong></summary>
+    <div class="entries">
+      <details>
+        <summary><strong>What is SWAN?</strong></summary>
+        <p>
+          The Study of Women’s Health Across the Nation (SWAN) is a U.S.-based longitudinal, multiethnic study tracking hormonal and health changes during midlife. SWAN enhances age-based models using:
+        </p>
         <ul>
           <li><strong>Ethnicity</strong></li>
           <li><strong>Body composition</strong></li>
           <li><strong>Social and lifestyle factors</strong></li>
         </ul>
-    
-        It validates STRAW+10 stages using diverse real-world data.
+        <p>It validates STRAW+10 stages using diverse real-world data.</p>
       </details>
-          <details style="margin-top: 1rem;">
-        <br>
+      <details style="margin-top:1rem;">
         <summary><strong>What is STRAW?</strong></summary>
-        The <strong>Stages of Reproductive Aging Workshop (STRAW)</strong> is a standardized system developed by researchers to define the stages of female reproductive aging. The updated <strong>STRAW+10</strong> model divides the reproductive lifespan into consistent, evidence-based phases:
+        <p>
+          The <strong>Stages of Reproductive Aging Workshop (STRAW)</strong> is a standardized system developed by researchers to define the stages of female reproductive aging. The updated <strong>STRAW+10</strong> model divides the reproductive lifespan into consistent, evidence-based phases:
+        </p>
         <ul>
           <li><strong>Reproductive Stage</strong> – Regular menstrual cycles with stable hormone levels.</li>
           <li><strong>Menopausal Transition</strong> – Cycle variability and hormone fluctuations begin.</li>
           <li><strong>Postmenopause</strong> – Final menstrual period has occurred; hormone levels stabilize at low levels.</li>
         </ul>
-        STRAW+10 helps clinicians, researchers, and educators track hormonal changes more accurately than using age alone, and is the foundation for hormone staging in this chart.
+        <p>STRAW+10 helps clinicians, researchers, and educators track hormonal changes more accurately than using age alone, and is the foundation for hormone staging in this chart.</p>
       </details>
-      </div>
-      </div>
     </div>
-  </div>
-  
-  </div>
+  </details>
+
+</div>
+
   
   <!-- Tooltip -->
   <div id="custom-tooltip" style="opacity: 0;"></div>
   
 
   
-  <!-- APA References -->
-  <div class="chart-citation">
-    <strong>APA References</strong><br><br>
-    Harlow, S. D., et al. (2012). <em>Executive summary of the Stages of Reproductive Aging Workshop +10</em>. Fertility and Sterility, 97(4), 843–851. https://doi.org/10.1016/j.fertnstert.2012.01.023<br><br>
-    Santoro, N., & Randolph, J. F. (2011). <em>Reproductive hormones and the menopause transition</em>. Obstet Gynecol Clin North Am, 38(3), 455–466. https://doi.org/10.1016/j.ogc.2011.05.004<br><br>
-    Santoro, N., Epperson, C. N., & Mathews, S. B. (2015). <em>Menopause and the central nervous system</em>. Nature Reviews Disease Primers, 1, 15004. https://doi.org/10.1038/nrdp.2015.4
-  </div>
+  <details class="data-citation-box">
+    <summary>View Data Sources</summary>
+    <div class="citation-content">
+      <p>
+        Harlow, S. D., Gass, M., Hall, J. E., Lobo, R., Maki, P., Rebar, R. W., Sherman, S., Sluss, P. M., de Villiers, T. J., &amp; STRAW 10 Collaborative Group (2012). Executive summary of the Stages of Reproductive Aging Workshop + 10: addressing the unfinished agenda of staging reproductive aging. <em>Menopause (New York, N.Y.)</em>, 19(4), 387–395. https://doi.org/10.1097/gme.0b013e31824d8f40
+      </p>
+      <p>
+        Santoro, N., &amp; Randolph, J. F., Jr (2011). Reproductive hormones and the menopause transition. <em>Obstetrics and Gynecology Clinics of North America</em>, 38(3), 455–466. https://doi.org/10.1016/j.ogc.2011.05.004
+      </p>
+      <p>
+        Davis, S., Lambrinoudaki, I., Lumsden, M., et al. (2015). Menopause. <em>Nature Reviews Disease Primers</em>, 1, 15004. https://doi.org/10.1038/nrdp.2015.4
+      </p>
+    </div>
+  </details>
+  
   
  
 
@@ -409,7 +663,7 @@ if (!showStages.includes(stage)) {
   }
 },
 
-      legend: { display: true },
+      legend: { display: false },
       annotation: {
   annotations: {
     reproductive: {
@@ -501,6 +755,43 @@ function downloadChart() {
   link.href = chart.toBase64Image();
   link.click();
 }
+
+// 1. Turn off the native legend (we did above), then:
+
+// RIGHT AFTER you instantiate `chart`:
+chart.options.plugins.legend.display = false;
+
+document.querySelectorAll('.legend-glossary.hormones input[type="checkbox"]')
+  .forEach(cb => {
+    // initialize visibility
+    const ds = chart.data.datasets.find(d => d.label === cb.value);
+    if (ds) ds.hidden = !cb.checked;
+
+    // wire toggle
+    cb.addEventListener('change', e => {
+      const dataset = chart.data.datasets.find(d => d.label === e.target.value);
+      if (!dataset) return;
+      dataset.hidden = !e.target.checked;
+      chart.update();
+    });
+  });
+
+// Hide built‐in legend
+chart.options.plugins.legend.display = false;
+
+// Wire up combined legend toggles
+document.querySelectorAll('.legend-glossary.hormones input[type="checkbox"]')
+  .forEach(cb => {
+    cb.addEventListener('change', e => {
+      const name = e.target.value;
+      const ds = chart.data.datasets.find(d => d.label === name);
+      if (ds) {
+        ds.hidden = !e.target.checked;
+        chart.update();
+      }
+    });
+  });
+
 </script>
 
 </body>
